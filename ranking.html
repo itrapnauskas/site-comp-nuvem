@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ranking - Computação em Nuvem</title>
+  <link rel="stylesheet" href="styles/ranking.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">Computação em Nuvem</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ranking.html" class="active">Ranking</a></li>
+        <li><a href="projeto1.html">Projeto 1</a></li>
+        <li><a href="avaliacao360.html">Avaliação 360</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="ranking-header">
+      <h1><i class="fas fa-trophy"></i> Ranking de Alunos</h1>
+      <p class="description">Acompanhe o desempenho dos alunos com base nas insígnias conquistadas e avaliações 360°.</p>
+    </section>
+
+    <section class="ranking-filter">
+      <h2>Filtros</h2>
+      <div class="filter-container">
+        <div class="filter-group">
+          <label for="filter-bloco">Bloco:</label>
+          <select id="filter-bloco">
+            <option value="all">Todos os Blocos</option>
+            <option value="Bloco1">Bloco 1 - Fundamentos</option>
+            <option value="Bloco2">Bloco 2 - Armazenamento</option>
+            <option value="Bloco3">Bloco 3 - Serverless</option>
+            <option value="Bloco4">Bloco 4 - Monitoramento</option>
+            <option value="Bloco5">Bloco 5 - Avaliação Individual</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <label for="filter-insignia">Insígnia:</label>
+          <select id="filter-insignia">
+            <option value="all">Todas as Insígnias</option>
+            <optgroup label="Bloco 1">
+              <option value="Explorador da Nuvem">Explorador da Nuvem</option>
+              <option value="Arquiteto Cloud Iniciante">Arquiteto Cloud Iniciante</option>
+              <option value="Gestor de Custos Cloud">Gestor de Custos Cloud</option>
+              <option value="Segurança Inicial em Cloud">Segurança Inicial em Cloud</option>
+            </optgroup>
+            <optgroup label="Bloco 2">
+              <option value="Guardião dos Dados">Guardião dos Dados</option>
+              <option value="Administrador de Bancos Cloud">Administrador de Bancos Cloud</option>
+              <option value="Integrador de APIs e Dados">Integrador de APIs e Dados</option>
+            </optgroup>
+            <optgroup label="Bloco 3">
+              <option value="Desenvolvedor Serverless">Desenvolvedor Serverless</option>
+              <option value="Protetor de APIs">Protetor de APIs</option>
+              <option value="Automatizador Cloud">Automatizador Cloud</option>
+            </optgroup>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <label for="filter-categoria">Categoria:</label>
+          <select id="filter-categoria">
+            <option value="all">Todas as Categorias</option>
+            <option value="Diamante">Diamante</option>
+            <option value="Ouro">Ouro</option>
+            <option value="Prata">Prata</option>
+            <option value="Bronze">Bronze</option>
+            <option value="Cobre">Cobre</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <label for="filter-grupo">Grupo:</label>
+          <select id="filter-grupo">
+            <option value="all">Todos os Grupos</option>
+            <!-- Grupos serão carregados dinamicamente -->
+          </select>
+        </div>
+        
+        <button id="btn-aplicar-filtros" class="btn-filter">Aplicar Filtros</button>
+        <button id="btn-limpar-filtros" class="btn-filter clear">Limpar Filtros</button>
+      </div>
+    </section>
+
+    <section class="ranking-legend">
+      <h2>Legenda das Categorias</h2>
+      <div class="legend-container">
+        <div class="legend-item">
+          <span class="category-badge diamond">💎</span>
+          <span class="category-name">Diamante</span>
+          <span class="category-value">100%</span>
+        </div>
+        <div class="legend-item">
+          <span class="category-badge gold">🏅</span>
+          <span class="category-name">Ouro</span>
+          <span class="category-value">80%</span>
+        </div>
+        <div class="legend-item">
+          <span class="category-badge silver">🥈</span>
+          <span class="category-name">Prata</span>
+          <span class="category-value">65%</span>
+        </div>
+        <div class="legend-item">
+          <span class="category-badge bronze">🥉</span>
+          <span class="category-name">Bronze</span>
+          <span class="category-value">50%</span>
+        </div>
+        <div class="legend-item">
+          <span class="category-badge copper">🟫</span>
+          <span class="category-name">Cobre</span>
+          <span class="category-value">20%</span>
+        </div>
+        <div class="legend-item">
+          <span class="category-badge none">🚫</span>
+          <span class="category-name">Sem Insígnia</span>
+          <span class="category-value">0%</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ranking-table-container">
+      <h2>Ranking Geral</h2>
+      <div id="ranking-loading" class="loading">
+        <i class="fas fa-spinner fa-spin"></i>
+        <p>Carregando ranking...</p>
+      </div>
+      <div id="ranking-table-wrapper">
+        <table id="ranking-table" class="ranking-table">
+          <thead>
+            <tr>
+              <th class="position">#</th>
+              <th class="aluno">Aluno</th>
+              <th class="grupo">Grupo</th>
+              <th class="score">Score</th>
+              <th class="insignias">Insígnias</th>
+            </tr>
+          </thead>
+          <tbody id="ranking-body">
+            <!-- Ranking será carregado dinamicamente -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="ranking-blocos">
+      <h2>Ranking por Blocos</h2>
+      
+      <div class="tabs">
+        <button class="tab-button active" data-tab="bloco1">Bloco 1</button>
+        <button class="tab-button" data-tab="bloco2">Bloco 2</button>
+        <button class="tab-button" data-tab="bloco3">Bloco 3</button>
+        <button class="tab-button" data-tab="bloco4">Bloco 4</button>
+        <button class="tab-button" data-tab="bloco5">Bloco 5</button>
+      </div>
+      
+      <div class="tab-content">
+        <div id="bloco1" class="tab-pane active">
+          <div class="bloco-description">
+            <h3>Bloco 1 - Fundamentos e Implantação Básica em Nuvem</h3>
+            <p>Neste bloco, os alunos exploram os conceitos fundamentais da computação em nuvem, modelos de implantação e configuram seu primeiro ambiente na nuvem.</p>
+          </div>
+          
+          <table class="bloco-table">
+            <thead>
+              <tr>
+                <th class="position">#</th>
+                <th class="aluno">Aluno</th>
+                <th class="explorador">Explorador da Nuvem</th>
+                <th class="arquiteto">Arquiteto Cloud Iniciante</th>
+                <th class="gestor">Gestor de Custos Cloud</th>
+                <th class="seguranca">Segurança Inicial em Cloud</th>
+              </tr>
+            </thead>
+            <tbody id="bloco1-body">
+              <!-- Dados serão carregados dinamicamente -->
+            </tbody>
+          </table>
+        </div>
+        
+        <div id="bloco2" class="tab-pane">
+          <div class="bloco-description">
+            <h3>Bloco 2 - Serviços de Armazenamento e Banco de Dados na Nuvem</h3>
+            <p>Neste bloco, os alunos aprendem sobre armazenamento de objetos, bancos de dados relacionais e NoSQL, além de segurança para dados na nuvem.</p>
+          </div>
+          
+          <table class="bloco-table">
+            <thead>
+              <tr>
+                <th class="position">#</th>
+                <th class="aluno">Aluno</th>
+                <th class="guardiao">Guardião dos Dados</th>
+                <th class="administrador">Administrador de Bancos Cloud</th>
+                <th class="integrador">Integrador de APIs e Dados</th>
+              </tr>
+            </thead>
+            <tbody id="bloco2-body">
+              <!-- Dados serão carregados dinamicamente -->
+            </tbody>
+          </table>
+        </div>
+        
+        <div id="bloco3" class="tab-pane">
+          <div class="bloco-description">
+            <h3>Bloco 3 - Aplicações Serverless e Segurança</h3>
+            <p>Neste bloco, os alunos exploram computação serverless, autenticação e proteção de APIs na nuvem.</p>
+          </div>
+          
+          <table class="bloco-table">
+            <thead>
+              <tr>
+                <th class="position">#</th>
+                <th class="aluno">Aluno</th>
+                <th class="desenvolvedor">Desenvolvedor Serverless</th>
+                <th class="protetor">Protetor de APIs</th>
+                <th class="automatizador">Automatizador Cloud</th>
+              </tr>
+            </thead>
+            <tbody id="bloco3-body">
+              <!-- Dados serão carregados dinamicamente -->
+            </tbody>
+          </table>
+        </div>
+        
+        <div id="bloco4" class="tab-pane">
+          <div class="bloco-description">
+            <h3>Bloco 4 - Monitoramento, Distribuição de Tráfego e Boas Práticas</h3>
+            <p>Neste bloco, os alunos aprendem sobre monitoramento, escalabilidade, balanceamento de carga e otimização de custos.</p>
+          </div>
+          
+          <table class="bloco-table">
+            <thead>
+              <tr>
+                <th class="position">#</th>
+                <th class="aluno">Aluno</th>
+                <th class="monitor">Monitor de Desempenho</th>
+                <th class="escalador">Escalador de Serviços</th>
+                <th class="otimizador">Otimização e Custos</th>
+              </tr>
+            </thead>
+            <tbody id="bloco4-body">
+              <!-- Dados serão carregados dinamicamente -->
+            </tbody>
+          </table>
+        </div>
+        
+        <div id="bloco5" class="tab-pane">
+          <div class="bloco-description">
+            <h3>Bloco 5 - Avaliação Individual</h3>
+            <p>Neste bloco final, os alunos são avaliados individualmente na aplicação de segurança e boas práticas na nuvem.</p>
+          </div>
+          
+          <table class="bloco-table">
+            <thead>
+              <tr>
+                <th class="position">#</th>
+                <th class="aluno">Aluno</th>
+                <th class="defensor">Defensor da Nuvem</th>
+                <th class="especialista">Especialista em Cloud Security</th>
+              </tr>
+            </thead>
+            <tbody id="bloco5-body">
+              <!-- Dados serão carregados dinamicamente -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Computação em Nuvem. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <script src="scripts/ranking.js"></script>
+</body>
+</html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computação em Nuvem - Início</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Firebase App (SDK principal) -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <!-- Firebase Database -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">Computação em Nuvem</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="ranking.html">Ranking</a></li>
+        <li><a href="projeto1.html">Projeto 1</a></li>
+        <li><a href="avaliacao360.html">Avaliação 360</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="welcome-section">
+      <div class="hero-content">
+        <h1><i class="fas fa-cloud"></i> Computação em Nuvem</h1>
+        <p class="subtitle">Estude, Pratique e Aplique os conceitos fundamentais da computação em nuvem</p>
+        
+        <div class="cta-buttons">
+          <a href="#course-overview" class="btn btn-primary">Sobre o Curso</a>
+          <a href="#navigation-guide" class="btn btn-secondary">Guia de Navegação</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="course-overview" class="course-overview">
+      <h2>Visão Geral do Curso</h2>
+      <p>Bem-vindo ao curso de Computação em Nuvem! Este curso foi projetado para fornecer a você uma experiência prática e abrangente no mundo da computação em nuvem, desde os conceitos fundamentais até implementações avançadas.</p>
+      
+      <div class="course-features">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <h3>Projetos Práticos</h3>
+          <p>Desenvolva habilidades reais através de projetos que simulam ambientes de produção em nuvem.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-medal"></i>
+          </div>
+          <h3>Sistema de Insígnias</h3>
+          <p>Conquiste insígnias que representam competências específicas em diferentes aspectos da computação em nuvem.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Avaliação 360°</h3>
+          <p>Participe de um sistema de feedback que promove a colaboração e o crescimento profissional.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <h3>Ranking Competitivo</h3>
+          <p>Acompanhe seu progresso e compare seu desempenho com seus colegas de classe.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="navigation-guide" class="navigation-guide">
+      <h2>Guia de Navegação</h2>
+      <p>Para aproveitar ao máximo esta plataforma, aqui está um guia das principais seções disponíveis:</p>
+      
+      <div class="nav-cards">
+        <div class="nav-card">
+          <div class="nav-icon">
+            <i class="fas fa-home"></i>
+          </div>
+          <div class="nav-content">
+            <h3>Página Inicial</h3>
+            <p>Você está aqui! Esta página fornece uma visão geral do curso e links para as principais seções.</p>
+            <a href="index.html" class="nav-link">Home</a>
+          </div>
+        </div>
+        
+        <div class="nav-card">
+          <div class="nav-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <div class="nav-content">
+            <h3>Ranking</h3>
+            <p>Visualize o desempenho de todos os alunos, filtre por blocos e insígnias, e acompanhe sua posição na classificação geral.</p>
+            <a href="ranking.html" class="nav-link">Ver Ranking</a>
+          </div>
+        </div>
+        
+        <div class="nav-card">
+          <div class="nav-icon">
+            <i class="fas fa-cloud"></i>
+          </div>
+          <div class="nav-content">
+            <h3>Projeto 1</h3>
+            <p>Acesse as informações detalhadas sobre o primeiro projeto: "Meu #1 Ambiente na Nuvem", incluindo requisitos e recursos.</p>
+            <a href="projeto1.html" class="nav-link">Ver Projeto 1</a>
+          </div>
+        </div>
+        
+        <div class="nav-card">
+          <div class="nav-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="nav-content">
+            <h3>Avaliação 360°</h3>
+            <p>Participe das avaliações de colegas e autoavaliações para projetos em andamento.</p>
+            <a href="avaliacao360.html" class="nav-link">Acessar Avaliações</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="upcoming-deadlines">
+      <h2>Próximos Prazos</h2>
+      <div id="deadlines-container" class="deadlines-list">
+        <div class="loading">
+          <i class="fas fa-spinner fa-spin"></i>
+          <p>Carregando prazos...</p>
+        </div>
+        <!-- Os prazos serão carregados dinamicamente via JavaScript -->
+      </div>
+    </section>
+
+    <section class="top-students">
+      <h2>Top 5 Alunos</h2>
+      <div id="top-students-container" class="top-students-list">
+        <div class="loading">
+          <i class="fas fa-spinner fa-spin"></i>
+          <p>Carregando ranking...</p>
+        </div>
+        <!-- O top 5 será carregado dinamicamente via JavaScript -->
+      </div>
+    </section>
+
+    <section class="latest-announcements">
+      <h2>Últimos Avisos</h2>
+      <div class="announcements-list">
+        <div class="announcement-card">
+          <div class="announcement-header">
+            <h3>Lançamento do Projeto 1</h3>
+            <span class="announcement-date">25/02/2025</span>
+          </div>
+          <div class="announcement-content">
+            <p>O primeiro projeto da disciplina já está disponível! Acesse a página do Projeto 1 para conhecer os detalhes e começar a trabalhar com seu grupo.</p>
+          </div>
+          <div class="announcement-footer">
+            <a href="projeto1.html" class="announcement-link">Ver detalhes</a>
+          </div>
+        </div>
+        
+        <div class="announcement-card">
+          <div class="announcement-header">
+            <h3>Sistema de Avaliação 360° Ativo</h3>
+            <span class="announcement-date">24/02/2025</span>
+          </div>
+          <div class="announcement-content">
+            <p>O sistema de Avaliação 360° está pronto para uso! Lembre-se que sua participação nas avaliações é parte importante da nota final.</p>
+          </div>
+          <div class="announcement-footer">
+            <a href="avaliacao360.html" class="announcement-link">Acessar avaliações</a>
+          </div>
+        </div>
+        
+        <div class="announcement-card">
+          <div class="announcement-header">
+            <h3>Bem-vindos à Disciplina!</h3>
+            <span class="announcement-date">22/02/2025</span>
+          </div>
+          <div class="announcement-content">
+            <p>Seja bem-vindo ao curso de Computação em Nuvem! Explore o site para conhecer a metodologia, os projetos e o sistema de insígnias que utilizaremos ao longo do semestre.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>Computação em Nuvem</h3>
+        <p>2025 - Todos os direitos reservados</p>
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="ranking.html">Ranking</a></li>
+          <li><a href="projeto1.html">Projeto 1</a></li>
+          <li><a href="avaliacao360.html">Avaliação 360</a></li>
+          <li><a href="admin/login.html">Área Administrativa</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="scripts/script.js"></script>
+  <script>
+    // Mobile Navigation Toggle
+    const navSlide = () => {
+      const burger = document.querySelector('.burger');
+      const nav = document.querySelector('.nav-links');
+      const navLinks = document.querySelectorAll('.nav-links li');
+
+      burger.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
+        burger.classList.toggle('toggle');
+        
+        navLinks.forEach((link, index) => {
+          if (link.style.animation) {
+            link.style.animation = '';
+          } else {
+            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+          }
+        });
+      });
+    }
+
+    // Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDH9hUEuMlsbPyq5rO5zldBnNQOX26bbG4",
+      authDomain: "comp-nuvem-2025.firebaseapp.com",
+      databaseURL: "https://comp-nuvem-2025-default-rtdb.firebaseio.com",
+      projectId: "comp-nuvem-2025",
+      storageBucket: "comp-nuvem-2025.firebasestorage.app",
+      messagingSenderId: "60212118707",
+      appId: "1:60212118707:web:714faf88ddfd3b536c9cc6"
+    };
+
+    // Initialize Firebase
+    if (typeof firebase !== 'undefined') {
+      firebase.initializeApp(firebaseConfig);
+      const database = firebase.database();
+
+      // Load Top 5 Students
+      const loadTopStudents = () => {
+        const container = document.getElementById('top-students-container');
+        
+        database.ref('alunos').once('value')
+          .then(snapshot => {
+            const data = snapshot.val();
+            
+            if (!data) {
+              container.innerHTML = '<p>Nenhum dado disponível ainda.</p>';
+              return;
+            }
+            
+            // Transform to array and sort by score
+            const students = Object.values(data)
+              .sort((a, b) => (b.score || 0) - (a.score || 0))
+              .slice(0, 5); // Get top 5
+              
+            // Create HTML
+            const html = students.map((student, index) => `
+              <div class="top-student-card ${index === 0 ? 'top-position' : ''}">
+                <div class="position">#${index + 1}</div>
+                <div class="student-info">
+                  <h3>${student.nome || 'Aluno'}</h3>
+                  <p>Grupo: ${student.grupo || 'N/A'}</p>
+                </div>
+                <div class="student-score">${student.score || 0} pts</div>
+              </div>
+            `).join('');
+            
+            container.innerHTML = html;
+          })
+          .catch(error => {
+            console.error('Erro ao carregar top estudantes:', error);
+            container.innerHTML = '<p>Erro ao carregar dados. Tente novamente mais tarde.</p>';
+          });
+      };
+
+      // Load Upcoming Deadlines
+      const loadDeadlines = () => {
+        const container = document.getElementById('deadlines-container');
+        
+        database.ref('avaliacoes360').once('value')
+          .then(snapshot => {
+            const data = snapshot.val();
+            
+            if (!data) {
+              container.innerHTML = '<p>Nenhum prazo disponível no momento.</p>';
+              return;
+            }
+            
+            // Get current date
+            const now = new Date();
+            
+            // Transform to array, filter for future deadlines and sort by date
+            const deadlines = Object.values(data)
+              .filter(item => new Date(item.dataFim) > now)
+              .sort((a, b) => new Date(a.dataFim) - new Date(b.dataFim))
+              .slice(0, 3); // Get next 3 deadlines
+              
+            if (deadlines.length === 0) {
+              container.innerHTML = '<p>Nenhum prazo próximo no momento.</p>';
+              return;
+            }
+            
+            // Format date
+            const formatDate = (dateString) => {
+              const date = new Date(dateString);
+              return date.toLocaleDateString('pt-BR', { 
+                day: '2-digit', 
+                month: '2-digit', 
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+              });
+            };
+            
+            // Calculate remaining days
+            const getRemainingDays = (dateString) => {
+              const now = new Date();
+              const deadline = new Date(dateString);
+              const diffTime = deadline - now;
+              const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+              
+              if (diffDays === 0) return 'Hoje';
+              if (diffDays === 1) return 'Amanhã';
+              return `${diffDays} dias`;
+            };
+            
+            // Create HTML
+            const html = deadlines.map(deadline => `
+              <div class="deadline-card">
+                <div class="deadline-info">
+                  <h3>${deadline.titulo || `Avaliação ${deadline.projetoId || ''}`}</h3>
+                  <p>Prazo: ${formatDate(deadline.dataFim)}</p>
+                </div>
+                <div class="deadline-remaining">
+                  <span>${getRemainingDays(deadline.dataFim)}</span>
+                </div>
+              </div>
+            `).join('');
+            
+            container.innerHTML = html;
+          })
+          .catch(error => {
+            console.error('Erro ao carregar prazos:', error);
+            container.innerHTML = '<p>Erro ao carregar dados. Tente novamente mais tarde.</p>';
+          });
+      };
+
+      // Load data when DOM is ready
+      document.addEventListener('DOMContentLoaded', () => {
+        navSlide();
+        loadTopStudents();
+        loadDeadlines();
+      });
+    } else {
+      // If Firebase is not available
+      document.addEventListener('DOMContentLoaded', () => {
+        navSlide();
+        document.getElementById('top-students-container').innerHTML = 
+          '<p>Não foi possível carregar os dados. Verifique sua conexão.</p>';
+        document.getElementById('deadlines-container').innerHTML = 
+          '<p>Não foi possível carregar os dados. Verifique sua conexão.</p>';
+      });
+    }
+  </script>
+</body>
+</html>

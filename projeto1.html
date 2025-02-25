@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto 1: Meu #1 Ambiente na Nuvem - Computação em Nuvem</title>
+  <link rel="stylesheet" href="styles/projeto1.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">Computação em Nuvem</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ranking.html">Ranking</a></li>
+        <li><a href="projeto1.html" class="active">Projeto 1</a></li>
+        <li><a href="avaliacao360.html">Avaliação 360</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="project-header">
+      <h1><i class="fas fa-cloud"></i> Projeto 1: Meu #1 Ambiente na Nuvem</h1>
+      <div class="badges">
+        <div class="badge">
+          <span class="badge-icon">🌥️</span>
+          <span class="badge-name">Explorador da Nuvem</span>
+        </div>
+        <div class="badge">
+          <span class="badge-icon">🛠️</span>
+          <span class="badge-name">Arquiteto Cloud Iniciante</span>
+        </div>
+        <div class="badge">
+          <span class="badge-icon">💸</span>
+          <span class="badge-name">Gestor de Custos Cloud</span>
+        </div>
+        <div class="badge">
+          <span class="badge-icon">🔒</span>
+          <span class="badge-name">Segurança Inicial em Cloud</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-overview">
+      <h2>Visão Geral</h2>
+      <p>Neste projeto, você irá criar e configurar seu primeiro ambiente na nuvem, explorando os conceitos fundamentais de computação em nuvem como IaaS, PaaS e SaaS, além de implementar medidas básicas de segurança e planejamento de custos.</p>
+      
+      <div class="objectives">
+        <h3>Objetivos</h3>
+        <ul>
+          <li>Compreender os conceitos fundamentais da computação em nuvem (IaaS, PaaS, SaaS)</li>
+          <li>Explorar diferentes modelos de implantação (Nuvem Pública, Privada, Híbrida e Multi-cloud)</li>
+          <li>Criar uma conta em provedores gratuitos</li>
+          <li>Configurar uma VM (Linux ou Windows) ou serviço PaaS para deploy de um site ou aplicação estática</li>
+          <li>Conhecer as filosofias de preços e planejamento de custos na nuvem</li>
+          <li>Implementar medidas de segurança básicas</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="project-options">
+      <h2>Opções de Projeto</h2>
+      
+      <div class="option-card">
+        <div class="option-header">
+          <h3><i class="fas fa-gamepad"></i> Opção 1: Servidor de Jogos</h3>
+        </div>
+        <div class="option-content">
+          <p><strong>Descrição:</strong> Criar e configurar um servidor de jogo multiplayer na nuvem</p>
+          <p><strong>Exemplos:</strong> Minecraft, Counter-Strike 1.6, Terraria, Valheim</p>
+          <p><strong>Conceitos trabalhados:</strong> Infraestrutura IaaS, gerenciamento de rede, segurança e desempenho</p>
+          <p><strong>Diferencial:</strong> Desafio extra de otimização e monitoramento do servidor</p>
+        </div>
+      </div>
+      
+      <div class="option-card">
+        <div class="option-header">
+          <h3><i class="fas fa-video"></i> Opção 2: Streaming de Vídeo ou Podcast</h3>
+        </div>
+        <div class="option-content">
+          <p><strong>Descrição:</strong> Criar um pequeno serviço de streaming de vídeo ou podcast na nuvem</p>
+          <p><strong>Exemplos:</strong> Plataforma estilo YouTube/Twitch simplificado ou repositório de podcasts</p>
+          <p><strong>Conceitos trabalhados:</strong> Serviços PaaS, armazenamento de objetos (S3, Blob), segurança de mídia</p>
+          <p><strong>Diferencial:</strong> Utilizar uma plataforma open-source (Owncast, PeerTube, Azuracast)</p>
+        </div>
+      </div>
+      
+      <div class="option-card">
+        <div class="option-header">
+          <h3><i class="fas fa-shopping-cart"></i> Opção 3: Loja Virtual</h3>
+        </div>
+        <div class="option-content">
+          <p><strong>Descrição:</strong> Desenvolver e implantar uma landing page para uma loja virtual fictícia hospedada na nuvem</p>
+          <p><strong>Exemplos:</strong> Página para uma marca de roupas, acessórios, comida, ou produtos digitais</p>
+          <p><strong>Conceitos trabalhados:</strong> Deploy de aplicações estáticas e dinâmicas na nuvem (PaaS), segurança, orquestração de servidores</p>
+          <p><strong>Diferencial:</strong> Criar um catálogo de produtos dinâmico com armazenamento de imagens</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-roadmap">
+      <h2>Roteiro de Atividades</h2>
+      
+      <div class="roadmap-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Pesquisa e Planejamento Inicial</h3>
+          <div class="tasks">
+            <h4>Estudo dos conceitos básicos:</h4>
+            <ul>
+              <li>Modelos de Computação em Nuvem (Pública, Privada, Híbrida)</li>
+              <li>Diferença entre IaaS, PaaS e SaaS</li>
+              <li>Filosofias de precificação e controle de custos</li>
+            </ul>
+            
+            <h4>Escolha do provedor:</h4>
+            <ul>
+              <li>Criar uma conta gratuita no provedor escolhido</li>
+              <li>Comparação entre AWS Free Tier, GCP Free Tier, Oracle Cloud, Azure Sandbox</li>
+            </ul>
+            
+            <h4>Definir o projeto:</h4>
+            <ul>
+              <li>Escolher entre servidor de jogos, streaming ou loja virtual</li>
+              <li>Criar um planejamento da infraestrutura necessária (VM, armazenamento, rede)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="roadmap-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Configuração da Infraestrutura</h3>
+          <div class="tasks">
+            <h4>Criando a Máquina Virtual (VM) ou Serviço PaaS</h4>
+            <ul>
+              <li>Criar uma VM Linux ou Windows e configurar um servidor web</li>
+              <li>Alternativa: Usar um PaaS (ex.: Heroku, Netlify, Firebase Hosting) para sites estáticos</li>
+              <li>Configurar acesso remoto via SSH, RDP ou painel web</li>
+            </ul>
+            
+            <h4>Configuração de Rede e Segurança</h4>
+            <ul>
+              <li>Criar uma VPC e sub-redes para segmentação da rede</li>
+              <li>Aplicar regras de firewall e configurar segurança básica (chaves SSH, senhas seguras)</li>
+              <li>Desafio extra: Configurar logs de segurança e análise de acessos</li>
+            </ul>
+            
+            <h4>Gerenciamento de Armazenamento</h4>
+            <ul>
+              <li>Criar volumes de armazenamento e testar diferentes soluções (Bloco, Objeto, Arquivos)</li>
+              <li>Fazer upload de um arquivo de teste e verificar permissões de acesso</li>
+              <li>Desafio extra: Criar um backup automático</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="roadmap-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Testes e Validação</h3>
+          <div class="tasks">
+            <h4>Testes de Acesso e Segurança</h4>
+            <ul>
+              <li>Testar a conectividade remota (ping, SSH, acesso via browser)</li>
+              <li>Testar segurança e acessos (tentativas de login e firewall)</li>
+              <li>Executar um teste de carga básico para medir a performance da solução</li>
+            </ul>
+            
+            <p><strong>Desafio Extra:</strong> Criar um script de monitoramento com Grafana ou Zabbix</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="roadmap-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Apresentação e Documentação</h3>
+          <div class="tasks">
+            <h4>Relatório Técnico:</h4>
+            <ul>
+              <li>Explicar o provedor escolhido e justificar a arquitetura</li>
+              <li>Demonstração da configuração com prints e logs</li>
+              <li>Análise de custos: quanto cada recurso está consumindo no plano gratuito</li>
+            </ul>
+            
+            <h4>Apresentação Final:</h4>
+            <ul>
+              <li>Demonstração do ambiente rodando (vídeo ou ao vivo)</li>
+              <li>Justificativa técnica das decisões</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-resources">
+      <h2>Recursos Recomendados</h2>
+      
+      <div class="resources-grid">
+        <div class="resource-card">
+          <div class="resource-icon"><i class="fas fa-book"></i></div>
+          <h3>Livros e Artigos</h3>
+          <ul>
+            <li><a href="#" target="_blank">Computação em Nuvem: Conceitos, Tecnologias, Aplicações e Desafios</a></li>
+            <li><a href="#" target="_blank">Cloud Computing: Concepts, Technology & Architecture</a></li>
+            <li><a href="#" target="_blank">AWS Certified Cloud Practitioner Study Guide</a></li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon"><i class="fab fa-youtube"></i></div>
+          <h3>Vídeos e Tutoriais</h3>
+          <ul>
+            <li><a href="https://www.youtube.com/watch?v=RWgW-CgdIk0" target="_blank">AWS Free Tier Tutorial</a></li>
+            <li><a href="https://www.youtube.com/watch?v=QAbqJzd0PEE" target="_blank">Azure para Iniciantes</a></li>
+            <li><a href="https://www.youtube.com/watch?v=HXV3zeQKqGY" target="_blank">Google Cloud Platform Introduction</a></li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon"><i class="fas fa-cloud"></i></div>
+          <h3>Provedores Recomendados</h3>
+          <ul>
+            <li><a href="https://aws.amazon.com/free/" target="_blank">AWS Free Tier</a></li>
+            <li><a href="https://cloud.google.com/free/" target="_blank">Google Cloud Free Tier</a></li>
+            <li><a href="https://azure.microsoft.com/free/" target="_blank">Microsoft Azure Free Account</a></li>
+            <li><a href="https://www.oracle.com/cloud/free/" target="_blank">Oracle Cloud Free Tier</a></li>
+            <li><a href="https://www.digitalocean.com/" target="_blank">DigitalOcean</a></li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon"><i class="fas fa-tools"></i></div>
+          <h3>Ferramentas Úteis</h3>
+          <ul>
+            <li><a href="https://docs.aws.amazon.com/pricing-calculator/latest/userguide/what-is-pricing-calculator.html" target="_blank">AWS Pricing Calculator</a></li>
+            <li><a href="https://github.com/cloudposse/geodesic" target="_blank">Geodesic - DevOps Toolbox</a></li>
+            <li><a href="https://www.terraform.io/" target="_blank">Terraform</a></li>
+            <li><a href="https://www.ansible.com/" target="_blank">Ansible</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-evaluation">
+      <h2>Critérios de Avaliação</h2>
+      
+      <table class="evaluation-table">
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Descrição</th>
+            <th>Peso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Funcionalidade da VM ou PaaS</td>
+            <td>O servidor ou serviço foi configurado corretamente e está acessível?</td>
+            <td>25%</td>
+          </tr>
+          <tr>
+            <td>Configuração de Rede e Segurança</td>
+            <td>Foram implementadas sub-redes e regras de firewall? A segurança básica foi aplicada corretamente?</td>
+            <td>25%</td>
+          </tr>
+          <tr>
+            <td>Gerenciamento de Armazenamento</td>
+            <td>O armazenamento foi configurado corretamente e acessado via sistema?</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td>Apresentação e Justificativa</td>
+            <td>O grupo conseguiu explicar e demonstrar a solução de forma clara e embasada?</td>
+            <td>15%</td>
+          </tr>
+          <tr>
+            <td>Documentação</td>
+            <td>O relatório técnico está bem estruturado, com prints e análises?</td>
+            <td>15%</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="project-deliverables">
+      <h2>Entregáveis</h2>
+      
+      <div class="deliverables-list">
+        <div class="deliverable-item">
+          <span class="checkmark">✓</span>
+          <p>Código-fonte ou comandos utilizados na configuração</p>
+        </div>
+        <div class="deliverable-item">
+          <span class="checkmark">✓</span>
+          <p>Relatório técnico detalhado com prints e logs</p>
+        </div>
+        <div class="deliverable-item">
+          <span class="checkmark">✓</span>
+          <p>Vídeo ou apresentação ao vivo demonstrando o projeto</p>
+        </div>
+        <div class="deliverable-item">
+          <span class="checkmark">✓</span>
+          <p>Justificativa técnica das escolhas feitas</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-extra">
+      <h2>Desafios Extras (Para Insígnia Diamante)</h2>
+      
+      <div class="extra-challenges">
+        <div class="challenge-item">
+          <span class="challenge-icon">🔥</span>
+          <p>Criar um <strong>balanceador de carga</strong> e conectar duas VMs no mesmo serviço</p>
+        </div>
+        <div class="challenge-item">
+          <span class="challenge-icon">🔥</span>
+          <p><strong>Automatizar</strong> a configuração da infraestrutura usando <strong>Terraform ou Ansible</strong></p>
+        </div>
+        <div class="challenge-item">
+          <span class="challenge-icon">🔥</span>
+          <p>Criar um <strong>painel de monitoramento</strong> com <strong>Prometheus + Grafana</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-faq">
+      <h2>Perguntas Frequentes</h2>
+      
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-button">
+            Posso usar qualquer provedor de nuvem?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>Sim, você pode escolher qualquer provedor de nuvem que ofereça uma camada gratuita ou créditos para estudantes. Recomendamos AWS, Azure, Google Cloud, Oracle Cloud ou DigitalOcean pela quantidade de recursos disponíveis na camada gratuita.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-button">
+            É necessário gastar dinheiro real com os provedores?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>Não! Todos os projetos foram projetados para serem realizados dentro das camadas gratuitas dos provedores. Porém, é importante monitorar o uso dos recursos para não ultrapassar os limites gratuitos.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-button">
+            Posso trabalhar sozinho no projeto?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>Os projetos foram pensados para serem realizados em grupos de 3 a 5 alunos. Trabalhar em equipe faz parte da avaliação, especialmente com o sistema de avaliação 360°. Casos excepcionais devem ser discutidos diretamente com o professor.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-button">
+            Como faço para conseguir a insígnia Diamante?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>Para atingir o nível Diamante, seu projeto deve: atender todos os requisitos básicos com excelência; implementar pelo menos um dos desafios extras; demonstrar alta qualidade técnica e documentação impecável; e mostrar criatividade e inovação na implementação.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-prompts">
+      <h2>Sugestões de Prompts para IAs</h2>
+      
+      <div class="prompts-container">
+        <div class="prompt-card">
+          <h3>Para Pesquisa Inicial</h3>
+          <div class="prompt-content">
+            <p>"Explique a diferença entre IaaS, PaaS e SaaS na computação em nuvem, com exemplos de serviços reais para cada modelo."</p>
+          </div>
+        </div>
+        
+        <div class="prompt-card">
+          <h3>Para Escolha de Provedor</h3>
+          <div class="prompt-content">
+            <p>"Compare as ofertas gratuitas de AWS, Azure e Google Cloud em 2025, focando em serviços de computação, armazenamento e rede. Quais são as limitações de cada um?"</p>
+          </div>
+        </div>
+        
+        <div class="prompt-card">
+          <h3>Para Configuração de VM</h3>
+          <div class="prompt-content">
+            <p>"Crie um passo a passo detalhado para configurar uma VM Linux no [provedor escolhido], instalar o servidor web NGINX, configurar firewall e habilitar acesso SSH seguro."</p>
+          </div>
+        </div>
+        
+        <div class="prompt-card">
+          <h3>Para Segurança</h3>
+          <div class="prompt-content">
+            <p>"Quais são as 10 melhores práticas de segurança para uma VM na nuvem executando um servidor web? Inclua exemplos de comandos para implementar essas práticas."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Computação em Nuvem. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="scripts/projeto1.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Administrativo - Computação em Nuvem</title>
+  <link rel="stylesheet" href="../styles/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <h1><i class="fas fa-cloud"></i> Computação em Nuvem</h1>
+        <h2>Acesso Administrativo</h2>
+      </div>
+      
+      <form id="login-form" class="login-form">
+        <div class="form-group">
+          <label for="username"><i class="fas fa-user"></i> Usuário:</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="password"><i class="fas fa-lock"></i> Senha:</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        
+        <div id="error-message" class="error-message" style="display: none;">
+          Usuário ou senha incorretos.
+        </div>
+        
+        <button type="submit" class="btn-login">Entrar</button>
+      </form>
+      
+      <div class="login-footer">
+        <a href="../index.html">Voltar para o site</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <script>
+    // Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDH9hUEuMlsbPyq5rO5zldBnNQOX26bbG4",
+      authDomain: "comp-nuvem-2025.firebaseapp.com",
+      databaseURL: "https://comp-nuvem-2025-default-rtdb.firebaseio.com",
+      projectId: "comp-nuvem-2025",
+      storageBucket: "comp-nuvem-2025.firebasestorage.app",
+      messagingSenderId: "60212118707",
+      appId: "1:60212118707:web:714faf88ddfd3b536c9cc6"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+
+    // Login form submission
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      
+      // Simple admin authentication
+      // In a real app, use Firebase Authentication
+      if (username === 'admin' && password === 'comp-nuvem-2025') {
+        // Store admin session in localStorage
+        localStorage.setItem('adminAuthenticated', 'true');
+        
+        // Redirect to dashboard
+        window.location.href = 'dashboard.html';
+      } else {
+        // Show error message
+        document.getElementById('error-message').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

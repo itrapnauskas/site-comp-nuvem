@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel Administrativo - Computação em Nuvem</title>
+  <link rel="stylesheet" href="../styles/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header class="admin-header">
+    <div class="logo">
+      <h1><i class="fas fa-cloud"></i> Computação em Nuvem</h1>
+    </div>
+    <div class="admin-info">
+      <span class="admin-name">Administrador</span>
+      <button id="btn-logout" class="btn-logout"><i class="fas fa-sign-out-alt"></i> Sair</button>
+    </div>
+  </header>
+
+  <div class="admin-container">
+    <aside class="admin-sidebar">
+      <nav class="admin-nav">
+        <ul>
+          <li class="nav-item active" data-tab="alunos">
+            <i class="fas fa-user-graduate"></i> Alunos
+          </li>
+          <li class="nav-item" data-tab="insignias">
+            <i class="fas fa-medal"></i> Insígnias
+          </li>
+          <li class="nav-item" data-tab="grupos">
+            <i class="fas fa-users"></i> Grupos
+          </li>
+          <li class="nav-item" data-tab="avaliacao360">
+            <i class="fas fa-clipboard-check"></i> Avaliação 360
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="admin-content">
+      <!-- Alunos Tab -->
+      <section id="alunos-tab" class="admin-tab active">
+        <div class="tab-header">
+          <h2>Gestão de Alunos</h2>
+          <button id="add-aluno-btn" class="btn-primary">
+            <i class="fas fa-plus"></i> Adicionar Aluno
+          </button>
+        </div>
+
+        <div class="search-bar">
+          <input type="text" id="search-aluno" placeholder="Buscar aluno por nome...">
+          <button><i class="fas fa-search"></i></button>
+        </div>
+
+        <div class="data-table-container">
+          <table id="alunos-table" class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Apelido</th>
+                <th>E-mail</th>
+                <th>Grupo</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Dados serão carregados dinamicamente -->
+              <tr>
+                <td colspan="6" class="loading-message">
+                  <i class="fas fa-spinner fa-spin"></i> Carregando alunos...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Modal para adicionar/editar aluno -->
+        <div id="aluno-modal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 id="aluno-modal-title">Adicionar Aluno</h3>
+              <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+              <form id="aluno-form">
+                <input type="hidden" id="aluno-id">
+                
+                <div class="form-group">
+                  <label for="aluno-nome">Nome Completo:</label>
+                  <input type="text" id="aluno-nome" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="aluno-alias">Apelido/Alias:</label>
+                  <input type="text" id="aluno-alias">
+                </div>
+                
+                <div class="form-group">
+                  <label for="aluno-email">E-mail:</label>
+                  <input type="email" id="aluno-email" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="aluno-grupo">Grupo:</label>
+                  <select id="aluno-grupo">
+                    <option value="">Selecione um grupo</option>
+                    <!-- Grupos serão carregados dinamicamente -->
+                  </select>
+                </div>
+                
+                <div class="form-actions">
+                  <button type="button" class="btn-cancel">Cancelar</button>
+                  <button type="submit" class="btn-save">Salvar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Insígnias Tab -->
+      <section id="insignias-tab" class="admin-tab">
+        <div class="tab-header">
+          <h2>Gestão de Insígnias</h2>
+        </div>
+
+        <div class="search-bar">
+          <select id="filtro-bloco">
+            <option value="">Todos os Blocos</option>
+            <option value="Bloco1">Bloco 1 - Fundamentos</option>
+            <option value="Bloco2">Bloco 2 - Armazenamento</option>
+            <option value="Bloco3">Bloco 3 - Serverless</option>
+            <option value="Bloco4">Bloco 4 - Monitoramento</option>
+            <option value="Bloco5">Bloco 5 - Avaliação Individual</option>
+          </select>
+          <input type="text" id="search-aluno-insignia" placeholder="Buscar aluno...">
+          <button><i class="fas fa-search"></i></button>
+        </div>
+
+        <div class="data-table-container">
+          <table id="insignias-table" class="data-table">
+            <thead>
+              <tr>
+                <th>Aluno</th>
+                <th>Insígnia</th>
+                <th>Categoria</th>
+                <th>Bloco</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Dados serão carregados dinamicamente -->
+              <tr>
+                <td colspan="5" class="loading-message">
+                  <i class="fas fa-spinner fa-spin"></i> Carregando insígnias...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Modal para adicionar/editar insígnia -->
+        <div id="insignia-modal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 id="insignia-modal-title">Atribuir Insígnia</h3>
+              <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+              <form id="insignia-form">
+                <div class="form-group">
+                  <label for="insignia-aluno">Aluno:</label>
+                  <select id="insignia-aluno" required>
+                    <option value="">Selecione um aluno</option>
+                    <!-- Alunos serão carregados dinamicamente -->
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="insignia-bloco">Bloco:</label>
+                  <select id="insignia-bloco" required>
+                    <option value="">Selecione um bloco</option>
+                    <option value="Bloco1">Bloco 1 - Fundamentos</option>
+                    <option value="Bloco2">Bloco 2 - Armazenamento</option>
+                    <option value="Bloco3">Bloco 3 - Serverless</option>
+                    <option value="Bloco4">Bloco 4 - Monitoramento</option>
+                    <option value="Bloco5">Bloco 5 - Avaliação Individual</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="insignia-tipo">Insígnia:</label>
+                  <select id="insignia-tipo" required>
+                    <option value="">Selecione uma insígnia</option>
+                    <!-- Insígnias serão carregadas dinamicamente com base no bloco -->
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="insignia-categoria">Categoria:</label>
+                  <select id="insignia-categoria" required>
+                    <option value="">Selecione uma categoria</option>
+                    <option value="Diamante">💎 Diamante (100%)</option>
+                    <option value="Ouro">🏅 Ouro (80%)</option>
+                    <option value="Prata">🥈 Prata (65%)</option>
+                    <option value="Bronze">🥉 Bronze (50%)</option>
+                    <option value="Cobre">🟫 Cobre (20%)</option>
+                    <option value="0%">🚫 Sem Insígnia (0%)</option>
+                  </select>
+                </div>
+                
+                <div class="form-actions">
+                  <button type="button" class="btn-cancel">Cancelar</button>
+                  <button type="submit" class="btn-save">Salvar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Grupos Tab -->
+      <section id="grupos-tab" class="admin-tab">
+        <div class="tab-header">
+          <h2>Gestão de Grupos</h2>
+          <button id="add-grupo-btn" class="btn-primary">
+            <i class="fas fa-plus"></i> Adicionar Grupo
+          </button>
+        </div>
+
+        <div class="data-table-container">
+          <table id="grupos-table" class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome do Grupo</th>
+                <th>Membros</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Dados serão carregados dinamicamente -->
+              <tr>
+                <td colspan="4" class="loading-message">
+                  <i class="fas fa-spinner fa-spin"></i> Carregando grupos...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Modal para adicionar/editar grupo -->
+        <div id="grupo-modal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 id="grupo-modal-title">Adicionar Grupo</h3>
+              <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+              <form id="grupo-form">
+                <input type="hidden" id="grupo-id">
+                
+                <div class="form-group">
+                  <label for="grupo-nome">Nome do Grupo:</label>
+                  <input type="text" id="grupo-nome" required>
+                </div>
+                
+                <div class="form-group">
+                  <label>Membros do Grupo:</label>
+                  <div id="grupo-membros-list" class="checkbox-list">
+                    <!-- Alunos serão carregados dinamicamente -->
+                    <div class="loading-message">
+                      <i class="fas fa-spinner fa-spin"></i> Carregando alunos...
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="form-actions">
+                  <button type="button" class="btn-cancel">Cancelar</button>
+                  <button type="submit" class="btn-save">Salvar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Avaliação 360 Tab -->
+      <section id="avaliacao360-tab" class="admin-tab">
+        <div class="tab-header">
+          <h2>Gestão de Avaliação 360°</h2>
+          <button id="add-avaliacao-btn" class="btn-primary">
+            <i class="fas fa-plus"></i> Nova Avaliação
+          </button>
+        </div>
+
+        <div class="data-table-container">
+          <table id="avaliacoes-table" class="data-table">
+            <thead>
+              <tr>
+                <th>Projeto</th>
+                <th>Data de Início</th>
+                <th>Data de Término</th>
+                <th>Status</th>
+                <th>Participações</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Dados serão carregados dinamicamente -->
+              <tr>
+                <td colspan="6" class="loading-message">
+                  <i class="fas fa-spinner fa-spin"></i> Carregando avaliações...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Modal para adicionar/editar avaliação -->
+        <div id="avaliacao-modal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 id="avaliacao-modal-title">Nova Avaliação 360°</h3>
+              <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+              <form id="avaliacao-form">
+                <input type="hidden" id="avaliacao-id">
+                
+                <div class="form-group">
+                  <label for="avaliacao-titulo">Título:</label>
+                  <input type="text" id="avaliacao-titulo" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="avaliacao-projeto">Projeto:</label>
+                  <select id="avaliacao-projeto" required>
+                    <option value="">Selecione um projeto</option>
+                    <option value="Projeto1">Projeto 1 - Meu #1 Ambiente na Nuvem</option>
+                    <option value="Projeto2">Projeto 2 - Armazenamento e Banco de Dados</option>
+                    <option value="Projeto3">Projeto 3 - Aplicações Serverless</option>
+                    <option value="Projeto4">Projeto 4 - Monitoramento e Otimização</option>
+                  </select>
+                </div>
+                
+                <div class="form-group date-group">
+                  <label for="avaliacao-data-inicio">Data de Início:</label>
+                  <input type="datetime-local" id="avaliacao-data-inicio" required>
+                </div>
+                
+                <div class="form-group date-group">
+                  <label for="avaliacao-data-fim">Data de Término:</label>
+                  <input type="datetime-local" id="avaliacao-data-fim" required>
+                </div>
+                
+                <div class="form-group">
+                  <label>Grupos Participantes:</label>
+                  <div id="avaliacao-grupos-list" class="checkbox-list">
+                    <!-- Grupos serão carregados dinamicamente -->
+                    <div class="loading-message">
+                      <i class="fas fa-spinner fa-spin"></i> Carregando grupos...
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="form-actions">
+                  <button type="button" class="btn-cancel">Cancelar</button>
+                  <button type="submit" class="btn-save">Salvar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <script>
+    // Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDH9hUEuMlsbPyq5rO5zldBnNQOX26bbG4",
+      authDomain: "comp-nuvem-2025.firebaseapp.com",
+      databaseURL: "https://comp-nuvem-2025-default-rtdb.firebaseio.com",
+      projectId: "comp-nuvem-2025",
+      storageBucket: "comp-nuvem-2025.firebasestorage.app",
+      messagingSenderId: "60212118707",
+      appId: "1:60212118707:web:714faf88ddfd3b536c9cc6"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+
+    // Check if user is authenticated
+    if (!localStorage.getItem('adminAuthenticated')) {
+      window.location.href = 'login.html';
+    }
+
+    // Logout
+    document.getElementById('btn-logout').addEventListener('click', function() {
+      localStorage.removeItem('adminAuthenticated');
+      window.location.href = 'login.html';
+    });
+
+    // Tab switching
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', function() {
+        // Remove active class from all tabs
+        document.querySelectorAll('.nav-item').forEach(navItem => {
+          navItem.classList.remove('active');
+        });
+        document.querySelectorAll('.admin-tab').forEach(tab => {
+          tab.classList.remove('active');
+        });
+        
+        // Add active class to clicked tab
+        this.classList.add('active');
+        const tabId = this.getAttribute('data-tab') + '-tab';
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+
+    // Modals
+    document.querySelectorAll('.close-modal, .btn-cancel').forEach(button => {
+      button.addEventListener('click', function() {
+        document.querySelectorAll('.modal').forEach(modal => {
+          modal.style.display = 'none';
+        });
+      });
+    });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.addEventListener('click', function(event) {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (event.target == modal) {
+          modal.style.display = 'none';
+        }
+      });
+    });
+
+    // Adicionar eventos para botões de adicionar
+    document.getElementById('add-aluno-btn').addEventListener('click', function() {
+      document.getElementById('aluno-modal-title').textContent = 'Adicionar Aluno';
+      document.getElementById('aluno-form').reset();
+      document.getElementById('aluno-modal').style.display = 'block';
+    });
+
+    document.getElementById('add-grupo-btn').addEventListener('click', function() {
+      document.getElementById('grupo-modal-title').textContent = 'Adicionar Grupo';
+      document.getElementById('grupo-form').reset();
+      document.getElementById('grupo-modal').style.display = 'block';
+    });
+
+    document.getElementById('add-avaliacao-btn').addEventListener('click', function() {
+      document.getElementById('avaliacao-modal-title').textContent = 'Nova Avaliação 360°';
+      document.getElementById('avaliacao-form').reset();
+      document.getElementById('avaliacao-modal').style.display = 'block';
+    });
+
+    // Load data (placeholder - to be implemented)
+    function loadAlunos() {
+      // Implementation will be added
+    }
+
+    function loadGrupos() {
+      // Implementation will be added
+    }
+
+    function loadInsignias() {
+      // Implementation will be added
+    }
+
+    function loadAvaliacoes() {
+      // Implementation will be added
+    }
+
+    // Initial load
+    document.addEventListener('DOMContentLoaded', function() {
+      loadAlunos();
+      loadGrupos();
+      loadInsignias();
+      loadAvaliacoes();
+    });
+  </script>
+</body>
+</html>
