@@ -34,6 +34,14 @@
           <li class="nav-item" data-tab="avaliacao360">
             <i class="fas fa-clipboard-check"></i> Avaliação 360
           </li>
+          <!-- Novo item: Projetos -->
+          <li class="nav-item" data-tab="projetos">
+            <i class="fas fa-project-diagram"></i> Projetos
+          </li>
+          <!-- Novo item: Conteúdo -->
+          <li class="nav-item" data-tab="conteudo">
+            <i class="fas fa-file-alt"></i> Conteúdo
+          </li>
         </ul>
       </nav>
     </aside>
@@ -375,6 +383,246 @@
           </div>
         </div>
       </section>
+
+      <!-- Projetos Tab (Nova seção) -->
+      <section id="projetos-tab" class="admin-tab">
+        <div class="tab-header">
+          <h2>Gestão de Projetos</h2>
+          <button id="add-projeto-btn" class="btn-primary">
+            <i class="fas fa-plus"></i> Adicionar Projeto
+          </button>
+        </div>
+
+        <div class="search-bar">
+          <input type="text" id="search-projeto" placeholder="Buscar projeto por título...">
+          <button><i class="fas fa-search"></i></button>
+        </div>
+
+        <div class="data-table-container">
+          <table id="projetos-table" class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Status</th>
+                <th>Data de Entrega</th>
+                <th>Ordem</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Dados serão carregados dinamicamente -->
+              <tr>
+                <td colspan="6" class="loading-message">
+                  <i class="fas fa-spinner fa-spin"></i> Carregando projetos...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Modal para adicionar/editar projeto -->
+        <div id="projeto-modal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 id="projeto-modal-title">Adicionar Projeto</h3>
+              <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+              <form id="projeto-form">
+                <input type="hidden" id="projeto-id">
+                
+                <div class="form-group">
+                  <label for="projeto-titulo">Título:</label>
+                  <input type="text" id="projeto-titulo" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="projeto-descricao">Descrição Breve:</label>
+                  <textarea id="projeto-descricao" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                  <label for="projeto-status">Status:</label>
+                  <select id="projeto-status">
+                    <option value="Aberto">Aberto</option>
+                    <option value="Ativo">Ativo</option>
+                    <option value="Concluído">Concluído</option>
+                    <option value="Encerrado">Encerrado</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label for="projeto-data-entrega">Data de Entrega:</label>
+                  <input type="date" id="projeto-data-entrega">
+                </div>
+                
+                <div class="form-group">
+                  <label for="projeto-equipes">Tamanho das Equipes:</label>
+                  <input type="text" id="projeto-equipes" placeholder="Ex: 3-5">
+                </div>
+                
+                <div class="form-group">
+                  <label for="projeto-insignias">Insígnias (separadas por vírgula):</label>
+                  <input type="text" id="projeto-insignias" placeholder="Ex: Explorador da Nuvem, Arquiteto Cloud Iniciante">
+                </div>
+                
+                <div class="form-group">
+                  <label for="projeto-ordem">Ordem de Exibição:</label>
+                  <input type="number" id="projeto-ordem" min="1" value="1">
+                </div>
+                
+                <div class="form-actions">
+                  <button type="button" class="btn-cancel">Cancelar</button>
+                  <button type="submit" class="btn-save">Salvar</button>
+                  <button type="button" id="btn-editar-conteudo" class="btn-primary">Editar Conteúdo Completo</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal para editar conteúdo completo do projeto -->
+        <div id="conteudo-projeto-modal" class="modal">
+          <div class="modal-content modal-lg">
+            <div class="modal-header">
+              <h3 id="conteudo-modal-title">Editar Conteúdo do Projeto</h3>
+              <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+              <form id="conteudo-projeto-form">
+                <input type="hidden" id="conteudo-projeto-id">
+                
+                <div class="form-group">
+                  <label for="conteudo-projeto-html">Conteúdo HTML do Projeto:</label>
+                  <p class="help-text">Use HTML para formatar o conteúdo. Você pode usar tags como &lt;h2&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;table&gt;, etc.</p>
+                  <textarea id="conteudo-projeto-html" rows="20" class="code-editor"></textarea>
+                </div>
+                
+                <div class="form-group">
+                  <label>FAQ (Perguntas Frequentes):</label>
+                  <div id="faq-container">
+                    <!-- FAQ items serão adicionados aqui -->
+                  </div>
+                  <button type="button" id="add-faq-btn" class="btn-secondary">
+                    <i class="fas fa-plus"></i> Adicionar Pergunta
+                  </button>
+                </div>
+                
+                <div class="form-actions">
+                  <button type="button" class="btn-cancel">Cancelar</button>
+                  <button type="submit" class="btn-save">Salvar Conteúdo</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Conteúdo Tab (Nova seção para gerenciar o plano de ensino) -->
+      <section id="conteudo-tab" class="admin-tab">
+        <div class="tab-header">
+          <h2>Gestão de Conteúdo</h2>
+        </div>
+
+        <div class="card-container">
+          <div class="content-card">
+            <div class="content-card-header">
+              <h3>Descrição do Curso</h3>
+            </div>
+            <div class="content-card-body">
+              <form id="curso-descricao-form">
+                <div class="form-group">
+                  <label for="curso-descricao-texto">Texto da Descrição:</label>
+                  <textarea id="curso-descricao-texto" rows="3" required></textarea>
+                </div>
+                <div class="form-actions">
+                  <button type="submit" class="btn-save">Salvar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <div class="content-card-header">
+              <h3>Plano de Ensino</h3>
+            </div>
+            <div class="content-card-body">
+              <form id="plano-ensino-form">
+                <div class="form-group">
+                  <label for="plano-ensino-html">Conteúdo HTML do Plano de Ensino:</label>
+                  <p class="help-text">Use HTML para formatar o conteúdo. Você pode usar tags como &lt;h3&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;table&gt;, etc.</p>
+                  <textarea id="plano-ensino-html" rows="15" class="code-editor"></textarea>
+                </div>
+                <div class="form-actions">
+                  <button type="submit" class="btn-save">Salvar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <div class="content-card-header">
+              <h3>Avisos</h3>
+              <button id="add-aviso-btn" class="btn-secondary">
+                <i class="fas fa-plus"></i> Novo Aviso
+              </button>
+            </div>
+            <div class="content-card-body">
+              <div id="avisos-list" class="list-container">
+                <div class="loading-message">
+                  <i class="fas fa-spinner fa-spin"></i> Carregando avisos...
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal para adicionar/editar aviso -->
+        <div id="aviso-modal" class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 id="aviso-modal-title">Adicionar Aviso</h3>
+              <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+              <form id="aviso-form">
+                <input type="hidden" id="aviso-id">
+                
+                <div class="form-group">
+                  <label for="aviso-titulo">Título:</label>
+                  <input type="text" id="aviso-titulo" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="aviso-conteudo">Conteúdo:</label>
+                  <textarea id="aviso-conteudo" rows="5" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                  <label for="aviso-data">Data:</label>
+                  <input type="date" id="aviso-data" required>
+                </div>
+                
+                <div class="form-group">
+                  <label for="aviso-link">Link (opcional):</label>
+                  <input type="url" id="aviso-link" placeholder="https://...">
+                </div>
+                
+                <div class="form-group">
+                  <label for="aviso-link-texto">Texto do Link (opcional):</label>
+                  <input type="text" id="aviso-link-texto" placeholder="Ex: Ver detalhes">
+                </div>
+                
+                <div class="form-actions">
+                  <button type="button" class="btn-cancel">Cancelar</button>
+                  <button type="submit" class="btn-save">Salvar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   </div>
 
@@ -462,6 +710,15 @@
       document.getElementById('avaliacao-modal').style.display = 'block';
     });
 
+    // Initial load
+    document.addEventListener('DOMContentLoaded', function() {
+      loadAlunos();
+      loadGrupos();
+      loadInsignias();
+      loadAvaliacoes();
+      // As funções load para Projetos e Conteúdo podem ser implementadas conforme necessário
+    });
+
     // Load data (placeholder - to be implemented)
     function loadAlunos() {
       // Implementation will be added
@@ -479,13 +736,621 @@
       // Implementation will be added
     }
 
-    // Initial load
+      // Carregar, exibir e gerenciar projetos
+    function loadProjetos() {
+      const projetosTable = document.getElementById('projetos-table').getElementsByTagName('tbody')[0];
+      
+      // Mostrar mensagem de carregamento
+      projetosTable.innerHTML = `
+        <tr>
+          <td colspan="6" class="loading-message">
+            <i class="fas fa-spinner fa-spin"></i> Carregando projetos...
+          </td>
+        </tr>
+      `;
+      
+      // Buscar projetos do Firebase
+      database.ref('projetos').orderByChild('ordem').once('value')
+        .then(snapshot => {
+          const projetos = snapshot.val();
+          
+          if (!projetos) {
+            projetosTable.innerHTML = `
+              <tr>
+                <td colspan="6" class="empty-message">
+                  Nenhum projeto cadastrado. Clique em "Adicionar Projeto" para criar um novo.
+                </td>
+              </tr>
+            `;
+            return;
+          }
+          
+          // Limpar tabela
+          projetosTable.innerHTML = '';
+          
+          // Adicionar cada projeto à tabela
+          Object.entries(projetos).forEach(([id, projeto]) => {
+            const row = projetosTable.insertRow();
+            
+            // ID
+            const cellId = row.insertCell();
+            cellId.textContent = id.substring(0, 8) + '...';
+            cellId.title = id;
+            
+            // Título
+            const cellTitulo = row.insertCell();
+            cellTitulo.textContent = projeto.titulo || 'Sem título';
+            
+            // Status
+            const cellStatus = row.insertCell();
+            if (projeto.status) {
+              const statusSpan = document.createElement('span');
+              statusSpan.className = `status-badge ${getStatusClass(projeto.status)}`;
+              statusSpan.textContent = projeto.status;
+              cellStatus.appendChild(statusSpan);
+            } else {
+              cellStatus.textContent = 'Não definido';
+            }
+            
+            // Data de Entrega
+            const cellData = row.insertCell();
+            cellData.textContent = projeto.dataEntrega ? formatDate(projeto.dataEntrega) : 'Não definida';
+            
+            // Ordem
+            const cellOrdem = row.insertCell();
+            cellOrdem.textContent = projeto.ordem || '-';
+            
+            // Ações
+            const cellAcoes = row.insertCell();
+            cellAcoes.className = 'action-buttons';
+            
+            // Botão Editar
+            const btnEditar = document.createElement('button');
+            btnEditar.className = 'btn-edit';
+            btnEditar.innerHTML = '<i class="fas fa-edit"></i>';
+            btnEditar.title = 'Editar';
+            btnEditar.addEventListener('click', () => editarProjeto(id, projeto));
+            cellAcoes.appendChild(btnEditar);
+            
+            // Botão Conteúdo
+            const btnConteudo = document.createElement('button');
+            btnConteudo.className = 'btn-view';
+            btnConteudo.innerHTML = '<i class="fas fa-file-alt"></i>';
+            btnConteudo.title = 'Editar Conteúdo';
+            btnConteudo.addEventListener('click', () => editarConteudoProjeto(id, projeto));
+            cellAcoes.appendChild(btnConteudo);
+            
+            // Botão Excluir
+            const btnExcluir = document.createElement('button');
+            btnExcluir.className = 'btn-delete';
+            btnExcluir.innerHTML = '<i class="fas fa-trash"></i>';
+            btnExcluir.title = 'Excluir';
+            btnExcluir.addEventListener('click', () => excluirProjeto(id, projeto.titulo));
+            cellAcoes.appendChild(btnExcluir);
+          });
+        })
+        .catch(error => {
+          console.error('Erro ao carregar projetos:', error);
+          projetosTable.innerHTML = `
+            <tr>
+              <td colspan="6" class="error-message">
+                Erro ao carregar projetos: ${error.message}
+              </td>
+            </tr>
+          `;
+        });
+    }
+
+    // Abrir modal para adicionar novo projeto
+    function adicionarProjeto() {
+      document.getElementById('projeto-modal-title').textContent = 'Adicionar Projeto';
+      document.getElementById('projeto-form').reset();
+      document.getElementById('projeto-id').value = '';
+      document.getElementById('btn-editar-conteudo').style.display = 'none';
+      document.getElementById('projeto-modal').style.display = 'block';
+    }
+
+    // Abrir modal para editar projeto existente
+    function editarProjeto(id, projeto) {
+      document.getElementById('projeto-modal-title').textContent = 'Editar Projeto';
+      document.getElementById('projeto-id').value = id;
+      document.getElementById('projeto-titulo').value = projeto.titulo || '';
+      document.getElementById('projeto-descricao').value = projeto.descricao || '';
+      document.getElementById('projeto-status').value = projeto.status || 'Aberto';
+      document.getElementById('projeto-data-entrega').value = projeto.dataEntrega || '';
+      document.getElementById('projeto-equipes').value = projeto.equipes || '';
+      document.getElementById('projeto-insignias').value = projeto.insignias || '';
+      document.getElementById('projeto-ordem').value = projeto.ordem || 1;
+      document.getElementById('btn-editar-conteudo').style.display = 'inline-block';
+      document.getElementById('projeto-modal').style.display = 'block';
+    }
+
+    // Salvar projeto (novo ou editado)
+    function salvarProjeto(event) {
+      event.preventDefault();
+      
+      // Obter valores do formulário
+      const id = document.getElementById('projeto-id').value;
+      const projeto = {
+        titulo: document.getElementById('projeto-titulo').value,
+        descricao: document.getElementById('projeto-descricao').value,
+        status: document.getElementById('projeto-status').value,
+        dataEntrega: document.getElementById('projeto-data-entrega').value,
+        equipes: document.getElementById('projeto-equipes').value,
+        insignias: document.getElementById('projeto-insignias').value,
+        ordem: parseInt(document.getElementById('projeto-ordem').value) || 1,
+        ultimaAtualizacao: new Date().toISOString()
+      };
+      
+      // Referência para salvar no Firebase
+      let projetoRef;
+      let isNew = false;
+      
+      if (id) {
+        // Atualizar projeto existente
+        projetoRef = database.ref(`projetos/${id}`);
+      } else {
+        // Adicionar novo projeto
+        projetoRef = database.ref('projetos').push();
+        isNew = true;
+      }
+      
+      // Salvar no Firebase
+      projetoRef.update(projeto)
+        .then(() => {
+          document.getElementById('projeto-modal').style.display = 'none';
+          
+          // Recarregar lista de projetos
+          loadProjetos();
+          
+          // Se for um novo projeto, abrir modal de conteúdo
+          if (isNew) {
+            editarConteudoProjeto(projetoRef.key, projeto);
+          }
+        })
+        .catch(error => {
+          console.error('Erro ao salvar projeto:', error);
+          alert(`Erro ao salvar projeto: ${error.message}`);
+        });
+    }
+
+    // Abrir modal para editar conteúdo completo do projeto
+    function editarConteudoProjeto(id, projeto) {
+      document.getElementById('conteudo-modal-title').textContent = `Editar Conteúdo: ${projeto.titulo || 'Sem título'}`;
+      document.getElementById('conteudo-projeto-id').value = id;
+      
+      // Buscar conteúdo atual do projeto
+      database.ref(`projetos/${id}`).once('value')
+        .then(snapshot => {
+          const projetoCompleto = snapshot.val();
+          
+          // Preencher o editor de conteúdo HTML
+          document.getElementById('conteudo-projeto-html').value = projetoCompleto.conteudoHtml || generateDefaultContent(projetoCompleto);
+          
+          // Limpar e preencher o container de FAQ
+          const faqContainer = document.getElementById('faq-container');
+          faqContainer.innerHTML = '';
+          
+          if (projetoCompleto.faq && Array.isArray(projetoCompleto.faq)) {
+            projetoCompleto.faq.forEach((item, index) => {
+              adicionarFaqItem(item.pergunta || '', item.resposta || '');
+            });
+          } else {
+            // Adicionar pelo menos um item de FAQ vazio
+            adicionarFaqItem('', '');
+          }
+          
+          // Mostrar o modal
+          document.getElementById('conteudo-projeto-modal').style.display = 'block';
+        })
+        .catch(error => {
+          console.error('Erro ao carregar conteúdo do projeto:', error);
+          alert(`Erro ao carregar conteúdo do projeto: ${error.message}`);
+        });
+    }
+
+    // Gerar conteúdo HTML padrão para um novo projeto
+    function generateDefaultContent(projeto) {
+      return `<section class="projeto-descricao">
+      <h2>Descrição do Projeto</h2>
+      <p>${projeto.descricao || 'Adicione aqui uma descrição detalhada do projeto.'}</p>
+    </section>
+
+    <section class="projeto-objetivos">
+      <h2>Objetivos</h2>
+      <ul>
+        <li>Objetivo 1</li>
+        <li>Objetivo 2</li>
+        <li>Objetivo 3</li>
+      </ul>
+    </section>
+
+    <section class="projeto-requisitos">
+      <h2>Requisitos</h2>
+      <p>Descreva aqui os requisitos do projeto.</p>
+    </section>
+
+    <section class="projeto-entregaveis">
+      <h2>Entregáveis</h2>
+      <ul>
+        <li>Entregável 1</li>
+        <li>Entregável 2</li>
+        <li>Entregável 3</li>
+      </ul>
+    </section>
+
+    <section class="projeto-avaliacao">
+      <h2>Critérios de Avaliação</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Descrição</th>
+            <th>Peso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Critério 1</td>
+            <td>Descrição do critério 1</td>
+            <td>30%</td>
+          </tr>
+          <tr>
+            <td>Critério 2</td>
+            <td>Descrição do critério 2</td>
+            <td>30%</td>
+          </tr>
+          <tr>
+            <td>Critério 3</td>
+            <td>Descrição do critério 3</td>
+            <td>40%</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="projeto-recursos">
+      <h2>Recursos Recomendados</h2>
+      <p>Lista de recursos recomendados para o projeto.</p>
+    </section>`;
+    }
+
+    // Adicionar item de FAQ ao container
+    function adicionarFaqItem(pergunta = '', resposta = '') {
+      const faqContainer = document.getElementById('faq-container');
+      const itemIndex = faqContainer.children.length;
+      
+      const faqItem = document.createElement('div');
+      faqItem.className = 'faq-item';
+      faqItem.innerHTML = `
+        <div class="form-group">
+          <label for="faq-pergunta-${itemIndex}">Pergunta:</label>
+          <input type="text" id="faq-pergunta-${itemIndex}" class="faq-pergunta" value="${pergunta}" required>
+        </div>
+        <div class="form-group">
+          <label for="faq-resposta-${itemIndex}">Resposta:</label>
+          <textarea id="faq-resposta-${itemIndex}" class="faq-resposta" rows="3" required>${resposta}</textarea>
+        </div>
+        <button type="button" class="btn-remove-faq">
+          <i class="fas fa-trash"></i> Remover
+        </button>
+        <hr>
+      `;
+      
+      // Adicionar evento para remover o item
+      faqItem.querySelector('.btn-remove-faq').addEventListener('click', function() {
+        faqContainer.removeChild(faqItem);
+      });
+      
+      faqContainer.appendChild(faqItem);
+    }
+
+    // Salvar conteúdo completo do projeto
+    function salvarConteudoProjeto(event) {
+      event.preventDefault();
+      
+      const id = document.getElementById('conteudo-projeto-id').value;
+      const conteudoHtml = document.getElementById('conteudo-projeto-html').value;
+      
+      // Coletar dados do FAQ
+      const faqItems = document.querySelectorAll('.faq-item');
+      const faq = Array.from(faqItems).map(item => ({
+        pergunta: item.querySelector('.faq-pergunta').value,
+        resposta: item.querySelector('.faq-resposta').value
+      })).filter(item => item.pergunta.trim() && item.resposta.trim());
+      
+      // Salvar no Firebase
+      database.ref(`projetos/${id}`).update({
+        conteudoHtml,
+        faq,
+        ultimaAtualizacao: new Date().toISOString()
+      })
+        .then(() => {
+          document.getElementById('conteudo-projeto-modal').style.display = 'none';
+          alert('Conteúdo do projeto salvo com sucesso!');
+        })
+        .catch(error => {
+          console.error('Erro ao salvar conteúdo do projeto:', error);
+          alert(`Erro ao salvar conteúdo do projeto: ${error.message}`);
+        });
+    }
+
+    // Confirmar e excluir projeto
+    function excluirProjeto(id, titulo) {
+      if (confirm(`Tem certeza que deseja excluir o projeto "${titulo || id}"? Esta ação não pode ser desfeita.`)) {
+        database.ref(`projetos/${id}`).remove()
+          .then(() => {
+            loadProjetos();
+          })
+          .catch(error => {
+            console.error('Erro ao excluir projeto:', error);
+            alert(`Erro ao excluir projeto: ${error.message}`);
+          });
+      }
+    }
+
+    // Carregar, exibir e gerenciar avisos
+    function loadAvisos() {
+      const avisosContainer = document.getElementById('avisos-list');
+      
+      // Mostrar mensagem de carregamento
+      avisosContainer.innerHTML = `
+        <div class="loading-message">
+          <i class="fas fa-spinner fa-spin"></i> Carregando avisos...
+        </div>
+      `;
+      
+      // Buscar avisos do Firebase
+      database.ref('avisos').orderByChild('data').once('value')
+        .then(snapshot => {
+          const avisos = snapshot.val();
+          
+          if (!avisos) {
+            avisosContainer.innerHTML = `
+              <div class="empty-message">
+                Nenhum aviso cadastrado. Clique em "Novo Aviso" para criar um.
+              </div>
+            `;
+            return;
+          }
+          
+          // Limpar container
+          avisosContainer.innerHTML = '';
+          
+          // Adicionar cada aviso ao container
+          Object.entries(avisos)
+            .sort(([, a], [, b]) => new Date(b.data) - new Date(a.data))
+            .forEach(([id, aviso]) => {
+              const avisoElement = document.createElement('div');
+              avisoElement.className = 'list-item';
+              avisoElement.innerHTML = `
+                <div class="list-item-content">
+                  <h4>${aviso.titulo || 'Sem título'}</h4>
+                  <div class="list-item-meta">
+                    <span>${formatDate(aviso.data)}</span>
+                  </div>
+                  <p>${aviso.conteudo || ''}</p>
+                </div>
+                <div class="list-item-actions">
+                  <button class="btn-edit" title="Editar"><i class="fas fa-edit"></i></button>
+                  <button class="btn-delete" title="Excluir"><i class="fas fa-trash"></i></button>
+                </div>
+              `;
+              
+              // Adicionar eventos para os botões
+              avisoElement.querySelector('.btn-edit').addEventListener('click', () => editarAviso(id, aviso));
+              avisoElement.querySelector('.btn-delete').addEventListener('click', () => excluirAviso(id, aviso.titulo));
+              
+              avisosContainer.appendChild(avisoElement);
+            });
+        })
+        .catch(error => {
+          console.error('Erro ao carregar avisos:', error);
+          avisosContainer.innerHTML = `
+            <div class="error-message">
+              Erro ao carregar avisos: ${error.message}
+            </div>
+          `;
+        });
+    }
+
+    // Abrir modal para adicionar novo aviso
+    function adicionarAviso() {
+      document.getElementById('aviso-modal-title').textContent = 'Adicionar Aviso';
+      document.getElementById('aviso-form').reset();
+      document.getElementById('aviso-id').value = '';
+      
+      // Definir data atual como padrão
+      const dataAtual = new Date().toISOString().split('T')[0];
+      document.getElementById('aviso-data').value = dataAtual;
+      
+      document.getElementById('aviso-modal').style.display = 'block';
+    }
+
+    // Abrir modal para editar aviso existente
+    function editarAviso(id, aviso) {
+      document.getElementById('aviso-modal-title').textContent = 'Editar Aviso';
+      document.getElementById('aviso-id').value = id;
+      document.getElementById('aviso-titulo').value = aviso.titulo || '';
+      document.getElementById('aviso-conteudo').value = aviso.conteudo || '';
+      document.getElementById('aviso-data').value = aviso.data || '';
+      document.getElementById('aviso-link').value = aviso.link || '';
+      document.getElementById('aviso-link-texto').value = aviso.linkTexto || '';
+      
+      document.getElementById('aviso-modal').style.display = 'block';
+    }
+
+    // Salvar aviso (novo ou editado)
+    function salvarAviso(event) {
+      event.preventDefault();
+      
+      // Obter valores do formulário
+      const id = document.getElementById('aviso-id').value;
+      const aviso = {
+        titulo: document.getElementById('aviso-titulo').value,
+        conteudo: document.getElementById('aviso-conteudo').value,
+        data: document.getElementById('aviso-data').value,
+        link: document.getElementById('aviso-link').value,
+        linkTexto: document.getElementById('aviso-link-texto').value,
+        ultimaAtualizacao: new Date().toISOString()
+      };
+      
+      // Referência para salvar no Firebase
+      const avisoRef = id ? database.ref(`avisos/${id}`) : database.ref('avisos').push();
+      
+      // Salvar no Firebase
+      avisoRef.update(aviso)
+        .then(() => {
+          document.getElementById('aviso-modal').style.display = 'none';
+          
+          // Recarregar avisos
+          loadAvisos();
+        })
+        .catch(error => {
+          console.error('Erro ao salvar aviso:', error);
+          alert(`Erro ao salvar aviso: ${error.message}`);
+        });
+    }
+
+    // Confirmar e excluir aviso
+    function excluirAviso(id, titulo) {
+      if (confirm(`Tem certeza que deseja excluir o aviso "${titulo || id}"? Esta ação não pode ser desfeita.`)) {
+        database.ref(`avisos/${id}`).remove()
+          .then(() => {
+            loadAvisos();
+          })
+          .catch(error => {
+            console.error('Erro ao excluir aviso:', error);
+            alert(`Erro ao excluir aviso: ${error.message}`);
+          });
+      }
+    }
+
+    // Carregar conteúdo do curso
+    function loadConteudoCurso() {
+      // Carregar descrição do curso
+      database.ref('conteudo/descricao').once('value')
+        .then(snapshot => {
+          const data = snapshot.val();
+          document.getElementById('curso-descricao-texto').value = data && data.texto ? data.texto : '';
+        })
+        .catch(error => {
+          console.error('Erro ao carregar descrição do curso:', error);
+        });
+      
+      // Carregar plano de ensino
+      database.ref('conteudo/planoEnsino').once('value')
+        .then(snapshot => {
+          const data = snapshot.val();
+          document.getElementById('plano-ensino-html').value = data && data.html ? data.html : '';
+        })
+        .catch(error => {
+          console.error('Erro ao carregar plano de ensino:', error);
+        });
+    }
+
+    // Salvar descrição do curso
+    function salvarDescricaoCurso(event) {
+      event.preventDefault();
+      
+      const texto = document.getElementById('curso-descricao-texto').value;
+      
+      database.ref('conteudo/descricao').update({
+        texto,
+        ultimaAtualizacao: new Date().toISOString()
+      })
+        .then(() => {
+          alert('Descrição do curso salva com sucesso!');
+        })
+        .catch(error => {
+          console.error('Erro ao salvar descrição do curso:', error);
+          alert(`Erro ao salvar descrição do curso: ${error.message}`);
+        });
+    }
+
+    // Salvar plano de ensino
+    function salvarPlanoEnsino(event) {
+      event.preventDefault();
+      
+      const html = document.getElementById('plano-ensino-html').value;
+      
+      database.ref('conteudo/planoEnsino').update({
+        html,
+        ultimaAtualizacao: new Date().toISOString()
+      })
+        .then(() => {
+          alert('Plano de ensino salvo com sucesso!');
+        })
+        .catch(error => {
+          console.error('Erro ao salvar plano de ensino:', error);
+          alert(`Erro ao salvar plano de ensino: ${error.message}`);
+        });
+    }
+
+    // Formatar data para exibição
+    function formatDate(dateString) {
+      if (!dateString) return 'Data não definida';
+      
+      const date = new Date(dateString);
+      return date.toLocaleDateString('pt-BR');
+    }
+
+    // Obter classe CSS com base no status do projeto
+    function getStatusClass(status) {
+      if (!status) return '';
+      
+      const statusLower = status.toLowerCase();
+      if (statusLower.includes('aberto')) return 'status-active';
+      if (statusLower.includes('ativo')) return 'status-active';
+      if (statusLower.includes('concluído')) return 'status-completed';
+      if (statusLower.includes('encerrado')) return 'status-expired';
+      return '';
+    }
+
+    // Adicionar event listeners quando o DOM estiver carregado
     document.addEventListener('DOMContentLoaded', function() {
-      loadAlunos();
-      loadGrupos();
-      loadInsignias();
-      loadAvaliacoes();
+      // Adicionar novo projeto
+      document.getElementById('add-projeto-btn').addEventListener('click', adicionarProjeto);
+      
+      // Salvar projeto
+      document.getElementById('projeto-form').addEventListener('submit', salvarProjeto);
+      
+      // Botão para editar conteúdo
+      document.getElementById('btn-editar-conteudo').addEventListener('click', function() {
+        const id = document.getElementById('projeto-id').value;
+        const titulo = document.getElementById('projeto-titulo').value;
+        
+        document.getElementById('projeto-modal').style.display = 'none';
+        
+        editarConteudoProjeto(id, { titulo });
+      });
+      
+      // Adicionar FAQ item
+      document.getElementById('add-faq-btn').addEventListener('click', function() {
+        adicionarFaqItem();
+      });
+      
+      // Salvar conteúdo do projeto
+      document.getElementById('conteudo-projeto-form').addEventListener('submit', salvarConteudoProjeto);
+      
+      // Adicionar novo aviso
+      document.getElementById('add-aviso-btn').addEventListener('click', adicionarAviso);
+      
+      // Salvar aviso
+      document.getElementById('aviso-form').addEventListener('submit', salvarAviso);
+      
+      // Salvar descrição do curso
+      document.getElementById('curso-descricao-form').addEventListener('submit', salvarDescricaoCurso);
+      
+      // Salvar plano de ensino
+      document.getElementById('plano-ensino-form').addEventListener('submit', salvarPlanoEnsino);
+      
+      // Carregar dados iniciais
+      loadProjetos();
+      loadAvisos();
+      loadConteudoCurso();
     });
-  </script>
-</body>
-</html>
+
+      </script>
+    </body>
+    </html>

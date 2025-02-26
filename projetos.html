@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projetos - Computação em Nuvem</title>
+  <link rel="stylesheet" href="styles/projetos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Firebase App (SDK principal) -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <!-- Firebase Database -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">Computação em Nuvem</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ranking.html">Ranking</a></li>
+        <li><a href="projetos.html" class="active">Projetos</a></li>
+        <li><a href="avaliacao360.html">Avaliação 360</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="projetos-header">
+      <h1><i class="fas fa-project-diagram"></i> Projetos da Disciplina</h1>
+      <p class="description">Confira os projetos que serão desenvolvidos ao longo do semestre.</p>
+    </section>
+
+    <section class="projetos-lista" id="projetos-container">
+      <div class="loading">
+        <i class="fas fa-spinner fa-spin"></i>
+        <p>Carregando projetos...</p>
+      </div>
+      <!-- Os projetos serão carregados dinamicamente aqui -->
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>Computação em Nuvem</h3>
+        <p>2025 - Todos os direitos reservados</p>
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="ranking.html">Ranking</a></li>
+          <li><a href="projetos.html">Projetos</a></li>
+          <li><a href="avaliacao360.html">Avaliação 360</a></li>
+          <li><a href="admin/login.html">Área Administrativa</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDH9hUEuMlsbPyq5rO5zldBnNQOX26bbG4",
+      authDomain: "comp-nuvem-2025.firebaseapp.com",
+      databaseURL: "https://comp-nuvem-2025-default-rtdb.firebaseio.com",
+      projectId: "comp-nuvem-2025",
+      storageBucket: "comp-nuvem-2025.firebasestorage.app",
+      messagingSenderId: "60212118707",
+      appId: "1:60212118707:web:714faf88ddfd3b536c9cc6"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+
+    // Mobile Navigation Toggle
+    const navSlide = () => {
+      const burger = document.querySelector('.burger');
+      const nav = document.querySelector('.nav-links');
+      const navLinks = document.querySelectorAll('.nav-links li');
+
+      burger.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
+        burger.classList.toggle('toggle');
+        
+        navLinks.forEach((link, index) => {
+          if (link.style.animation) {
+            link.style.animation = '';
+          } else {
+            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+          }
+        });
+      });
+    }
+
+    // Carregar projetos do Firebase
+    const loadProjetos = () => {
+      const container = document.getElementById('projetos-container');
+      
+      database.ref('projetos').orderByChild('ordem').once('value')
+        .then(snapshot => {
+          const data = snapshot.val();
+          
+          if (!data) {
+            container.innerHTML = '<p class="no-projects">Nenhum projeto cadastrado ainda.</p>';
+            return;
+          }
+          
+          // Transform to array and sort by order
+          const projetos = Object.entries(data).map(([id, projeto]) => ({
+            id,
+            ...projeto
+          })).sort((a, b) => (a.ordem || 999) - (b.ordem || 999));
+          
+          // Create HTML
+          const html = projetos.map(projeto => `
+            <div class="projeto-card">
+              <div class="projeto-header">
+                <h2>${projeto.titulo}</h2>
+                <div class="projeto-status ${getStatusClass(projeto.status)}">
+                  ${projeto.status}
+                </div>
+              </div>
+              <div class="projeto-content">
+                <p>${projeto.descricao}</p>
+                <div class="projeto-info">
+                  <div class="info-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>Entrega: ${formatDate(projeto.dataEntrega)}</span>
+                  </div>
+                  <div class="info-item">
+                    <i class="fas fa-users"></i>
+                    <span>Equipes: ${projeto.equipes} alunos</span>
+                  </div>
+                  <div class="info-item">
+                    <i class="fas fa-medal"></i>
+                    <span>Insígnias: ${projeto.insignias || 'N/A'}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="projeto-footer">
+                <a href="projeto-detalhe.html?id=${projeto.id}" class="btn-detalhes">Ver Detalhes</a>
+              </div>
+            </div>
+          `).join('');
+          
+          container.innerHTML = html;
+        })
+        .catch(error => {
+          console.error('Erro ao carregar projetos:', error);
+          container.innerHTML = '<p class="error-message">Erro ao carregar projetos. Tente novamente mais tarde.</p>';
+        });
+    };
+
+    // Formatar data
+    const formatDate = (dateString) => {
+      if (!dateString) return 'A definir';
+      
+      const date = new Date(dateString);
+      return date.toLocaleDateString('pt-BR', { 
+        day: '2-digit', 
+        month: '2-digit', 
+        year: 'numeric'
+      });
+    };
+
+    // Obter classe CSS com base no status do projeto
+    const getStatusClass = (status) => {
+      if (!status) return '';
+      
+      const statusLower = status.toLowerCase();
+      if (statusLower.includes('aberto')) return 'status-aberto';
+      if (statusLower.includes('ativo')) return 'status-ativo';
+      if (statusLower.includes('concluído')) return 'status-concluido';
+      if (statusLower.includes('encerrado')) return 'status-encerrado';
+      return '';
+    };
+
+    // Load data when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      navSlide();
+      loadProjetos();
+    });
+  </script>
+</body>
+</html>
