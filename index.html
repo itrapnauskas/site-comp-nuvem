@@ -10,6 +10,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <!-- Firebase Database -->
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <script type="module" src="config/database.js"></script>
 </head>
 <body>
   <header>
@@ -59,26 +60,6 @@
         </div>
       </div>
     </section>
-
-    <section class="top-students">
-      <h2>Top 5 Alunos</h2>
-      <div id="top-students-container" class="top-students-list">
-        <div class="loading">
-          <i class="fas fa-spinner fa-spin"></i>
-          <p>Carregando ranking...</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="latest-announcements">
-      <h2>Últimos Avisos</h2>
-      <div id="avisos-container" class="announcements-list">
-        <div class="loading">
-          <i class="fas fa-spinner fa-spin"></i>
-          <p>Carregando avisos...</p>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer>
@@ -93,24 +74,14 @@
           <li><a href="ranking.html">Ranking</a></li>
           <li><a href="projetos.html">Projetos</a></li>
           <li><a href="avaliacao360.html">Avaliação 360</a></li>
-          <li><a href="admin/login.html">Área Administrativa</a></li>
         </ul>
       </div>
     </div>
   </footer>
 
-  <script>
-    // Firebase Configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyDH9hUEuMlsbPyq5rO5zldBnNQOX26bbG4",
-      authDomain: "comp-nuvem-2025.firebaseapp.com",
-      databaseURL: "https://comp-nuvem-2025-default-rtdb.firebaseio.com",
-      projectId: "comp-nuvem-2025",
-      storageBucket: "comp-nuvem-2025.firebasestorage.app",
-      messagingSenderId: "60212118707",
-      appId: "1:60212118707:web:714faf88ddfd3b536c9cc6"
-    };
-
+  <script type="module">
+    import { firebaseConfig } from './config/database.js';
+    
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     const database = firebase.database();
@@ -167,44 +138,6 @@
         })
         .catch(error => {
           console.error('Erro ao carregar descrição do curso:', error);
-        });
-    };
-
-    // Load Top 5 Students
-    const loadTopStudents = () => {
-      const container = document.getElementById('top-students-container');
-      
-      database.ref('alunos').once('value')
-        .then(snapshot => {
-          const data = snapshot.val();
-          
-          if (!data) {
-            container.innerHTML = '<p>Nenhum dado disponível ainda.</p>';
-            return;
-          }
-          
-          // Transform to array and sort by score
-          const students = Object.values(data)
-            .sort((a, b) => (b.score || 0) - (a.score || 0))
-            .slice(0, 5); // Get top 5
-            
-          // Create HTML
-          const html = students.map((student, index) => `
-            <div class="top-student-card ${index === 0 ? 'top-position' : ''}">
-              <div class="position">#${index + 1}</div>
-              <div class="student-info">
-                <h3>${student.nome || 'Aluno'}</h3>
-                <p>Grupo: ${student.grupo || 'N/A'}</p>
-              </div>
-              <div class="student-score">${student.score || 0} pts</div>
-            </div>
-          `).join('');
-          
-          container.innerHTML = html;
-        })
-        .catch(error => {
-          console.error('Erro ao carregar top estudantes:', error);
-          container.innerHTML = '<p>Erro ao carregar dados. Tente novamente mais tarde.</p>';
         });
     };
 
@@ -280,67 +213,12 @@
         });
     };
 
-    // Carregar avisos do Firebase
-    const loadAvisos = () => {
-      const container = document.getElementById('avisos-container');
-      
-      database.ref('avisos').orderByChild('data').limitToLast(3).once('value')
-        .then(snapshot => {
-          const data = snapshot.val();
-          
-          if (!data) {
-            container.innerHTML = '<p>Nenhum aviso disponível no momento.</p>';
-            return;
-          }
-          
-          // Transform to array and sort by date (newest first)
-          const avisos = Object.values(data)
-            .sort((a, b) => new Date(b.data) - new Date(a.data));
-          
-          // Format date
-          const formatDate = (dateString) => {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('pt-BR', { 
-              day: '2-digit', 
-              month: '2-digit', 
-              year: 'numeric'
-            });
-          };
-          
-          // Create HTML
-          const html = avisos.map(aviso => `
-            <div class="announcement-card">
-              <div class="announcement-header">
-                <h3>${aviso.titulo}</h3>
-                <span class="announcement-date">${formatDate(aviso.data)}</span>
-              </div>
-              <div class="announcement-content">
-                <p>${aviso.conteudo}</p>
-              </div>
-              ${aviso.link ? `
-                <div class="announcement-footer">
-                  <a href="${aviso.link}" class="announcement-link">${aviso.linkTexto || 'Ver detalhes'}</a>
-                </div>
-              ` : ''}
-            </div>
-          `).join('');
-          
-          container.innerHTML = html;
-        })
-        .catch(error => {
-          console.error('Erro ao carregar avisos:', error);
-          container.innerHTML = '<p>Erro ao carregar dados. Tente novamente mais tarde.</p>';
-        });
-    };
-
     // Load data when DOM is ready
     document.addEventListener('DOMContentLoaded', () => {
       navSlide();
       loadCursoDescricao();
       loadPlanoEnsino();
-      loadTopStudents();
       loadDeadlines();
-      loadAvisos();
     });
   </script>
 </body>

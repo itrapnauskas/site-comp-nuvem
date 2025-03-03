@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto 2: Armazenamento e Banco de Dados - Computação em Nuvem</title>
+  <link rel="stylesheet" href="styles/projeto1.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">Computação em Nuvem</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ranking.html">Ranking</a></li>
+        <li><a href="projetos.html" class="active">Projetos</a></li>
+        <li><a href="avaliacao360.html">Avaliação 360</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="project-header">
+      <h1><i class="fas fa-database"></i> Projeto 2: Armazenamento e Banco de Dados</h1>
+      <div class="badges">
+        <div class="badge">
+          <span class="badge-icon">🛡️</span>
+          <span class="badge-name">Guardião dos Dados</span>
+        </div>
+        <div class="badge">
+          <span class="badge-icon">💾</span>
+          <span class="badge-name">Administrador de Bancos Cloud</span>
+        </div>
+        <div class="badge">
+          <span class="badge-icon">🔗</span>
+          <span class="badge-name">Integrador de APIs e Dados</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-overview">
+      <h2>Visão Geral</h2>
+      <p>Este projeto ainda não está disponível. Detalhes completos serão publicados em breve.</p>
+      
+      <div class="objectives">
+        <h3>Objetivos Previstos</h3>
+        <ul>
+          <li>Compreender os diferentes tipos de serviços de armazenamento na nuvem</li>
+          <li>Implementar soluções de banco de dados SQL e NoSQL na nuvem</li>
+          <li>Desenvolver estratégias de backup e recuperação de dados</li>
+          <li>Configurar políticas de segurança e acesso aos dados</li>
+          <li>Integrar APIs para manipulação de dados em aplicações na nuvem</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="project-coming-soon">
+      <h2>Projeto em Desenvolvimento</h2>
+      <p>Este projeto será disponibilizado em breve. Continue acompanhando as atualizações do curso para saber mais.</p>
+      <p>Para se preparar para este projeto, você pode estudar conceitos de:</p>
+      <ul>
+        <li>Armazenamento de objetos (S3, Blob Storage)</li>
+        <li>Bancos de dados relacionais na nuvem (RDS, SQL Database)</li>
+        <li>Bancos de dados NoSQL (DynamoDB, Cosmos DB, Firestore)</li>
+        <li>Serviços de cache e mensageria (Redis, SQS, Service Bus)</li>
+        <li>Segurança e governança de dados em ambientes cloud</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Computação em Nuvem. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Navigation Toggle
+    const navSlide = () => {
+      const burger = document.querySelector('.burger');
+      const nav = document.querySelector('.nav-links');
+      const navLinks = document.querySelectorAll('.nav-links li');
+
+      // Toggle Nav
+      burger.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
+        burger.classList.toggle('toggle');
+        
+        // Animate Links
+        navLinks.forEach((link, index) => {
+          if (link.style.animation) {
+            link.style.animation = '';
+          } else {
+            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+          }
+        });
+      });
+    }
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', () => {
+      navSlide();
+    });
+  </script>
+</body>
+</html>

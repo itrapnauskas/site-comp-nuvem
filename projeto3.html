@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto 3: Aplicações Serverless - Computação em Nuvem</title>
+  <link rel="stylesheet" href="styles/projeto1.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">Computação em Nuvem</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ranking.html">Ranking</a></li>
+        <li><a href="projetos.html" class="active">Projetos</a></li>
+        <li><a href="avaliacao360.html">Avaliação 360</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="project-header">
+      <h1><i class="fas fa-bolt"></i> Projeto 3: Aplicações Serverless</h1>
+      <div class="badges">
+        <div class="badge">
+          <span class="badge-icon">⚡</span>
+          <span class="badge-name">Desenvolvedor Serverless</span>
+        </div>
+        <div class="badge">
+          <span class="badge-icon">🔐</span>
+          <span class="badge-name">Protetor de APIs</span>
+        </div>
+        <div class="badge">
+          <span class="badge-icon">🤖</span>
+          <span class="badge-name">Automatizador Cloud</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-overview">
+      <h2>Visão Geral</h2>
+      <p>Este projeto ainda não está disponível. Detalhes completos serão publicados em breve.</p>
+      
+      <div class="objectives">
+        <h3>Objetivos Previstos</h3>
+        <ul>
+          <li>Compreender o conceito de Serverless Computing e FaaS (Function as a Service)</li>
+          <li>Desenvolver e implantar funções serverless em provedores de nuvem</li>
+          <li>Criar integrações entre serviços usando eventos e triggers</li>
+          <li>Implementar autenticação e segurança em APIs serverless</li>
+          <li>Monitorar e depurar aplicações serverless</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="project-coming-soon">
+      <h2>Projeto em Desenvolvimento</h2>
+      <p>Este projeto será disponibilizado em breve. Continue acompanhando as atualizações do curso para saber mais.</p>
+      <p>Para se preparar para este projeto, você pode estudar conceitos de:</p>
+      <ul>
+        <li>AWS Lambda, Azure Functions ou Google Cloud Functions</li>
+        <li>API Gateway e gerenciamento de APIs</li>
+        <li>Segurança e autorização com JWT, OAuth ou IAM</li>
+        <li>Arquitetura de eventos e mensageria</li>
+        <li>Orquestração de funções serverless (Step Functions, Durable Functions)</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Computação em Nuvem. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Navigation Toggle
+    const navSlide = () => {
+      const burger = document.querySelector('.burger');
+      const nav = document.querySelector('.nav-links');
+      const navLinks = document.querySelectorAll('.nav-links li');
+
+      // Toggle Nav
+      burger.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
+        burger.classList.toggle('toggle');
+        
+        // Animate Links
+        navLinks.forEach((link, index) => {
+          if (link.style.animation) {
+            link.style.animation = '';
+          } else {
+            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+          }
+        });
+      });
+    }
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', () => {
+      navSlide();
+    });
+  </script>
+</body>
+</html>

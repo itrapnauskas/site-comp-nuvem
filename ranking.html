@@ -6,6 +6,9 @@
   <title>Ranking - Computação em Nuvem</title>
   <link rel="stylesheet" href="styles/ranking.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <script type="module" src="config/database.js"></script>
 </head>
 <body>
   <header>
@@ -16,7 +19,7 @@
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="ranking.html" class="active">Ranking</a></li>
-        <li><a href="projeto1.html">Projeto 1</a></li>
+        <li><a href="projetos.html">Projetos</a></li>
         <li><a href="avaliacao360.html">Avaliação 360</a></li>
       </ul>
       <div class="burger">
@@ -155,130 +158,6 @@
         </table>
       </div>
     </section>
-
-    <section class="ranking-blocos">
-      <h2>Ranking por Blocos</h2>
-      
-      <div class="tabs">
-        <button class="tab-button active" data-tab="bloco1">Bloco 1</button>
-        <button class="tab-button" data-tab="bloco2">Bloco 2</button>
-        <button class="tab-button" data-tab="bloco3">Bloco 3</button>
-        <button class="tab-button" data-tab="bloco4">Bloco 4</button>
-        <button class="tab-button" data-tab="bloco5">Bloco 5</button>
-      </div>
-      
-      <div class="tab-content">
-        <div id="bloco1" class="tab-pane active">
-          <div class="bloco-description">
-            <h3>Bloco 1 - Fundamentos e Implantação Básica em Nuvem</h3>
-            <p>Neste bloco, os alunos exploram os conceitos fundamentais da computação em nuvem, modelos de implantação e configuram seu primeiro ambiente na nuvem.</p>
-          </div>
-          
-          <table class="bloco-table">
-            <thead>
-              <tr>
-                <th class="position">#</th>
-                <th class="aluno">Aluno</th>
-                <th class="explorador">Explorador da Nuvem</th>
-                <th class="arquiteto">Arquiteto Cloud Iniciante</th>
-                <th class="gestor">Gestor de Custos Cloud</th>
-                <th class="seguranca">Segurança Inicial em Cloud</th>
-              </tr>
-            </thead>
-            <tbody id="bloco1-body">
-              <!-- Dados serão carregados dinamicamente -->
-            </tbody>
-          </table>
-        </div>
-        
-        <div id="bloco2" class="tab-pane">
-          <div class="bloco-description">
-            <h3>Bloco 2 - Serviços de Armazenamento e Banco de Dados na Nuvem</h3>
-            <p>Neste bloco, os alunos aprendem sobre armazenamento de objetos, bancos de dados relacionais e NoSQL, além de segurança para dados na nuvem.</p>
-          </div>
-          
-          <table class="bloco-table">
-            <thead>
-              <tr>
-                <th class="position">#</th>
-                <th class="aluno">Aluno</th>
-                <th class="guardiao">Guardião dos Dados</th>
-                <th class="administrador">Administrador de Bancos Cloud</th>
-                <th class="integrador">Integrador de APIs e Dados</th>
-              </tr>
-            </thead>
-            <tbody id="bloco2-body">
-              <!-- Dados serão carregados dinamicamente -->
-            </tbody>
-          </table>
-        </div>
-        
-        <div id="bloco3" class="tab-pane">
-          <div class="bloco-description">
-            <h3>Bloco 3 - Aplicações Serverless e Segurança</h3>
-            <p>Neste bloco, os alunos exploram computação serverless, autenticação e proteção de APIs na nuvem.</p>
-          </div>
-          
-          <table class="bloco-table">
-            <thead>
-              <tr>
-                <th class="position">#</th>
-                <th class="aluno">Aluno</th>
-                <th class="desenvolvedor">Desenvolvedor Serverless</th>
-                <th class="protetor">Protetor de APIs</th>
-                <th class="automatizador">Automatizador Cloud</th>
-              </tr>
-            </thead>
-            <tbody id="bloco3-body">
-              <!-- Dados serão carregados dinamicamente -->
-            </tbody>
-          </table>
-        </div>
-        
-        <div id="bloco4" class="tab-pane">
-          <div class="bloco-description">
-            <h3>Bloco 4 - Monitoramento, Distribuição de Tráfego e Boas Práticas</h3>
-            <p>Neste bloco, os alunos aprendem sobre monitoramento, escalabilidade, balanceamento de carga e otimização de custos.</p>
-          </div>
-          
-          <table class="bloco-table">
-            <thead>
-              <tr>
-                <th class="position">#</th>
-                <th class="aluno">Aluno</th>
-                <th class="monitor">Monitor de Desempenho</th>
-                <th class="escalador">Escalador de Serviços</th>
-                <th class="otimizador">Otimização e Custos</th>
-              </tr>
-            </thead>
-            <tbody id="bloco4-body">
-              <!-- Dados serão carregados dinamicamente -->
-            </tbody>
-          </table>
-        </div>
-        
-        <div id="bloco5" class="tab-pane">
-          <div class="bloco-description">
-            <h3>Bloco 5 - Avaliação Individual</h3>
-            <p>Neste bloco final, os alunos são avaliados individualmente na aplicação de segurança e boas práticas na nuvem.</p>
-          </div>
-          
-          <table class="bloco-table">
-            <thead>
-              <tr>
-                <th class="position">#</th>
-                <th class="aluno">Aluno</th>
-                <th class="defensor">Defensor da Nuvem</th>
-                <th class="especialista">Especialista em Cloud Security</th>
-              </tr>
-            </thead>
-            <tbody id="bloco5-body">
-              <!-- Dados serão carregados dinamicamente -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer>
@@ -287,8 +166,448 @@
     </div>
   </footer>
 
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
-  <script src="scripts/ranking.js"></script>
+  <script type="module">
+    import { firebaseConfig } from './config/database.js';
+    
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+
+    // Global data store
+    let alunosData = [];
+    let gruposData = {};
+    let currentFilters = {
+      bloco: 'all',
+      insignia: 'all',
+      categoria: 'all',
+      grupo: 'all'
+    };
+
+    // Category weights (for score calculation)
+    const categoryWeights = {
+      'Diamante': 1.0,
+      'Ouro': 0.8,
+      'Prata': 0.65,
+      'Bronze': 0.5,
+      'Cobre': 0.2,
+      '0%': 0
+    };
+
+    // Badge emojis
+    const badgeEmojis = {
+      'Explorador da Nuvem': '🌥️',
+      'Arquiteto Cloud Iniciante': '🛠️',
+      'Gestor de Custos Cloud': '💸',
+      'Segurança Inicial em Cloud': '🔒',
+      'Guardião dos Dados': '🛡️',
+      'Administrador de Bancos Cloud': '💾',
+      'Integrador de APIs e Dados': '🔗',
+      'Desenvolvedor Serverless': '⚡',
+      'Protetor de APIs': '🔐',
+      'Automatizador Cloud': '🤖',
+      'Monitor de Desempenho': '📊',
+      'Escalador de Serviços': '📈',
+      'Otimização e Custos': '💡',
+      'Defensor da Nuvem': '🛡️',
+      'Especialista em Cloud Security': '🔑'
+    };
+
+    // Category emojis
+    const categoryEmojis = {
+      'Diamante': '💎',
+      'Ouro': '🏅',
+      'Prata': '🥈',
+      'Bronze': '🥉',
+      'Cobre': '🟫',
+      '0%': '🚫'
+    };
+
+    // Mobile Navigation Toggle
+    const navSlide = () => {
+      const burger = document.querySelector('.burger');
+      const nav = document.querySelector('.nav-links');
+      const navLinks = document.querySelectorAll('.nav-links li');
+
+      burger.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
+        burger.classList.toggle('toggle');
+        
+        navLinks.forEach((link, index) => {
+          if (link.style.animation) {
+            link.style.animation = '';
+          } else {
+            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+          }
+        });
+      });
+    }
+
+    // Load all data from Firebase
+    const loadData = () => {
+      // Show loading indicator
+      const rankingLoading = document.getElementById('ranking-loading');
+      rankingLoading.style.display = 'block';
+      
+      // Get alunos data
+      database.ref('alunos').once('value')
+        .then(snapshot => {
+          const data = snapshot.val();
+          
+          if (!data) {
+            showEmptyState();
+            return;
+          }
+          
+          // Transform data to array and add id
+          alunosData = Object.entries(data).map(([id, aluno]) => ({
+            id,
+            ...aluno,
+            score: calculateScore(aluno) // Calculate score for each student
+          }));
+          
+          // Get grupos data
+          return database.ref('grupos').once('value');
+        })
+        .then(snapshot => {
+          if (snapshot) {
+            gruposData = snapshot.val() || {};
+            
+            // Populate grupos filter
+            populateGruposFilter();
+            
+            // Render general ranking
+            renderGeneralRanking();
+          }
+        })
+        .catch(error => {
+          console.error('Error loading data:', error);
+          rankingLoading.innerHTML = `
+            <i class="fas fa-exclamation-circle"></i>
+            <p>Erro ao carregar os dados. Por favor, tente novamente mais tarde.</p>
+            <p class="error-details">${error.message}</p>
+          `;
+        });
+    }
+
+    // Calculate student score based on insignias
+    const calculateScore = (aluno) => {
+      if (!aluno.insignias) return 0;
+      
+      let totalScore = 0;
+      let totalWeight = 0;
+      
+      // Calculate score for each insignia
+      Object.entries(aluno.insignias).forEach(([bloco, insignias]) => {
+        if (typeof insignias === 'object') {
+          // Handle new format (with individual categories per insignia)
+          Object.entries(insignias).forEach(([insignia, categoria]) => {
+            // Extract category name from the string (e.g., "💎 Diamante" -> "Diamante")
+            const categoriaNome = categoria.split(' ')[1] || categoria;
+            const weight = categoryWeights[categoriaNome] || 0;
+            
+            // Get insignia weight from insígnias definition (to be implemented)
+            const insigniaWeight = 1; // Default weight for now
+            
+            totalScore += weight * insigniaWeight;
+            totalWeight += insigniaWeight;
+          });
+        } else {
+          // Handle old format (single category per block)
+          const categoriaNome = insignias.split(' ')[1] || insignias;
+          const weight = categoryWeights[categoriaNome] || 0;
+          
+          totalScore += weight;
+          totalWeight += 1;
+        }
+      });
+      
+      // If there are no weights, return 0
+      if (totalWeight === 0) return 0;
+      
+      // Return average score (0-100)
+      return Math.round((totalScore / totalWeight) * 100);
+    }
+
+    // Populate grupos filter
+    const populateGruposFilter = () => {
+      // Get unique grupo names from alunos data
+      const gruposSet = new Set();
+      
+      alunosData.forEach(aluno => {
+        if (aluno.grupo) {
+          gruposSet.add(aluno.grupo);
+        }
+      });
+      
+      // Create and append options
+      const gruposArray = Array.from(gruposSet).sort();
+      const filterGrupo = document.getElementById('filter-grupo');
+      
+      gruposArray.forEach(grupo => {
+        const option = document.createElement('option');
+        option.value = grupo;
+        option.textContent = grupo;
+        filterGrupo.appendChild(option);
+      });
+    }
+
+    // Render the general ranking table
+    const renderGeneralRanking = () => {
+      // Apply current filters
+      const filteredAlunos = filterAlunos(alunosData);
+      
+      // Sort by score (descending)
+      filteredAlunos.sort((a, b) => b.score - a.score);
+      
+      // Clear previous content
+      const rankingBody = document.getElementById('ranking-body');
+      rankingBody.innerHTML = '';
+      
+      // Hide loading indicator
+      const rankingLoading = document.getElementById('ranking-loading');
+      rankingLoading.style.display = 'none';
+      
+      // If no students match filters, show empty state
+      if (filteredAlunos.length === 0) {
+        rankingBody.innerHTML = `
+          <tr>
+            <td colspan="5">
+              <div class="empty-state">
+                <i class="fas fa-search"></i>
+                <p>Nenhum aluno encontrado com os filtros selecionados.</p>
+              </div>
+            </td>
+          </tr>
+        `;
+        return;
+      }
+      
+      // Render each student
+      filteredAlunos.forEach((aluno, index) => {
+        const row = document.createElement('tr');
+        
+        // Position Cell
+        const positionCell = document.createElement('td');
+        positionCell.classList.add('position-cell');
+        if (index < 3) positionCell.classList.add(`top-position`, `top-${index+1}`);
+        positionCell.textContent = index + 1;
+        
+        // Aluno Cell
+        const alunoCell = document.createElement('td');
+        alunoCell.textContent = aluno.nome || 'Sem nome';
+        
+        // Grupo Cell
+        const grupoCell = document.createElement('td');
+        grupoCell.textContent = aluno.grupo || 'Sem grupo';
+        
+        // Score Cell
+        const scoreCell = document.createElement('td');
+        scoreCell.classList.add('score-cell');
+        scoreCell.textContent = aluno.score;
+        
+        // Insignias Cell
+        const insigniasCell = document.createElement('td');
+        
+        if (aluno.insignias) {
+          const badgeList = document.createElement('div');
+          badgeList.classList.add('badge-list');
+          
+          // Process all insignias
+          Object.entries(aluno.insignias).forEach(([bloco, insignias]) => {
+            if (typeof insignias === 'object') {
+              // New format (individual categories per insignia)
+              Object.entries(insignias).forEach(([insignia, categoria]) => {
+                createBadgeElement(badgeList, insignia, categoria);
+              });
+            } else {
+              // Old format (single category per block)
+              createBadgeElement(badgeList, bloco, insignias);
+            }
+          });
+          
+          insigniasCell.appendChild(badgeList);
+        } else {
+          insigniasCell.textContent = 'Nenhuma insígnia';
+        }
+        
+        // Append cells to row
+        row.appendChild(positionCell);
+        row.appendChild(alunoCell);
+        row.appendChild(grupoCell);
+        row.appendChild(scoreCell);
+        row.appendChild(insigniasCell);
+        
+        // Append row to table
+        rankingBody.appendChild(row);
+      });
+    }
+
+    // Create badge element for insignias
+    const createBadgeElement = (container, insignia, categoria) => {
+      // Extract category name from the string (e.g., "💎 Diamante" -> "Diamante")
+      const categoriaParts = categoria.split(' ');
+      const categoriaName = categoriaParts.length > 1 ? categoriaParts[1] : categoria;
+      const categoriaEmoji = categoriaParts.length > 1 ? categoriaParts[0] : categoryEmojis[categoriaName] || '';
+      
+      // Get badge emoji
+      const insigniaEmoji = badgeEmojis[insignia] || '';
+      
+      // Create badge element
+      const badge = document.createElement('div');
+      badge.classList.add('badge');
+      badge.classList.add(categoriaName.toLowerCase());
+      
+      // Add badge content
+      badge.innerHTML = `
+        <span class="badge-icon">${insigniaEmoji}</span>
+        <span class="badge-name">${insignia}</span>
+        <span class="badge-category">${categoriaEmoji}</span>
+      `;
+      
+      container.appendChild(badge);
+    }
+
+    // Filter alunos based on current filters
+    const filterAlunos = (alunos) => {
+      return alunos.filter(aluno => {
+        // Skip filtering if all filters are set to 'all'
+        if (currentFilters.bloco === 'all' &&
+            currentFilters.insignia === 'all' &&
+            currentFilters.categoria === 'all' &&
+            currentFilters.grupo === 'all') {
+          return true;
+        }
+        
+        // Filter by group
+        if (currentFilters.grupo !== 'all' && aluno.grupo !== currentFilters.grupo) {
+          return false;
+        }
+        
+        // If no insignias, exclude from filtered results if insignia or bloco filters are active
+        if (!aluno.insignias && (currentFilters.bloco !== 'all' || currentFilters.insignia !== 'all' || currentFilters.categoria !== 'all')) {
+          return false;
+        }
+        
+        // Filter by bloco
+        if (currentFilters.bloco !== 'all') {
+          if (!aluno.insignias || !aluno.insignias[currentFilters.bloco]) {
+            return false;
+          }
+        }
+        
+        // Filter by insignia and categoria
+        if (currentFilters.insignia !== 'all' || currentFilters.categoria !== 'all') {
+          // If no insignias, exclude from results
+          if (!aluno.insignias) return false;
+          
+          let matchesInsigniaAndCategoria = false;
+          
+          // Check all blocks and insignias
+          Object.entries(aluno.insignias).forEach(([bloco, insignias]) => {
+            // Skip if we're filtering by bloco and this is not the target bloco
+            if (currentFilters.bloco !== 'all' && bloco !== currentFilters.bloco) {
+              return;
+            }
+            
+            if (typeof insignias === 'object') {
+              // New format (individual categories per insignia)
+              Object.entries(insignias).forEach(([insignia, categoria]) => {
+                // Check insignia filter
+                if (currentFilters.insignia !== 'all' && insignia !== currentFilters.insignia) {
+                  return;
+                }
+                
+                // Check categoria filter
+                if (currentFilters.categoria !== 'all') {
+                  const categoriaNome = categoria.split(' ')[1] || categoria;
+                  if (categoriaNome !== currentFilters.categoria) {
+                    return;
+                  }
+                }
+                
+                matchesInsigniaAndCategoria = true;
+              });
+            } else {
+              // Old format (single category per block)
+              // Only aplicable for categoria filter
+              if (currentFilters.categoria !== 'all') {
+                const categoriaNome = insignias.split(' ')[1] || insignias;
+                if (categoriaNome === currentFilters.categoria) {
+                  matchesInsigniaAndCategoria = true;
+                }
+              } else {
+                // If only filtering by insignia, old format can't match specific insignias
+                if (currentFilters.insignia === 'all') {
+                  matchesInsigniaAndCategoria = true;
+                }
+              }
+            }
+          });
+          
+          if (!matchesInsigniaAndCategoria) {
+            return false;
+          }
+        }
+        
+        return true;
+      });
+    }
+
+    // Show empty state when no data is available
+    const showEmptyState = () => {
+      const rankingLoading = document.getElementById('ranking-loading');
+      rankingLoading.style.display = 'none';
+      
+      const rankingBody = document.getElementById('ranking-body');
+      rankingBody.innerHTML = `
+        <tr>
+          <td colspan="5">
+            <div class="empty-state">
+              <i class="fas fa-database"></i>
+              <p>Nenhum dado de aluno disponível no momento.</p>
+            </div>
+          </td>
+        </tr>
+      `;
+    }
+
+    // Apply filters from form
+    const applyFilters = () => {
+      currentFilters = {
+        bloco: document.getElementById('filter-bloco').value,
+        insignia: document.getElementById('filter-insignia').value,
+        categoria: document.getElementById('filter-categoria').value,
+        grupo: document.getElementById('filter-grupo').value
+      };
+      
+      // Re-render tables with new filters
+      renderGeneralRanking();
+    }
+
+    // Clear all filters
+    const clearFilters = () => {
+      // Reset form values
+      document.getElementById('filter-bloco').value = 'all';
+      document.getElementById('filter-insignia').value = 'all';
+      document.getElementById('filter-categoria').value = 'all';
+      document.getElementById('filter-grupo').value = 'all';
+      
+      // Apply reset filters
+      applyFilters();
+    }
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', () => {
+      navSlide();
+      
+      // Add filter event listeners
+      document.getElementById('btn-aplicar-filtros').addEventListener('click', applyFilters);
+      document.getElementById('btn-limpar-filtros').addEventListener('click', clearFilters);
+      
+      // Load data
+      loadData();
+    });
+  </script>
+</script>
 </body>
 </html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto 4: Monitoramento e Otimização - Computação em Nuvem</title>
+  <link rel="stylesheet" href="styles/projeto1.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html">Computação em Nuvem</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ranking.html">Ranking</a></li>
+        <li><a href="projetos.html" class="active">Projetos</a></li>
+        <li><a href="avaliacao360.html">Avaliação 360</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="project-header">
+      <h1><i class="fas fa-chart-line"></i> Projeto 4: Monitoramento e Otimização</h1>
+      <div class="badges">
+        <div class="badge">
+          <span class="badge-icon">📊</span>
+          <span class="badge-name">Monitor de Desempenho</span>
+        </div>
+        <div class="badge">
+          <span class="badge-icon">📈</span>
+          <span class="badge-name">Escalador de Serviços</span>
+        </div>
+        <div class="badge">
+          <span class="badge-icon">💡</span>
+          <span class="badge-name">Otimização e Custos</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-overview">
+      <h2>Visão Geral</h2>
+      <p>Este projeto ainda não está disponível. Detalhes completos serão publicados em breve.</p>
+      
+      <div class="objectives">
+        <h3>Objetivos Previstos</h3>
+        <ul>
+          <li>Implementar ferramentas de observabilidade (logs, métricas e traces)</li>
+          <li>Configurar dashboards e alertas para monitoramento de aplicações</li>
+          <li>Utilizar técnicas de auto-scaling e balanceamento de carga</li>
+          <li>Otimizar custos em ambientes de nuvem</li>
+          <li>Aplicar boas práticas de DevOps na infraestrutura como código</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="project-coming-soon">
+      <h2>Projeto em Desenvolvimento</h2>
+      <p>Este projeto será disponibilizado em breve. Continue acompanhando as atualizações do curso para saber mais.</p>
+      <p>Para se preparar para este projeto, você pode estudar conceitos de:</p>
+      <ul>
+        <li>Ferramentas de monitoramento (CloudWatch, Azure Monitor, Stackdriver)</li>
+        <li>Auto-scaling e grupos de disponibilidade</li>
+        <li>Balanceamento de carga e distribuição de tráfego</li>
+        <li>Gestão e otimização de custos na nuvem</li>
+        <li>Infraestrutura como código e DevOps</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Computação em Nuvem. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Navigation Toggle
+    const navSlide = () => {
+      const burger = document.querySelector('.burger');
+      const nav = document.querySelector('.nav-links');
+      const navLinks = document.querySelectorAll('.nav-links li');
+
+      // Toggle Nav
+      burger.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
+        burger.classList.toggle('toggle');
+        
+        // Animate Links
+        navLinks.forEach((link, index) => {
+          if (link.style.animation) {
+            link.style.animation = '';
+          } else {
+            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+          }
+        });
+      });
+    }
+
+    // Initialize the page
