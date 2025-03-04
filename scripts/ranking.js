@@ -614,7 +614,7 @@ const showEmptyState = () => {
   });
 }
 
-// Apply filters from form
+// Modify the applyFilters function to load grupos data
 const applyFilters = () => {
   currentFilters = {
     bloco: filterBloco.value,
@@ -622,10 +622,26 @@ const applyFilters = () => {
     categoria: filterCategoria.value,
     grupo: filterGrupo.value
   };
-  
-  // Re-render tables with new filters
-  renderGeneralRanking();
-  renderBlocoTables();
+
+  // Load grupos data before rendering
+  loadGruposData(() => {
+    renderGeneralRanking();
+    renderBlocoTables();
+  });
+}
+
+// Function to load grupos data
+const loadGruposData = (callback) => {
+  database.ref('grupos').once('value')
+    .then(snapshot => {
+      gruposData = snapshot.val() || {};
+      populateGruposFilter();
+      callback(); // Call the callback function after loading grupos data
+    })
+    .catch(error => {
+      console.error('Error loading grupos data:', error);
+      // Handle error appropriately
+    });
 }
 
 // Clear all filters
@@ -641,6 +657,20 @@ const clearFilters = () => {
 }
 
 // Initialize the page
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    // User is signed in
+    // Load data and then apply filters
+    loadData().then(() => {
+      applyFilters();
+    });
+  } else {
+    // User is signed out
+    console.log('User is signed out. Please sign in.');
+    // Optionally, display a message to the user
+  }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   navSlide();
   initTabs();
@@ -648,7 +678,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // Add filter event listeners
   btnAplicarFiltros.addEventListener('click', applyFilters);
   btnLimparFiltros.addEventListener('click', clearFilters);
-  
-  // Load data
-  loadData();
 });
