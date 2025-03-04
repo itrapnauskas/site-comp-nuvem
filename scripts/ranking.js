@@ -121,36 +121,34 @@ const loadData = () => {
   rankingLoading.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Carregando dados...`; // Added loading message
 
   // Get alunos data
-  return database.ref('alunos').once('value')
-    .then(snapshot => {
-      const data = snapshot.val();
+  const alunosPromise = database.ref('alunos').once('value');
+  const gruposPromise = database.ref('grupos').once('value');
 
-      if (!data) {
+  return Promise.all([alunosPromise, gruposPromise])
+    .then(([alunosSnapshot, gruposSnapshot]) => {
+      const alunosDataFromDB = alunosSnapshot.val();
+      const gruposDataFromDB = gruposSnapshot.val();
+
+      if (!alunosDataFromDB) {
         showEmptyState();
         return;
       }
 
       // Transform data to array and add id
-      alunosData = Object.entries(data).map(([id, aluno]) => ({
+      alunosData = Object.entries(alunosDataFromDB).map(([id, aluno]) => ({
         id,
         ...aluno,
         score: calculateScore(aluno) // Calculate score for each student
       }));
 
-      // Get grupos data
-      return database.ref('grupos').once('value');
-    })
-    .then(snapshot => {
-      if (snapshot) {
-        gruposData = snapshot.val() || {};
+      gruposData = gruposDataFromDB || {};
 
-        // Populate grupos filter
-        populateGruposFilter();
+      // Populate grupos filter
+      populateGruposFilter();
 
-        // Render all tables
-        renderGeneralRanking();
-        renderBlocoTables();
-      }
+      // Render all tables
+      renderGeneralRanking();
+      renderBlocoTables();
     })
     .catch(error => {
       console.error('Error loading data:', error);
@@ -624,30 +622,8 @@ const applyFilters = () => {
     grupo: filterGrupo.value
   };
 
-  // Load grupos data before rendering
-  loadGruposData(() => {
-    renderGeneralRanking();
-    renderBlocoTables();
-  });
-}
-
-// Function to load grupos data
-const loadGruposData = (callback) => {
-  database.ref('grupos').once('value')
-    .then(snapshot => {
-      gruposData = snapshot.val() || {};
-      populateGruposFilter();
-      callback(); // Call the callback function after loading grupos data
-    })
-    .catch(error => {
-      console.error('Error loading grupos data:', error);
-      // Handle error appropriately
-      rankingLoading.innerHTML = `
-        <i class="fas fa-exclamation-circle"></i>
-        <p>Erro ao carregar os dados. Por favor, tente novamente mais tarde.</p>
-        <p class="error-details">Error loading grupos: ${error.message}</p>
-      `;
-    });
+  renderGeneralRanking();
+  renderBlocoTables();
 }
 
 // Clear all filters
@@ -668,17 +644,17 @@ firebase.auth().onAuthStateChanged(user => {
     // User is signed in
     // Load data and then apply filters
     loadData()
-    .then(() => {
-      applyFilters();
-    })
-    .catch(error => {
-      console.error("Error in initial data loading:", error);
-      rankingLoading.innerHTML = `
-        <i class="fas fa-exclamation-circle"></i>
-        <p>Erro ao carregar os dados. Por favor, tente novamente mais tarde.</p>
-        <p class="error-details">Initial data load error: ${error.message}</p>
-      `;
-    });
+      .then(() => {
+        applyFilters();
+      })
+      .catch(error => {
+        console.error("Error in initial data loading:", error);
+        rankingLoading.innerHTML = `
+          <i class="fas fa-exclamation-circle"></i>
+          <p>Erro ao carregar os dados. Por favor, tente novamente mais tarde.</p>
+          <p class="error-details">Initial data load error: ${error.message}</p>
+        `;
+      });
   } else {
     // User is signed out
     console.log('User is signed out. Please sign in.');
