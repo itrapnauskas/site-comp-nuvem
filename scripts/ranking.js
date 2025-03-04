@@ -118,34 +118,35 @@ const initTabs = () => {
 const loadData = () => {
   // Show loading indicator
   rankingLoading.style.display = 'block';
-  
+  rankingLoading.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Carregando dados...`; // Added loading message
+
   // Get alunos data
-  database.ref('alunos').once('value')
+  return database.ref('alunos').once('value')
     .then(snapshot => {
       const data = snapshot.val();
-      
+
       if (!data) {
         showEmptyState();
         return;
       }
-      
+
       // Transform data to array and add id
       alunosData = Object.entries(data).map(([id, aluno]) => ({
         id,
         ...aluno,
         score: calculateScore(aluno) // Calculate score for each student
       }));
-      
+
       // Get grupos data
       return database.ref('grupos').once('value');
     })
     .then(snapshot => {
       if (snapshot) {
         gruposData = snapshot.val() || {};
-        
+
         // Populate grupos filter
         populateGruposFilter();
-        
+
         // Render all tables
         renderGeneralRanking();
         renderBlocoTables();
@@ -641,6 +642,11 @@ const loadGruposData = (callback) => {
     .catch(error => {
       console.error('Error loading grupos data:', error);
       // Handle error appropriately
+      rankingLoading.innerHTML = `
+        <i class="fas fa-exclamation-circle"></i>
+        <p>Erro ao carregar os dados. Por favor, tente novamente mais tarde.</p>
+        <p class="error-details">Error loading grupos: ${error.message}</p>
+      `;
     });
 }
 
@@ -661,13 +667,23 @@ firebase.auth().onAuthStateChanged(user => {
   if (user) {
     // User is signed in
     // Load data and then apply filters
-    loadData().then(() => {
+    loadData()
+    .then(() => {
       applyFilters();
+    })
+    .catch(error => {
+      console.error("Error in initial data loading:", error);
+      rankingLoading.innerHTML = `
+        <i class="fas fa-exclamation-circle"></i>
+        <p>Erro ao carregar os dados. Por favor, tente novamente mais tarde.</p>
+        <p class="error-details">Initial data load error: ${error.message}</p>
+      `;
     });
   } else {
     // User is signed out
     console.log('User is signed out. Please sign in.');
     // Optionally, display a message to the user
+    showEmptyState(); // Show empty state if user is not signed in
   }
 });
 
