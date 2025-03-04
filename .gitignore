@@ -1,3 +1,5 @@
 *.txt
 *.json
 todo.md
++/admin/
+*.ipynb

@@ -42,22 +42,13 @@
 
     <section id="plano-ensino" class="plano-ensino-section">
       <h2>Plano de Ensino</h2>
-      <!-- Conteúdo do plano de ensino será carregado do Firebase -->
+      <!-- Conteúdo do plano de ensino será adicionado manualmente -->
       <div id="plano-ensino-content" class="content-area">
-        <div class="loading">
-          <i class="fas fa-spinner fa-spin"></i>
-          <p>Carregando plano de ensino...</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="upcoming-deadlines">
-      <h2>Próximos Prazos</h2>
-      <div id="deadlines-container" class="deadlines-list">
-        <div class="loading">
-          <i class="fas fa-spinner fa-spin"></i>
-          <p>Carregando prazos...</p>
-        </div>
+        <p><!-- SUBSTITUIR ESTE COMENTÁRIO PELO CONTEÚDO DO PLANO DE ENSINO -->
+          Este é o espaço onde o conteúdo do plano de ensino deverá ser inserido.
+          O plano deve incluir os objetivos da disciplina, metodologia, avaliação e cronograma.
+          Pode utilizar tags HTML para formatação como &lt;h3&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;p&gt;, etc.
+        </p>
       </div>
     </section>
   </main>
@@ -106,26 +97,6 @@
       });
     }
 
-    // Carregar plano de ensino do Firebase
-    const loadPlanoEnsino = () => {
-      const planoEnsinoContainer = document.getElementById('plano-ensino-content');
-      
-      database.ref('conteudo/planoEnsino').once('value')
-        .then(snapshot => {
-          const data = snapshot.val();
-          
-          if (data && data.html) {
-            planoEnsinoContainer.innerHTML = data.html;
-          } else {
-            planoEnsinoContainer.innerHTML = '<p>O plano de ensino ainda não foi cadastrado.</p>';
-          }
-        })
-        .catch(error => {
-          console.error('Erro ao carregar plano de ensino:', error);
-          planoEnsinoContainer.innerHTML = '<p>Erro ao carregar o plano de ensino. Tente novamente mais tarde.</p>';
-        });
-    };
-
     // Carregar descrição do curso do Firebase
     const loadCursoDescricao = () => {
       database.ref('conteudo/descricao').once('value')
@@ -141,84 +112,10 @@
         });
     };
 
-    // Load Upcoming Deadlines
-    const loadDeadlines = () => {
-      const container = document.getElementById('deadlines-container');
-      
-      database.ref('avaliacoes360').once('value')
-        .then(snapshot => {
-          const data = snapshot.val();
-          
-          if (!data) {
-            container.innerHTML = '<p>Nenhum prazo disponível no momento.</p>';
-            return;
-          }
-          
-          // Get current date
-          const now = new Date();
-          
-          // Transform to array, filter for future deadlines and sort by date
-          const deadlines = Object.values(data)
-            .filter(item => new Date(item.dataFim) > now)
-            .sort((a, b) => new Date(a.dataFim) - new Date(b.dataFim))
-            .slice(0, 3); // Get next 3 deadlines
-            
-          if (deadlines.length === 0) {
-            container.innerHTML = '<p>Nenhum prazo próximo no momento.</p>';
-            return;
-          }
-          
-          // Format date
-          const formatDate = (dateString) => {
-            const date = new Date(dateString);
-            return date.toLocaleDateString('pt-BR', { 
-              day: '2-digit', 
-              month: '2-digit', 
-              year: 'numeric',
-              hour: '2-digit',
-              minute: '2-digit'
-            });
-          };
-          
-          // Calculate remaining days
-          const getRemainingDays = (dateString) => {
-            const now = new Date();
-            const deadline = new Date(dateString);
-            const diffTime = deadline - now;
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            
-            if (diffDays === 0) return 'Hoje';
-            if (diffDays === 1) return 'Amanhã';
-            return `${diffDays} dias`;
-          };
-          
-          // Create HTML
-          const html = deadlines.map(deadline => `
-            <div class="deadline-card">
-              <div class="deadline-info">
-                <h3>${deadline.titulo || `Avaliação ${deadline.projetoId || ''}`}</h3>
-                <p>Prazo: ${formatDate(deadline.dataFim)}</p>
-              </div>
-              <div class="deadline-remaining">
-                <span>${getRemainingDays(deadline.dataFim)}</span>
-              </div>
-            </div>
-          `).join('');
-          
-          container.innerHTML = html;
-        })
-        .catch(error => {
-          console.error('Erro ao carregar prazos:', error);
-          container.innerHTML = '<p>Erro ao carregar dados. Tente novamente mais tarde.</p>';
-        });
-    };
-
     // Load data when DOM is ready
     document.addEventListener('DOMContentLoaded', () => {
       navSlide();
       loadCursoDescricao();
-      loadPlanoEnsino();
-      loadDeadlines();
     });
   </script>
 </body>

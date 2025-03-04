@@ -4,11 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projetos - Computação em Nuvem</title>
-  <link rel="stylesheet" href="styles/projetos.css">
+  <link rel="stylesheet" href="styles/projeto1.css"> <!-- Usar o CSS existente para manter o estilo -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
-  <script type="module" src="config/database.js"></script>
 </head>
 <body>
   <header>
@@ -31,101 +28,69 @@
   </header>
 
   <main class="container">
-    <section class="projetos-header">
+    <section class="project-header">
       <h1><i class="fas fa-project-diagram"></i> Projetos da Disciplina</h1>
-      <p class="description">Confira os projetos que serão desenvolvidos ao longo do semestre.</p>
+      <p class="subtitle">Confira os projetos que serão desenvolvidos ao longo do semestre.</p>
     </section>
 
-    <section class="projetos-lista">
-      <div class="projeto-card">
-        <div class="projeto-header">
-          <h2>Projeto 1: Meu #1 Ambiente na Nuvem</h2>
-          <div class="projeto-status status-ativo">Ativo</div>
+    <section class="project-options">
+      <div class="option-card">
+        <div class="option-header">
+          <h3><i class="fas fa-cloud"></i> Projeto 1: Meu #1 Ambiente na Nuvem</h3>
         </div>
-        <div class="projeto-content">
-          <p>Neste projeto, você irá criar e configurar seu primeiro ambiente na nuvem, explorando os conceitos fundamentais de computação em nuvem como IaaS, PaaS e SaaS, além de implementar medidas básicas de segurança e planejamento de custos.</p>
+        <div class="option-content">
+          <p><strong>Descrição:</strong> Neste projeto, você irá criar e configurar seu primeiro ambiente na nuvem, explorando os conceitos fundamentais de computação em nuvem como IaaS, PaaS e SaaS, além de implementar medidas básicas de segurança e planejamento de custos.</p>
+          <p><strong>Status:</strong> <span class="badge">Ativo</span></p>
           <div class="projeto-info">
-            <div class="info-item">
-              <i class="fas fa-calendar"></i>
-              <span>Entrega: 15/05/2025</span>
-            </div>
-            <div class="info-item">
-              <i class="fas fa-users"></i>
-              <span>Equipes: 3 alunos</span>
-            </div>
+            <p><i class="fas fa-calendar"></i> <span>Entrega: 15/05/2025</span></p>
+            <p><i class="fas fa-users"></i> <span>Equipes: 3 alunos</span></p>
           </div>
-        </div>
-        <div class="projeto-footer">
-          <a href="projeto1.html" class="btn-detalhes">Ver Detalhes</a>
+          <a href="projeto1.html" class="btn-primary">Ver Detalhes</a>
         </div>
       </div>
 
-      <div class="projeto-card">
-        <div class="projeto-header">
-          <h2>Projeto 2: Armazenamento e Banco de Dados</h2>
-          <div class="projeto-status status-aberto">Em breve</div>
+      <div class="option-card">
+        <div class="option-header">
+          <h3><i class="fas fa-database"></i> Projeto 2: Armazenamento e Banco de Dados</h3>
         </div>
-        <div class="projeto-content">
-          <p>Neste projeto, os alunos aprenderão sobre serviços de armazenamento na nuvem e bancos de dados, implementando soluções para diferentes requisitos de persistência de dados.</p>
+        <div class="option-content">
+          <p><strong>Descrição:</strong> Neste projeto, os alunos aprenderão sobre serviços de armazenamento na nuvem e bancos de dados, implementando soluções para diferentes requisitos de persistência de dados.</p>
+          <p><strong>Status:</strong> <span class="badge">Em breve</span></p>
           <div class="projeto-info">
-            <div class="info-item">
-              <i class="fas fa-calendar"></i>
-              <span>Entrega: A definir</span>
-            </div>
-            <div class="info-item">
-              <i class="fas fa-users"></i>
-              <span>Equipes: 3 alunos</span>
-            </div>
+            <p><i class="fas fa-calendar"></i> <span>Entrega: A definir</span></p>
+            <p><i class="fas fa-users"></i> <span>Equipes: 3 alunos</span></p>
           </div>
-        </div>
-        <div class="projeto-footer">
-          <a href="projeto2.html" class="btn-detalhes">Ver Detalhes</a>
+          <a href="projeto2.html" class="btn-primary">Ver Detalhes</a>
         </div>
       </div>
 
-      <div class="projeto-card">
-        <div class="projeto-header">
-          <h2>Projeto 3: Aplicações Serverless</h2>
-          <div class="projeto-status status-aberto">Em breve</div>
+      <div class="option-card">
+        <div class="option-header">
+          <h3><i class="fas fa-bolt"></i> Projeto 3: Aplicações Serverless</h3>
         </div>
-        <div class="projeto-content">
-          <p>Neste projeto, os alunos desenvolverão aplicações com arquitetura serverless, utilizando funções como serviço, triggers e integrações com outros serviços de nuvem.</p>
+        <div class="option-content">
+          <p><strong>Descrição:</strong> Neste projeto, os alunos desenvolverão aplicações com arquitetura serverless, utilizando funções como serviço, triggers e integrações com outros serviços de nuvem.</p>
+          <p><strong>Status:</strong> <span class="badge">Em breve</span></p>
           <div class="projeto-info">
-            <div class="info-item">
-              <i class="fas fa-calendar"></i>
-              <span>Entrega: A definir</span>
-            </div>
-            <div class="info-item">
-              <i class="fas fa-users"></i>
-              <span>Equipes: 3 alunos</span>
-            </div>
+            <p><i class="fas fa-calendar"></i> <span>Entrega: A definir</span></p>
+            <p><i class="fas fa-users"></i> <span>Equipes: 3 alunos</span></p>
           </div>
-        </div>
-        <div class="projeto-footer">
-          <a href="projeto3.html" class="btn-detalhes">Ver Detalhes</a>
+          <a href="projeto3.html" class="btn-primary">Ver Detalhes</a>
         </div>
       </div>
 
-      <div class="projeto-card">
-        <div class="projeto-header">
-          <h2>Projeto 4: Monitoramento e Otimização</h2>
-          <div class="projeto-status status-aberto">Em breve</div>
+      <div class="option-card">
+        <div class="option-header">
+          <h3><i class="fas fa-chart-line"></i> Projeto 4: Monitoramento e Otimização</h3>
         </div>
-        <div class="projeto-content">
-          <p>No projeto final, os alunos aprenderão a monitorar, otimizar e escalar suas aplicações na nuvem, implementando boas práticas de operação e gestão de custos.</p>
+        <div class="option-content">
+          <p><strong>Descrição:</strong> No projeto final, os alunos aprenderão a monitorar, otimizar e escalar suas aplicações na nuvem, implementando boas práticas de operação e gestão de custos.</p>
+          <p><strong>Status:</strong> <span class="badge">Em breve</span></p>
           <div class="projeto-info">
-            <div class="info-item">
-              <i class="fas fa-calendar"></i>
-              <span>Entrega: A definir</span>
-            </div>
-            <div class="info-item">
-              <i class="fas fa-users"></i>
-              <span>Equipes: 3 alunos</span>
-            </div>
+            <p><i class="fas fa-calendar"></i> <span>Entrega: A definir</span></p>
+            <p><i class="fas fa-users"></i> <span>Equipes: 3 alunos</span></p>
           </div>
-        </div>
-        <div class="projeto-footer">
-          <a href="projeto4.html" class="btn-detalhes">Ver Detalhes</a>
+          <a href="projeto4.html" class="btn-primary">Ver Detalhes</a>
         </div>
       </div>
     </section>
@@ -133,28 +98,11 @@
 
   <footer>
     <div class="footer-content">
-      <div class="footer-info">
-        <h3>Computação em Nuvem</h3>
-        <p>2025 - Todos os direitos reservados</p>
-      </div>
-      <div class="footer-links">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="ranking.html">Ranking</a></li>
-          <li><a href="projetos.html">Projetos</a></li>
-          <li><a href="avaliacao360.html">Avaliação 360</a></li>
-        </ul>
-      </div>
+      <p>&copy; 2025 Computação em Nuvem. Todos os direitos reservados.</p>
     </div>
   </footer>
 
-  <script type="module">
-    import { firebaseConfig } from './config/database.js';
-    
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    const database = firebase.database();
-
+  <script>
     // Mobile Navigation Toggle
     const navSlide = () => {
       const burger = document.querySelector('.burger');
