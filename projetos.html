@@ -3,8 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projetos - Computação em Nuvem</title>
-  <link rel="stylesheet" href="styles/projeto1.css"> <!-- Usar o CSS existente para manter o estilo -->
+  <title>Projeto 2: Sistema de Armazenamento e Banco de Dados na Nuvem - Computação em Nuvem</title>
+  <style>
+    /* Estilos específicos para tabela de insígnias */
+    .project-badges table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+    }
+    
+    .project-badges th, .project-badges td {
+      padding: 0.8rem;
+      border: 1px solid var(--border-color);
+      vertical-align: top;
+    }
+    
+    .project-badges th {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: left;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .project-badges {
+        overflow-x: auto;
+      }
+      
+      .project-badges table {
+        font-size: 0.8rem;
+      }
+      
+      .project-badges th, .project-badges td {
+        padding: 0.6rem;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="styles/projeto1.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -28,69 +63,541 @@
   </header>
 
   <main class="container">
+    <!-- Cabeçalho do Projeto -->
     <section class="project-header">
-      <h1><i class="fas fa-project-diagram"></i> Projetos da Disciplina</h1>
-      <p class="subtitle">Confira os projetos que serão desenvolvidos ao longo do semestre.</p>
+      <h1><i class="fas fa-database"></i> Projeto 2: Sistema de Armazenamento e Banco de Dados na Nuvem</h1>
+      <div class="badges">
+        <div class="badge">
+          <span class="badge-icon">🛡️</span>
+          <span class="badge-name">Guardião dos Dados</span>
+        </div>
+        <div class="badge">
+          <span class="badge-icon">💾</span>
+          <span class="badge-name">Administrador de Bancos Cloud</span>
+        </div>
+        <div class="badge">
+          <span class="badge-icon">🔗</span>
+          <span class="badge-name">Integrador de APIs e Dados</span>
+        </div>
+      </div>
     </section>
 
+    <!-- Visão Geral -->
+    <section class="project-overview">
+      <h2>Visão Geral</h2>
+      <p>
+        Neste projeto, você irá criar e configurar um sistema de armazenamento e banco de dados na nuvem, explorando os conceitos fundamentais de armazenamento de objetos, bancos de dados relacionais e NoSQL, além de implementar medidas de segurança para proteger os dados. Esta página servirá como guia para você desenvolver um ambiente completo onde usuários podem armazenar, gerenciar e acessar dados de forma segura e escalável.
+      </p>
+      
+      <div class="objectives">
+        <h3>Objetivos</h3>
+        <ul>
+          <li>Aprender sobre os principais serviços de armazenamento em nuvem (AWS S3, Azure Blob Storage, MinIO, Backblaze, OpenStack Swift)</li>
+          <li>Criar e configurar um bucket de armazenamento de arquivos com permissões adequadas</li>
+          <li>Explorar bancos de dados gerenciados (MySQL, PostgreSQL, MongoDB Atlas, Firebase, SQLite, Redis, DynamoDB)</li>
+          <li>Aplicar conceitos de segurança e controle de acessos para armazenamento e bancos de dados (chaves, permissões, firewall)</li>
+          <li>Testar conexões e realizar operações CRUD com armazenamento e bancos de dados na nuvem</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Tabela de Insígnias -->
+    <section class="project-badges">
+      <h2>Insígnias do Projeto</h2>
+      <p>As insígnias abaixo podem ser conquistadas neste projeto, com base nos critérios de avaliação específicos:</p>
+      
+      <table class="evaluation-table">
+        <thead>
+          <tr>
+            <th>Insígnia</th>
+            <th>Nome</th>
+            <th>Área de Conhecimento</th>
+            <th>Descrição</th>
+            <th>Competência Avaliada</th>
+            <th>Critério de Conquista</th>
+            <th>Peso (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: center;">🛡️</td>
+            <td><strong>Guardião dos Dados</strong></td>
+            <td>Armazenamento e Segurança</td>
+            <td>Criar e configurar armazenamento seguro na nuvem</td>
+            <td>Configuração de permissões e criptografia</td>
+            <td>Criar um bucket seguro e configurar as permissões adequadas</td>
+            <td>10%</td>
+          </tr>
+          <tr>
+            <td style="text-align: center;">💾</td>
+            <td><strong>Administrador de Bancos Cloud</strong></td>
+            <td>Bancos de Dados na Nuvem</td>
+            <td>Configurar um banco de dados relacional ou NoSQL na nuvem</td>
+            <td>Configuração de banco gerenciado e conectividade com aplicações</td>
+            <td>Criar um banco, testar conexões e demonstrar integração com um serviço</td>
+            <td>15%</td>
+          </tr>
+          <tr>
+            <td style="text-align: center;">🔗</td>
+            <td><strong>Integrador de APIs e Dados</strong></td>
+            <td>Integração e Desenvolvimento</td>
+            <td>Criar um sistema que se conecta a armazenamento e banco na nuvem</td>
+            <td>Desenvolvimento e consumo de APIs de armazenamento e banco de dados</td>
+            <td>Implementar e testar operações CRUD com APIs em nuvem</td>
+            <td>15%</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Opções de Projeto (Exemplos de Referência) -->
     <section class="project-options">
+      <h2>Opções de Projeto</h2>
+      
       <div class="option-card">
         <div class="option-header">
-          <h3><i class="fas fa-cloud"></i> Projeto 1: Meu #1 Ambiente na Nuvem</h3>
+          <h3><i class="fas fa-folder-open"></i> Opção 1 - "Google Drive" Personalizado</h3>
         </div>
         <div class="option-content">
-          <p><strong>Descrição:</strong> Neste projeto, você irá criar e configurar seu primeiro ambiente na nuvem, explorando os conceitos fundamentais de computação em nuvem como IaaS, PaaS e SaaS, além de implementar medidas básicas de segurança e planejamento de custos.</p>
-          <p><strong>Status:</strong> <span class="badge">Ativo</span></p>
-          <div class="projeto-info">
-            <p><i class="fas fa-calendar"></i> <span>Entrega: 15/05/2025</span></p>
-            <p><i class="fas fa-users"></i> <span>Equipes: 3 alunos</span></p>
-          </div>
-          <a href="projeto1.html" class="btn-primary">Ver Detalhes</a>
+          <p><strong>Descrição:</strong> Desenvolver um sistema de armazenamento de arquivos estilo Google Drive, permitindo que usuários façam upload, listagem e download de arquivos na nuvem.</p>
+          <p><strong>Conceitos trabalhados:</strong> Armazenamento de objetos (S3, Blob), gerenciamento de permissões, acesso via API.</p>
+          <p><strong>Diferencial:</strong> Implementar controle de acessos para arquivos públicos/privados, organização em pastas e compartilhamento entre usuários.</p>
+          <p><strong>Sugestões:</strong> Utilize serviços como Amazon S3 ou Azure Blob Storage para armazenamento, e bancos como Firebase ou MongoDB para gerenciar metadados. Para interfaces, considere frameworks como React ou Vue.js com bibliotecas de upload como Dropzone.js.</p>
         </div>
       </div>
-
+      
       <div class="option-card">
         <div class="option-header">
-          <h3><i class="fas fa-database"></i> Projeto 2: Armazenamento e Banco de Dados</h3>
+          <h3><i class="fas fa-podcast"></i> Opção 2 - "Spotify" de Podcast</h3>
         </div>
         <div class="option-content">
-          <p><strong>Descrição:</strong> Neste projeto, os alunos aprenderão sobre serviços de armazenamento na nuvem e bancos de dados, implementando soluções para diferentes requisitos de persistência de dados.</p>
-          <p><strong>Status:</strong> <span class="badge">Em breve</span></p>
-          <div class="projeto-info">
-            <p><i class="fas fa-calendar"></i> <span>Entrega: A definir</span></p>
-            <p><i class="fas fa-users"></i> <span>Equipes: 3 alunos</span></p>
-          </div>
-          <a href="projeto2.html" class="btn-primary">Ver Detalhes</a>
+          <p><strong>Descrição:</strong> Criar um serviço onde os usuários podem fazer upload de arquivos de áudio (MP3, WAV) e transmitir via streaming.</p>
+          <p><strong>Conceitos trabalhados:</strong> Armazenamento de mídia (Blob Storage, S3), banco de dados para metadados (Firebase, PostgreSQL), integração com APIs.</p>
+          <p><strong>Diferencial:</strong> Criar uma API REST para buscar e listar os episódios armazenados, incluir sistema de categorias e recomendações.</p>
+          <p><strong>Sugestões:</strong> Use S3 com permissões adequadas para armazenar os arquivos de áudio, considere serviços especializados para processamento e transcodificação de áudio. Bancos NoSQL como DynamoDB ou MongoDB são excelentes para metadados como descrições, categorias e estatísticas de reprodução.</p>
         </div>
       </div>
-
+      
       <div class="option-card">
         <div class="option-header">
-          <h3><i class="fas fa-bolt"></i> Projeto 3: Aplicações Serverless</h3>
+          <h3><i class="fas fa-shopping-cart"></i> Opção 3 - Sistema de Inventário para Ecommerce</h3>
         </div>
         <div class="option-content">
-          <p><strong>Descrição:</strong> Neste projeto, os alunos desenvolverão aplicações com arquitetura serverless, utilizando funções como serviço, triggers e integrações com outros serviços de nuvem.</p>
-          <p><strong>Status:</strong> <span class="badge">Em breve</span></p>
-          <div class="projeto-info">
-            <p><i class="fas fa-calendar"></i> <span>Entrega: A definir</span></p>
-            <p><i class="fas fa-users"></i> <span>Equipes: 3 alunos</span></p>
-          </div>
-          <a href="projeto3.html" class="btn-primary">Ver Detalhes</a>
+          <p><strong>Descrição:</strong> Criar um sistema para cadastrar produtos, armazenar imagens no banco de dados e consultar disponibilidade via API.</p>
+          <p><strong>Conceitos trabalhados:</strong> Banco de dados relacional (MySQL, PostgreSQL), armazenamento de imagens (Blob Storage, MinIO), integração com APIs.</p>
+          <p><strong>Diferencial:</strong> Implementar um dashboard que exibe produtos cadastrados e estoque, com funcionalidades de relatórios e alertas de baixo estoque.</p>
+          <p><strong>Sugestões:</strong> Utilize PostgreSQL ou MySQL para dados transacionais como pedidos e estoque, enquanto usa serviços de armazenamento de objetos para imagens dos produtos. Implemente backups automáticos e considere a cache com Redis para melhorar a performance de consultas frequentes.</p>
         </div>
       </div>
+    </section>
 
-      <div class="option-card">
-        <div class="option-header">
-          <h3><i class="fas fa-chart-line"></i> Projeto 4: Monitoramento e Otimização</h3>
-        </div>
-        <div class="option-content">
-          <p><strong>Descrição:</strong> No projeto final, os alunos aprenderão a monitorar, otimizar e escalar suas aplicações na nuvem, implementando boas práticas de operação e gestão de custos.</p>
-          <p><strong>Status:</strong> <span class="badge">Em breve</span></p>
-          <div class="projeto-info">
-            <p><i class="fas fa-calendar"></i> <span>Entrega: A definir</span></p>
-            <p><i class="fas fa-users"></i> <span>Equipes: 3 alunos</span></p>
+    <!-- Roteiro de Atividades -->
+    <section class="project-roadmap">
+      <h2>Roteiro de Atividades</h2>
+      
+      <div class="roadmap-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Pesquisa e Planejamento Inicial</h3>
+          <div class="tasks">
+            <h4>Estudo dos conceitos básicos:</h4>
+            <ul>
+              <li>Introdução a Armazenamento em Nuvem e Bancos de Dados na Nuvem</li>
+              <li>Comparação entre Armazenamento de Objetos, Bloco e Arquivo</li>
+              <li>Diferenças entre banco de dados Relacional (SQL) e NoSQL</li>
+              <li>Padrões de segurança para armazenamento de dados na nuvem</li>
+            </ul>
+            
+            <h4>Escolha do provedor:</h4>
+            <ul>
+              <li>Criar uma conta gratuita no provedor escolhido (AWS Free Tier, GCP, Azure, Firebase, MinIO)</li>
+              <li>Comparação entre diferentes soluções de banco de dados e armazenamento</li>
+              <li>Avaliação das políticas de segurança e conformidade de cada provedor</li>
+            </ul>
+            
+            <h4>Definir o projeto:</h4>
+            <ul>
+              <li>Escolher entre Google Drive Personalizado, Spotify de Podcast ou Sistema de Inventário</li>
+              <li>Criar um planejamento da infraestrutura necessária (bucket, banco de dados, API, interface)</li>
+              <li>Definir os fluxos de dados e requisitos de segurança para o projeto</li>
+            </ul>
           </div>
-          <a href="projeto4.html" class="btn-primary">Ver Detalhes</a>
+        </div>
+      </div>
+      
+      <div class="roadmap-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Configuração da Infraestrutura</h3>
+          <div class="tasks">
+            <h4>Criando e Configurando o Armazenamento:</h4>
+            <ul>
+              <li>Criar um bucket de armazenamento (S3, Azure Blob, MinIO, Backblaze)</li>
+              <li>Configurar permissões para controlar quem pode acessar os arquivos</li>
+              <li>Implementar criptografia em trânsito e em repouso</li>
+              <li>Configurar políticas de ciclo de vida e backups</li>
+              <li>Implementar operações básicas: upload, listagem, exclusão de arquivos</li>
+            </ul>
+            
+            <h4>Criando e Configurando o Banco de Dados:</h4>
+            <ul>
+              <li>Escolher entre banco SQL (MySQL, PostgreSQL) ou NoSQL (MongoDB, Firebase, DynamoDB)</li>
+              <li>Criar tabelas/coleções para armazenar metadados dos arquivos (nome, data, tamanho, link de acesso)</li>
+              <li>Configurar regras de acesso e segurança no banco de dados</li>
+              <li>Implementar operações CRUD no banco de dados (criação, leitura, atualização, exclusão)</li>
+              <li>Configurar estratégias de backup e recuperação</li>
+            </ul>
+            
+            <h4>Integração entre Armazenamento e Banco de Dados:</h4>
+            <ul>
+              <li>Criar uma API REST para permitir consultas aos arquivos armazenados</li>
+              <li>Implementar autenticação e autorização na API</li>
+              <li>Testar a API enviando requisições via Postman ou Insomnia</li>
+              <li>Documentar os endpoints e parâmetros da API</li>
+              <li>Criar uma interface web simples para visualizar os arquivos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="roadmap-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Testes e Validação</h3>
+          <div class="tasks">
+            <h4>Testes do CRUD:</h4>
+            <ul>
+              <li>Testar operações CRUD no banco de dados</li>
+              <li>Testar upload/download de arquivos no armazenamento</li>
+              <li>Validar integridade dos dados entre banco e armazenamento</li>
+              <li>Verificar tempos de resposta e performance</li>
+            </ul>
+            
+            <h4>Testes de Segurança:</h4>
+            <ul>
+              <li>Criar um usuário com permissões limitadas</li>
+              <li>Testar acessos indevidos e validar logs de segurança</li>
+              <li>Verificar funcionamento da criptografia e tokens de acesso</li>
+              <li>Testar recuperação após simulação de falhas</li>
+            </ul>
+            
+            <h4>Desafio Extra:</h4>
+            <ul>
+              <li>Configurar logs e monitoramento de acessos ao armazenamento e banco</li>
+              <li>Implementar análise de métricas para identificar padrões de uso</li>
+              <li>Criar sistema de alertas para comportamentos suspeitos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="roadmap-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Apresentação e Documentação</h3>
+          <div class="tasks">
+            <h4>Relatório Técnico:</h4>
+            <ul>
+              <li>Explicar o provedor escolhido e justificar a arquitetura</li>
+              <li>Documentar a configuração com prints e logs</li>
+              <li>Análise de custos: quanto cada recurso está consumindo no plano gratuito</li>
+              <li>Documentar considerações de segurança e medidas implementadas</li>
+            </ul>
+            
+            <h4>Apresentação Final:</h4>
+            <ul>
+              <li>Demonstração do sistema rodando (vídeo ou ao vivo)</li>
+              <li>Justificativa técnica das decisões</li>
+              <li>Avaliação crítica das ferramentas e serviços utilizados</li>
+              <li>Proposta de melhorias e trabalhos futuros</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recursos Recomendados -->
+    <section class="project-resources">
+      <h2>Recursos Recomendados</h2>
+      
+      <div class="resources-grid">
+        <div class="resource-card">
+          <div class="resource-icon"><i class="fas fa-book"></i></div>
+          <h3>Livros e Artigos</h3>
+          <ul>
+            <li><a href="https://www.amazon.com/Database-Internals-Deep-Distributed-Systems/dp/1492040347" target="_blank">Database Internals: A Deep Dive into How Distributed Systems Work</a></li>
+            <li><a href="https://aws.amazon.com/pt/blogs/aws-brasil/armazenamento-de-objetos-na-nuvem-uma-visao-geral/" target="_blank">Armazenamento de Objetos na Nuvem: Uma Visão Geral</a></li>
+            <li><a href="https://docs.aws.amazon.com/pt_br/AmazonS3/latest/userguide/security-best-practices.html" target="_blank">Melhores Práticas de Segurança para Amazon S3</a></li>
+            <li><a href="https://learn.microsoft.com/pt-br/azure/storage/blobs/storage-blobs-introduction" target="_blank">Introdução ao Armazenamento de Blobs do Azure</a></li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon"><i class="fab fa-youtube"></i></div>
+          <h3>Vídeos e Tutoriais</h3>
+          <ul>
+            <li><a href="https://www.youtube.com/watch?v=HUawjtY-jzs" target="_blank">Introdução ao AWS S3</a></li>
+            <li><a href="https://www.youtube.com/watch?v=wiMiJ0Ig8gA" target="_blank">Configurando um Banco MongoDB Atlas</a></li>
+            <li><a href="https://www.youtube.com/watch?v=xrHha-rXwdA" target="_blank">Criando uma API RESTful com Node.js e Express</a></li>
+            <li><a href="https://www.youtube.com/watch?v=2k8NleFjG7I" target="_blank">Tutorial de Firebase Storage e Firestore</a></li>
+            <li><a href="https://www.youtube.com/watch?v=y8Xx5hqsQt4" target="_blank">Gerenciando Permissões em Bancos SQL na Nuvem</a></li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon"><i class="fas fa-cloud"></i></div>
+          <h3>Provedores Recomendados</h3>
+          <ul>
+            <li><a href="https://aws.amazon.com/pt/s3/" target="_blank">Amazon S3</a> e <a href="https://aws.amazon.com/pt/rds/" target="_blank">Amazon RDS</a></li>
+            <li><a href="https://azure.microsoft.com/pt-br/services/storage/blobs/" target="_blank">Azure Blob Storage</a> e <a href="https://azure.microsoft.com/pt-br/services/postgresql/" target="_blank">Azure Database for PostgreSQL</a></li>
+            <li><a href="https://cloud.google.com/storage" target="_blank">Google Cloud Storage</a> e <a href="https://cloud.google.com/firestore" target="_blank">Firestore</a></li>
+            <li><a href="https://firebase.google.com/docs/storage" target="_blank">Firebase Storage</a> e <a href="https://firebase.google.com/docs/firestore" target="_blank">Firebase Firestore</a></li>
+            <li><a href="https://min.io/" target="_blank">MinIO</a> (alternativa de código aberto para S3)</li>
+            <li><a href="https://www.backblaze.com/b2/cloud-storage.html" target="_blank">Backblaze B2</a> (alternativa econômica para armazenamento)</li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon"><i class="fas fa-tools"></i></div>
+          <h3>Ferramentas Úteis</h3>
+          <ul>
+            <li><a href="https://www.postman.com/" target="_blank">Postman</a> (para testar APIs)</li>
+            <li><a href="https://insomnia.rest/" target="_blank">Insomnia</a> (alternativa ao Postman)</li>
+            <li><a href="https://www.terraform.io/" target="_blank">Terraform</a> (para infraestrutura como código)</li>
+            <li><a href="https://aws.amazon.com/pt/cloudformation/" target="_blank">CloudFormation</a> (alternativa AWS para IaC)</li>
+            <li><a href="https://docs.aws.amazon.com/pt_br/cli/latest/userguide/cli-chap-welcome.html" target="_blank">AWS CLI</a> (para automação de tarefas)</li>
+            <li><a href="https://www.mongodb.com/products/compass" target="_blank">MongoDB Compass</a> (GUI para MongoDB)</li>
+            <li><a href="https://www.pgadmin.org/" target="_blank">pgAdmin</a> (GUI para PostgreSQL)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Critérios de Avaliação -->
+    <section class="project-evaluation">
+      <h2>Critérios de Avaliação</h2>
+      
+      <table class="evaluation-table">
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Descrição</th>
+            <th>Peso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Configuração do Armazenamento</td>
+            <td>O bucket foi criado corretamente, com permissões adequadas? A criptografia foi implementada? O sistema de arquivos funciona apropriadamente?</td>
+            <td>25%</td>
+          </tr>
+          <tr>
+            <td>Implementação do Banco de Dados</td>
+            <td>O banco de dados foi configurado e está operando corretamente? As tabelas/coleções seguem boas práticas? As operações CRUD funcionam adequadamente?</td>
+            <td>25%</td>
+          </tr>
+          <tr>
+            <td>Integração entre os serviços</td>
+            <td>A API REST ou sistema criado consegue acessar e listar arquivos do banco de dados? A autenticação e autorização funcionam corretamente?</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td>Apresentação e Justificativa</td>
+            <td>A equipe conseguiu explicar e demonstrar a solução de forma clara? As escolhas técnicas foram bem justificadas?</td>
+            <td>15%</td>
+          </tr>
+          <tr>
+            <td>Documentação</td>
+            <td>O relatório técnico foi bem estruturado, com prints e análises? A documentação da API está clara e completa?</td>
+            <td>15%</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Entregáveis -->
+    <section class="project-deliverables">
+      <h2>Entregáveis</h2>
+      
+      <div class="deliverables-list">
+        <div class="deliverable-item">
+          <span class="checkmark">✓</span>
+          <p>Código-fonte do sistema ou scripts de configuração</p>
+        </div>
+        <div class="deliverable-item">
+          <span class="checkmark">✓</span>
+          <p>Relatório técnico detalhado com prints e logs</p>
+        </div>
+        <div class="deliverable-item">
+          <span class="checkmark">✓</span>
+          <p>Documentação da API (endpoints, parâmetros, exemplos)</p>
+        </div>
+        <div class="deliverable-item">
+          <span class="checkmark">✓</span>
+          <p>Vídeo ou apresentação ao vivo demonstrando o projeto</p>
+        </div>
+        <div class="deliverable-item">
+          <span class="checkmark">✓</span>
+          <p>Justificativa técnica das escolhas feitas</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Desafios Extras para Insígnia Diamante -->
+    <section class="project-extra">
+      <h2>Desafios Extras (Para Insígnia Diamante)</h2>
+      
+      <div class="extra-challenges">
+        <div class="challenge-item">
+          <span class="challenge-icon">🔥</span>
+          <p>Criar um <strong>painel de administração</strong> para gerenciar usuários e permissões</p>
+        </div>
+        <div class="challenge-item">
+          <span class="challenge-icon">🔥</span>
+          <p><strong>Automatizar a criação do bucket e banco de dados</strong> com Terraform ou CloudFormation</p>
+        </div>
+        <div class="challenge-item">
+          <span class="challenge-icon">🔥</span>
+          <p>Implementar <strong>análise de acessos</strong> para identificar padrões de uso</p>
+        </div>
+        <div class="challenge-item">
+          <span class="challenge-icon">🔥</span>
+          <p>Criar um sistema de <strong>versionamento de arquivos</strong> com histórico de alterações</p>
+        </div>
+        <div class="challenge-item">
+          <span class="challenge-icon">🔥</span>
+          <p>Implementar <strong>busca avançada</strong> nos metadados com indexação e filtros</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Perguntas Frequentes -->
+    <section class="project-faq">
+      <h2>Perguntas Frequentes</h2>
+      
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-button">
+            É possível usar serviços gratuitos para esse projeto?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>Sim, todos os provedores recomendados (AWS, Azure, Google Cloud, Firebase) oferecem camadas gratuitas com limites generosos para estudantes e desenvolvedores. Para armazenamento de objetos, as cotas gratuitas geralmente variam de 5GB a 15GB, mais que suficiente para um projeto acadêmico. Para bancos de dados, há opções como Firestore (com limites de leitura/escrita), MongoDB Atlas (cluster gratuito) e instâncias RDS/MySQL/PostgreSQL com tier gratuito nos principais provedores.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-button">
+            Como garantir a segurança adequada dos dados?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>A segurança dos dados deve ser implementada em múltiplas camadas:</p>
+            <ul>
+              <li><strong>Transporte</strong>: Utilize HTTPS/TLS para comunicação entre clientes e APIs</li>
+              <li><strong>Armazenamento</strong>: Configure criptografia em repouso nos buckets (S3, Blob Storage)</li>
+              <li><strong>Acesso</strong>: Implemente autenticação (JWT, OAuth) e autorização baseada em papéis</li>
+              <li><strong>Princípio do privilégio mínimo</strong>: Cada usuário ou serviço deve ter apenas as permissões necessárias</li>
+              <li><strong>Firewall e regras de acesso</strong>: Restrinja acesso ao banco de dados apenas aos IPs ou serviços necessários</li>
+              <li><strong>Logs e auditoria</strong>: Mantenha registros de todas as operações para análise de segurança</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-button">
+            Qual banco de dados escolher: SQL ou NoSQL?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>A escolha depende do seu caso de uso:</p>
+            <ul>
+              <li><strong>Bancos SQL</strong> (MySQL, PostgreSQL) são ideais para:</li>
+              <ul>
+                <li>Dados estruturados com relações complexas entre entidades</li>
+                <li>Aplicações que necessitam de transações ACID</li>
+                <li>Sistemas que requerem consultas complexas e junções (JOIN)</li>
+                <li>Exemplos: Sistema de inventário, aplicações financeiras</li>
+              </ul>
+              <li><strong>Bancos NoSQL</strong> (MongoDB, Firestore, DynamoDB) são melhores para:</li>
+              <ul>
+                <li>Dados semiestruturados com esquemas flexíveis</li>
+                <li>Aplicações que priorizam escalabilidade horizontal</li>
+                <li>Casos com grandes volumes de leitura/escrita</li>
+                <li>Exemplos: Sistema de armazenamento de arquivos, catálogo de podcasts</li>
+              </ul>
+            </ul>
+            <p>Para projetos que precisam do melhor dos dois mundos, considere uma abordagem híbrida: use um banco SQL para dados transacionais e relacionais, e um NoSQL para metadados, logs e dados não estruturados.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-button">
+            Como estruturar a API REST para este projeto?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>Uma API REST bem estruturada para um sistema de armazenamento e banco de dados deve incluir:</p>
+            <ul>
+              <li><strong>Autenticação</strong>: Endpoints para login/registro e geração de tokens JWT</li>
+              <li><strong>Arquivos</strong>: Endpoints para upload, download, listagem e exclusão</li>
+              <li><strong>Metadados</strong>: Endpoints para buscar e atualizar informações sobre os arquivos</li>
+              <li><strong>Permissões</strong>: Endpoints para gerenciar compartilhamento e visibilidade</li>
+            </ul>
+            <p>Siga boas práticas como versionamento de API (ex: /api/v1/), uso correto de métodos HTTP (GET, POST, PUT, DELETE), códigos de status adequados e documentação clara com Swagger ou similar.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-button">
+            É necessário ter experiência prévia com bancos de dados?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>Não é obrigatório, mas conhecimentos básicos de SQL ou NoSQL serão úteis. Este projeto é uma ótima oportunidade para aprender! Recomendamos:</p>
+            <ul>
+              <li>Comece com tutoriais básicos sobre o banco escolhido</li>
+              <li>Pratique operações CRUD simples antes de implementar funcionalidades complexas</li>
+              <li>Utilize ORMs (como Sequelize, Prisma para SQL) ou ODMs (como Mongoose para MongoDB) para facilitar o trabalho</li>
+              <li>Aproveite as ferramentas visuais (pgAdmin, MongoDB Compass) para explorar e entender os dados</li>
+            </ul>
+            <p>Lembre-se: os bancos de dados gerenciados na nuvem eliminam grande parte da complexidade de instalação e configuração de servidores, permitindo que você foque no desenvolvimento das funcionalidades.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sugestões de Prompts para IAs -->
+    <section class="project-prompts">
+      <h2>Sugestões de Prompts para IAs</h2>
+      
+      <div class="prompts-container">
+        <div class="prompt-card">
+          <h3>Para Escolha de Tecnologias</h3>
+          <div class="prompt-content">
+            <p>"Estou desenvolvendo um sistema de [armazenamento de arquivos/podcast/inventário] na nuvem. Preciso escolher entre bancos SQL e NoSQL para armazenar os metadados. Considerando que preciso [descreva requisitos específicos], quais seriam as vantagens e desvantagens de cada opção? Quais serviços específicos você recomendaria na AWS, Azure ou GCP?"</p>
+          </div>
+        </div>
+        
+        <div class="prompt-card">
+          <h3>Para Configuração de Segurança</h3>
+          <div class="prompt-content">
+            <p>"Estou configurando um bucket S3 (ou similar) para armazenar arquivos de usuários. Quais são as melhores práticas de segurança que devo implementar? Preciso de orientações sobre políticas de acesso, criptografia, CORS e ciclo de vida dos objetos. Como posso garantir que apenas usuários autorizados acessem determinados arquivos?"</p>
+          </div>
+        </div>
+        
+        <div class="prompt-card">
+          <h3>Para Desenvolvimento da API</h3>
+          <div class="prompt-content">
+            <p>"Preciso desenvolver uma API REST para um sistema de armazenamento de arquivos usando [Node.js/Python/Java]. Quais endpoints são essenciais para operações CRUD? Como devo estruturar a autenticação e autorização? Pode fornecer exemplos de código para upload de arquivos para [S3/Azure Blob/etc] e para registro de metadados em [banco escolhido]?"</p>
+          </div>
+        </div>
+        
+        <div class="prompt-card">
+          <h3>Para Infraestrutura como Código</h3>
+          <div class="prompt-content">
+            <p>"Estou querendo automatizar a criação da infraestrutura do meu projeto usando Terraform. Preciso de um script que crie um bucket S3, uma instância RDS PostgreSQL, e configure as políticas de acesso adequadas. Como posso estruturar este script? Quais variáveis devo parametrizar para facilitar reutilização?"</p>
+          </div>
         </div>
       </div>
     </section>
@@ -109,10 +616,12 @@
       const nav = document.querySelector('.nav-links');
       const navLinks = document.querySelectorAll('.nav-links li');
 
+      // Toggle Nav
       burger.addEventListener('click', () => {
         nav.classList.toggle('nav-active');
         burger.classList.toggle('toggle');
         
+        // Animate Links
         navLinks.forEach((link, index) => {
           if (link.style.animation) {
             link.style.animation = '';
@@ -123,9 +632,30 @@
       });
     }
 
+    // Accordion Functionality
+    const initAccordion = () => {
+      const accordionButtons = document.querySelectorAll('.accordion-button');
+      
+      accordionButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const content = button.nextElementSibling;
+          const icon = button.querySelector('.accordion-icon');
+          
+          if (content.style.display === 'block') {
+            content.style.display = 'none';
+            icon.textContent = '+';
+          } else {
+            content.style.display = 'block';
+            icon.textContent = '-';
+          }
+        });
+      });
+    }
+
     // Initialize the page
     document.addEventListener('DOMContentLoaded', () => {
       navSlide();
+      initAccordion();
     });
   </script>
 </body>

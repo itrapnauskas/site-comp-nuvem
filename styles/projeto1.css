@@ -135,12 +135,33 @@ section {
 }
 
 .badge {
-  display: flex;
-  align-items: center;
-  background-color: #f0f8ff;
-  padding: 0.5rem 1rem;
-  border-radius: 50px;
-  border: 2px solid var(--primary-color);
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 0.75em;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.badge-pill {
+  padding-right: 0.6em;
+  padding-left: 0.6em;
+  border-radius: 10rem;
+}
+
+.badge-success {
+  color: #fff;
+  background-color: #28a745;
+}
+
+.badge-info {
+  color: #fff;
+  background-color: #17a2b8;
 }
 
 .badge-icon {
