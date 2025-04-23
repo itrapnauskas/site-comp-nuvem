@@ -18,16 +18,16 @@
   --table-row-hover: #f0f0f0;
   
   /* Badge colors - versão especial */
-  --diamond-color: linear-gradient(135deg, #e6f9ff 0%, #fff 25%, #e6f9ff 50%, #fff 75%, #e6f9ff 100%);
+  --diamond-bg: #f0f9ff;
   --diamond-border: #7fdbff;
-  --gold-color: linear-gradient(135deg, #fff7e6 0%, #ffd700 25%, #fff7e6 50%, #ffd700 75%, #fff7e6 100%);
+  --gold-bg: #fff7e6;
   --gold-border: #ffd700;
-  --silver-color: linear-gradient(135deg, #f5f5f5 0%, #c0c0c0 25%, #f5f5f5 50%, #c0c0c0 75%, #f5f5f5 100%);
+  --silver-bg: #f5f5f5;
   --silver-border: #c0c0c0;
-  --bronze-color: #cd7f32;
-  --bronze-border: #8b4513;
-  --copper-color: #b87333;
-  --copper-border: #8b4513;
+  --bronze-bg: #fff4eb;
+  --bronze-border: #cd7f32;
+  --copper-bg: #fff1e6;
+  --copper-border: #b87333;
 }
 
 * {
@@ -379,65 +379,29 @@ select {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Diamante - Efeito especial com estrelas e brilho */
 .badge.diamond {
-  background: var(--diamond-color);
-  border: 2px solid var(--diamond-border);
-  box-shadow: 0 0 15px rgba(127, 219, 255, 0.3);
-  animation: diamond-sparkle 2s infinite ease-in-out;
-  backdrop-filter: blur(5px);
+  background: var(--diamond-bg);
+  border: 1px solid var(--diamond-border);
 }
 
-.badge.diamond::before {
-  content: '✨';
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 0.8rem;
-  animation: sparkle 1.5s infinite ease-in-out;
-}
-
-.badge.diamond::after {
-  content: '✨';
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 0.8rem;
-  animation: sparkle 1.5s infinite ease-in-out reverse;
-}
-
-/* Ouro - Efeito metálico brilhante */
 .badge.gold {
-  background: var(--gold-color);
+  background: var(--gold-bg);
   border: 1px solid var(--gold-border);
-  background-size: 200% auto;
-  animation: shine 3s linear infinite;
-  text-shadow: 0 0 2px rgba(255, 215, 0, 0.3);
 }
 
-/* Prata - Efeito metálico suave */
 .badge.silver {
-  background: var(--silver-color);
+  background: var(--silver-bg);
   border: 1px solid var(--silver-border);
-  background-size: 200% auto;
-  animation: shine 4s linear infinite;
-  opacity: 0.9;
 }
 
-/* Bronze - Efeito opaco */
 .badge.bronze {
-  background: #f0e4d8;
+  background: var(--bronze-bg);
   border: 1px solid var(--bronze-border);
-  color: var(--text-color);
 }
 
-/* Cobre - Efeito mais opaco ainda */
 .badge.copper {
-  background: #e8d5c9;
+  background: var(--copper-bg);
   border: 1px solid var(--copper-border);
-  color: var(--text-color);
 }
 
 .badge .badge-icon {
@@ -460,22 +424,29 @@ select {
   z-index: 1;
 }
 
-/* Efeito hover especial para Diamante */
+/* Hover effects */
+.badge:hover {
+  transform: translateY(-1px);
+}
+
 .badge.diamond:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(127, 219, 255, 0.5);
+  box-shadow: 0 2px 8px rgba(127, 219, 255, 0.3);
 }
 
-/* Efeito hover para Ouro */
 .badge.gold:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
 }
 
-/* Efeito hover para Prata */
 .badge.silver:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 10px rgba(192, 192, 192, 0.3);
+  box-shadow: 0 2px 8px rgba(192, 192, 192, 0.3);
+}
+
+.badge.bronze:hover {
+  box-shadow: 0 2px 8px rgba(205, 127, 50, 0.3);
+}
+
+.badge.copper:hover {
+  box-shadow: 0 2px 8px rgba(184, 115, 51, 0.3);
 }
 
 /* Tabs para visualização por bloco */
