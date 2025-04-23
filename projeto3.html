@@ -4,6 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projeto 3: Aplicações Serverless - Computação em Nuvem</title>
+  <style>
+    /* Estilos específicos para tabela de insígnias */
+    .project-badges table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+    }
+    
+    .project-badges th, .project-badges td {
+      padding: 0.8rem;
+      border: 1px solid var(--border-color);
+      vertical-align: top;
+    }
+    
+    .project-badges th {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: left;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .project-badges {
+        overflow-x: auto;
+      }
+      
+      .project-badges table {
+        font-size: 0.8rem;
+      }
+      
+      .project-badges th, .project-badges td {
+        padding: 0.6rem;
+      }
+    }
+  </style>
   <link rel="stylesheet" href="styles/projeto1.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -48,10 +83,12 @@
 
     <section class="project-overview">
       <h2>Visão Geral</h2>
-      <p>Este projeto ainda não está disponível. Detalhes completos serão publicados em breve.</p>
+      <p>
+        Neste projeto, você irá desenvolver e implantar aplicações serverless, explorando o conceito de Function as a Service (FaaS) e implementando medidas de segurança para proteger suas APIs. Esta página servirá como guia para você criar um sistema que execute operações sem a necessidade de gerenciar servidores, aproveitando a escalabilidade e economia de custos da computação serverless.
+      </p>
       
       <div class="objectives">
-        <h3>Objetivos Previstos</h3>
+        <h3>Objetivos</h3>
         <ul>
           <li>Compreender o conceito de Serverless Computing e FaaS (Function as a Service)</li>
           <li>Desenvolver e implantar funções serverless em provedores de nuvem</li>
@@ -62,17 +99,536 @@
       </div>
     </section>
 
-    <section class="project-coming-soon">
-      <h2>Projeto em Desenvolvimento</h2>
-      <p>Este projeto será disponibilizado em breve. Continue acompanhando as atualizações do curso para saber mais.</p>
-      <p>Para se preparar para este projeto, você pode estudar conceitos de:</p>
-      <ul>
-        <li>AWS Lambda, Azure Functions ou Google Cloud Functions</li>
-        <li>API Gateway e gerenciamento de APIs</li>
-        <li>Segurança e autorização com JWT, OAuth ou IAM</li>
-        <li>Arquitetura de eventos e mensageria</li>
-        <li>Orquestração de funções serverless (Step Functions, Durable Functions)</li>
-      </ul>
+    <!-- Tabela de Insígnias -->
+    <section class="project-badges">
+      <h2>Insígnias do Projeto</h2>
+      <p>As insígnias abaixo podem ser conquistadas neste projeto, com base nos critérios de avaliação específicos:</p>
+      
+      <table class="evaluation-table">
+        <thead>
+          <tr>
+            <th>Insígnia</th>
+            <th>Nome</th>
+            <th>Área de Conhecimento</th>
+            <th>Descrição</th>
+            <th>Competência Avaliada</th>
+            <th>Critério de Conquista</th>
+            <th>Peso (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: center;">⚡</td>
+            <td><strong>Desenvolvedor Serverless</strong></td>
+            <td>Computação Serverless</td>
+            <td>Criar e configurar uma função serverless em um provedor cloud</td>
+            <td>Criar, testar e monitorar funções sem servidor</td>
+            <td>Criar uma função que recebe dados e processa uma resposta dinâmica</td>
+            <td>15%</td>
+          </tr>
+          <tr>
+            <td style="text-align: center;">🔐</td>
+            <td><strong>Protetor de APIs</strong></td>
+            <td>Segurança e Autenticação</td>
+            <td>Implementar autenticação e autorização em aplicações na nuvem</td>
+            <td>Aplicação de OAuth, JWT ou autenticação baseada em chaves</td>
+            <td>Configurar uma API segura com autenticação e tokens</td>
+            <td>15%</td>
+          </tr>
+          <tr>
+            <td style="text-align: center;">🤖</td>
+            <td><strong>Automatizador Cloud</strong></td>
+            <td>Automação e Eficiência</td>
+            <td>Criar automações baseadas em eventos na nuvem</td>
+            <td>Uso de triggers para ativar serviços automaticamente</td>
+            <td>Demonstrar um fluxo automatizado de execução de serviços</td>
+            <td>10%</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Opções de Projeto (Exemplos de Referência) -->
+    <section class="project-options">
+      <h2>Opções de Projeto</h2>
+      
+      <div class="option-card">
+        <div class="option-header">
+          <h3><i class="fas fa-robot"></i> Opção 1 - Assistente Virtual com Funções Serverless</h3>
+        </div>
+        <div class="option-content">
+          <p><strong>Descrição:</strong> Desenvolver um assistente virtual que responde a perguntas ou executa tarefas simples, utilizando funções serverless para processar as requisições.</p>
+          <p><strong>Conceitos trabalhados:</strong> Funções serverless, integração com APIs externas, processamento de linguagem natural.</p>
+          <p><strong>Diferencial:</strong> Implementar autenticação para usuários, histórico de conversas armazenado em banco de dados, e integração com serviços como OpenAI, Google Cloud AI ou Azure Cognitive Services.</p>
+          <p><strong>Sugestões:</strong> Utilize AWS Lambda, Azure Functions ou Google Cloud Functions para criar endpoints que processam as perguntas dos usuários. Armazene o histórico de conversas em DynamoDB, Firestore ou MongoDB Atlas. Implemente autenticação com Cognito, Auth0 ou Firebase Authentication.</p>
+        </div>
+      </div>
+      
+      <div class="option-card">
+        <div class="option-header">
+          <h3><i class="fas fa-calendar-check"></i> Opção 2 - Sistema de Agendamento Inteligente</h3>
+        </div>
+        <div class="option-content">
+          <p><strong>Descrição:</strong> Criar um sistema que permite aos usuários agendar eventos, consultas ou reuniões, com funções serverless gerenciando a lógica de disponibilidade e notificações.</p>
+          <p><strong>Conceitos trabalhados:</strong> Funções serverless, triggers baseados em tempo, integração com serviços de email.</p>
+          <p><strong>Diferencial:</strong> Implementar um algoritmo que sugere horários disponíveis com base em preferências, enviar lembretes automáticos e sincronizar com calendários externos.</p>
+          <p><strong>Sugestões:</strong> Use AWS Lambda com EventBridge para agendar notificações, ou Azure Functions com Timer Triggers. Armazene os agendamentos em DynamoDB ou Cosmos DB. Integre com serviços de email como SendGrid ou SES para enviar confirmações e lembretes.</p>
+        </div>
+      </div>
+      
+      <div class="option-card">
+        <div class="option-header">
+          <h3><i class="fas fa-chart-line"></i> Opção 3 - Dashboard de Análise de Dados em Tempo Real</h3>
+        </div>
+        <div class="option-content">
+          <p><strong>Descrição:</strong> Desenvolver um dashboard que exibe análises e visualizações de dados em tempo real, utilizando funções serverless para processar e agregar informações.</p>
+          <p><strong>Conceitos trabalhados:</strong> Funções serverless, processamento de eventos em tempo real, visualização de dados.</p>
+          <p><strong>Diferencial:</strong> Implementar alertas baseados em thresholds, filtros dinâmicos e exportação de relatórios personalizados.</p>
+          <p><strong>Sugestões:</strong> Utilize AWS Lambda com Kinesis ou Azure Functions com Event Hubs para processar fluxos de dados. Armazene os dados processados em DynamoDB ou Cosmos DB. Crie visualizações com bibliotecas como Chart.js, D3.js ou Power BI.</p>
+        </div>
+      </div>
+      
+      <div class="option-card">
+        <div class="option-header">
+          <h3><i class="fas fa-shopping-cart"></i> Opção 4 - Sistema de E-commerce Serverless</h3>
+        </div>
+        <div class="option-content">
+          <p><strong>Descrição:</strong> Criar um sistema de e-commerce onde as funções serverless gerenciam o catálogo de produtos, carrinho de compras, processamento de pedidos e notificações.</p>
+          <p><strong>Conceitos trabalhados:</strong> Funções serverless, integração com gateways de pagamento, gerenciamento de inventário.</p>
+          <p><strong>Diferencial:</strong> Implementar um sistema de recomendação baseado em histórico de compras, notificações de estoque baixo e relatórios de vendas.</p>
+          <p><strong>Sugestões:</strong> Use AWS Lambda com API Gateway para criar endpoints RESTful, ou Azure Functions com HTTP Triggers. Armazene dados de produtos e pedidos em DynamoDB ou Cosmos DB. Integre com serviços de pagamento como Stripe ou PayPal.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roteiro de Atividades -->
+    <section class="project-roadmap">
+      <h2>Roteiro de Atividades</h2>
+      
+      <div class="roadmap-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Pesquisa e Planejamento Inicial</h3>
+          <div class="tasks">
+            <h4>Estudo dos conceitos básicos:</h4>
+            <ul>
+              <li>Introdução a Computação Serverless e Function as a Service (FaaS)</li>
+              <li>Comparação entre diferentes provedores (AWS Lambda, Azure Functions, Google Cloud Functions)</li>
+              <li>Entendimento de triggers e eventos que podem acionar funções serverless</li>
+              <li>Conceitos de segurança para APIs e autenticação</li>
+            </ul>
+            
+            <h4>Escolha do provedor:</h4>
+            <ul>
+              <li>Criar uma conta gratuita no provedor escolhido (AWS Free Tier, Azure Free Account, Google Cloud Free Tier)</li>
+              <li>Explorar as ferramentas de desenvolvimento e depuração disponíveis</li>
+              <li>Avaliar os limites e restrições do plano gratuito</li>
+            </ul>
+            
+            <h4>Definir o projeto:</h4>
+            <ul>
+              <li>Escolher entre Assistente Virtual, Sistema de Agendamento, Dashboard de Análise ou E-commerce Serverless</li>
+              <li>Criar um planejamento da arquitetura serverless necessária</li>
+              <li>Definir os fluxos de dados e requisitos de segurança para o projeto</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="roadmap-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Desenvolvimento das Funções Serverless</h3>
+          <div class="tasks">
+            <h4>Criando Funções Básicas:</h4>
+            <ul>
+              <li>Desenvolver funções que respondem a eventos HTTP (GET, POST, PUT, DELETE)</li>
+              <li>Implementar funções que processam dados e retornam respostas formatadas</li>
+              <li>Configurar variáveis de ambiente e parâmetros para as funções</li>
+              <li>Testar as funções localmente antes de implantar</li>
+            </ul>
+            
+            <h4>Integração com Serviços Externos:</h4>
+            <ul>
+              <li>Conectar funções com bancos de dados (DynamoDB, Firestore, Cosmos DB)</li>
+              <li>Integrar com serviços de armazenamento (S3, Blob Storage, Cloud Storage)</li>
+              <li>Utilizar serviços de mensageria (SQS, Event Grid, Pub/Sub)</li>
+              <li>Implementar integrações com APIs de terceiros (pagamentos, notificações, etc.)</li>
+            </ul>
+            
+            <h4>Implementando Autenticação e Segurança:</h4>
+            <ul>
+              <li>Configurar API Gateway ou similar para expor as funções de forma segura</li>
+              <li>Implementar autenticação com JWT, OAuth ou chaves de API</li>
+              <li>Aplicar políticas de acesso e permissões mínimas</li>
+              <li>Configurar CORS e outras medidas de segurança</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="roadmap-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Automação e Orquestração</h3>
+          <div class="tasks">
+            <h4>Configurando Triggers e Eventos:</h4>
+            <ul>
+              <li>Criar funções que são acionadas por eventos específicos (upload de arquivos, mudanças em banco de dados)</li>
+              <li>Implementar funções agendadas que executam tarefas periódicas</li>
+              <li>Configurar webhooks para integração com sistemas externos</li>
+            </ul>
+            
+            <h4>Orquestração de Fluxos de Trabalho:</h4>
+            <ul>
+              <li>Utilizar Step Functions, Durable Functions ou Cloud Functions para orquestrar fluxos complexos</li>
+              <li>Implementar padrões como fan-out/fan-in para processamento paralelo</li>
+              <li>Criar fluxos de trabalho que combinam múltiplas funções</li>
+            </ul>
+            
+            <h4>Monitoramento e Depuração:</h4>
+            <ul>
+              <li>Configurar logs e métricas para monitorar o desempenho das funções</li>
+              <li>Implementar rastreamento de requisições para depuração</li>
+              <li>Criar alertas para falhas ou comportamentos anômalos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="roadmap-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Testes e Validação</h3>
+          <div class="tasks">
+            <h4>Testes de Funcionalidade:</h4>
+            <ul>
+              <li>Testar cada função individualmente com diferentes entradas</li>
+              <li>Validar o comportamento das funções em diferentes cenários</li>
+              <li>Testar a integração entre funções e serviços externos</li>
+            </ul>
+            
+            <h4>Testes de Segurança:</h4>
+            <ul>
+              <li>Verificar a eficácia da autenticação e autorização</li>
+              <li>Testar a proteção contra vulnerabilidades comuns (injeção, XSS, etc.)</li>
+              <li>Validar as políticas de acesso e permissões</li>
+            </ul>
+            
+            <h4>Testes de Carga e Desempenho:</h4>
+            <ul>
+              <li>Simular múltiplas requisições simultâneas para testar a escalabilidade</li>
+              <li>Medir tempos de resposta e latência</li>
+              <li>Analisar o consumo de recursos e custos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="roadmap-step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h3>Apresentação e Documentação</h3>
+          <div class="tasks">
+            <h4>Relatório Técnico:</h4>
+            <ul>
+              <li>Explicar a arquitetura serverless implementada</li>
+              <li>Documentar as funções criadas, seus triggers e integrações</li>
+              <li>Detalhar as medidas de segurança implementadas</li>
+              <li>Analisar os custos e benefícios da abordagem serverless</li>
+            </ul>
+            
+            <h4>Apresentação Final:</h4>
+            <ul>
+              <li>Demonstração do sistema em funcionamento</li>
+              <li>Explicação das escolhas técnicas e desafios enfrentados</li>
+              <li>Discussão sobre possíveis melhorias e expansões futuras</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recursos Recomendados -->
+    <section class="project-resources">
+      <h2>Recursos Recomendados</h2>
+      
+      <div class="resources-grid">
+        <div class="resource-card">
+          <div class="resource-icon"><i class="fas fa-book"></i></div>
+          <h3>Livros e Artigos</h3>
+          <ul>
+            <li><a href="https://www.oreilly.com/library/view/serverless-architectures-on/9781617293794/" target="_blank">Serverless Architectures on AWS</a></li>
+            <li><a href="https://www.oreilly.com/library/view/azure-functions-in/9781492059376/" target="_blank">Azure Functions in Action</a></li>
+            <li><a href="https://cloud.google.com/functions/docs/concepts/overview" target="_blank">Visão Geral do Google Cloud Functions</a></li>
+            <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/welcome.html" target="_blank">Documentação do AWS Lambda</a></li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon"><i class="fab fa-youtube"></i></div>
+          <h3>Vídeos e Tutoriais</h3>
+          <ul>
+            <li><a href="https://www.youtube.com/watch?v=9IYpGzDJLJI" target="_blank">Introdução ao AWS Lambda</a></li>
+            <li><a href="https://www.youtube.com/watch?v=8j8FXaVcZvY" target="_blank">Azure Functions para Iniciantes</a></li>
+            <li><a href="https://www.youtube.com/watch?v=2sp21ZFrQkE" target="_blank">Google Cloud Functions Tutorial</a></li>
+            <li><a href="https://www.youtube.com/watch?v=71cd5XerKss" target="_blank">Serverless Architecture Explained</a></li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon"><i class="fas fa-cloud"></i></div>
+          <h3>Provedores Recomendados</h3>
+          <ul>
+            <li><a href="https://aws.amazon.com/lambda/" target="_blank">AWS Lambda</a> e <a href="https://aws.amazon.com/api-gateway/" target="_blank">API Gateway</a></li>
+            <li><a href="https://azure.microsoft.com/services/functions/" target="_blank">Azure Functions</a> e <a href="https://azure.microsoft.com/services/api-management/" target="_blank">API Management</a></li>
+            <li><a href="https://cloud.google.com/functions" target="_blank">Google Cloud Functions</a> e <a href="https://cloud.google.com/endpoints" target="_blank">Cloud Endpoints</a></li>
+            <li><a href="https://www.netlify.com/products/functions/" target="_blank">Netlify Functions</a> (alternativa mais simples)</li>
+            <li><a href="https://vercel.com/docs/functions" target="_blank">Vercel Serverless Functions</a> (alternativa mais simples)</li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon"><i class="fas fa-tools"></i></div>
+          <h3>Ferramentas Úteis</h3>
+          <ul>
+            <li><a href="https://www.serverless.com/" target="_blank">Serverless Framework</a> (para implantação simplificada)</li>
+            <li><a href="https://www.npmjs.com/package/serverless-offline" target="_blank">Serverless Offline</a> (para desenvolvimento local)</li>
+            <li><a href="https://www.postman.com/" target="_blank">Postman</a> (para testar APIs)</li>
+            <li><a href="https://www.terraform.io/" target="_blank">Terraform</a> (para infraestrutura como código)</li>
+            <li><a href="https://www.datadoghq.com/product/serverless-monitoring/" target="_blank">Datadog Serverless Monitoring</a> (para monitoramento)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Critérios de Avaliação -->
+    <section class="project-evaluation">
+      <h2>Critérios de Avaliação</h2>
+      
+      <table class="evaluation-table">
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Descrição</th>
+            <th>Peso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Funcionalidade das Funções Serverless</td>
+            <td>As funções foram implementadas corretamente e respondem aos eventos conforme esperado?</td>
+            <td>25%</td>
+          </tr>
+          <tr>
+            <td>Implementação de Segurança</td>
+            <td>A autenticação e autorização foram configuradas adequadamente? As APIs estão protegidas contra vulnerabilidades comuns?</td>
+            <td>25%</td>
+          </tr>
+          <tr>
+            <td>Automação e Orquestração</td>
+            <td>As funções estão integradas com triggers e eventos? Existe orquestração para fluxos de trabalho complexos?</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td>Apresentação e Justificativa</td>
+            <td>A equipe conseguiu explicar e demonstrar a solução de forma clara? As escolhas técnicas foram bem justificadas?</td>
+            <td>15%</td>
+          </tr>
+          <tr>
+            <td>Documentação</td>
+            <td>O relatório técnico foi bem estruturado, com detalhes sobre a arquitetura e medidas de segurança?</td>
+            <td>15%</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Entregáveis -->
+    <section class="project-deliverables">
+      <h2>Entregáveis</h2>
+      
+      <div class="deliverables-list">
+        <div class="deliverable-item">
+          <span class="checkmark">✓</span>
+          <p>Código-fonte das funções serverless</p>
+        </div>
+        <div class="deliverable-item">
+          <span class="checkmark">✓</span>
+          <p>Relatório técnico detalhado com arquitetura e diagramas</p>
+        </div>
+        <div class="deliverable-item">
+          <span class="checkmark">✓</span>
+          <p>Documentação da API (endpoints, parâmetros, exemplos)</p>
+        </div>
+        <div class="deliverable-item">
+          <span class="checkmark">✓</span>
+          <p>Vídeo ou apresentação ao vivo demonstrando o projeto</p>
+        </div>
+        <div class="deliverable-item">
+          <span class="checkmark">✓</span>
+          <p>Análise de custos e benefícios da abordagem serverless</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Desafios Extras para Insígnia Diamante -->
+    <section class="project-extra">
+      <h2>Desafios Extras (Para Insígnia Diamante)</h2>
+      
+      <div class="extra-challenges">
+        <div class="challenge-item">
+          <span class="challenge-icon">🔥</span>
+          <p>Implementar um <strong>sistema de recomendação</strong> usando funções serverless e machine learning</p>
+        </div>
+        <div class="challenge-item">
+          <span class="challenge-icon">🔥</span>
+          <p>Criar um <strong>fluxo de trabalho complexo</strong> com orquestração de múltiplas funções</p>
+        </div>
+        <div class="challenge-item">
+          <span class="challenge-icon">🔥</span>
+          <p>Desenvolver um <strong>painel de monitoramento</strong> em tempo real para as funções</p>
+        </div>
+        <div class="challenge-item">
+          <span class="challenge-icon">🔥</span>
+          <p>Implementar <strong>processamento de imagens ou áudio</strong> usando funções serverless</p>
+        </div>
+        <div class="challenge-item">
+          <span class="challenge-icon">🔥</span>
+          <p>Criar um sistema de <strong>chatbot avançado</strong> com integração a serviços de IA</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Perguntas Frequentes -->
+    <section class="project-faq">
+      <h2>Perguntas Frequentes</h2>
+      
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-button">
+            O que é computação serverless e quais são suas vantagens?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>A computação serverless (ou FaaS - Function as a Service) é um modelo de computação em nuvem onde o provedor gerencia dinamicamente a alocação de recursos de máquina. As principais vantagens incluem:</p>
+            <ul>
+              <li><strong>Escalabilidade automática</strong>: As funções escalam automaticamente com base na demanda</li>
+              <li><strong>Economia de custos</strong>: Você paga apenas pelo tempo de execução real, não por servidores ociosos</li>
+              <li><strong>Gerenciamento simplificado</strong>: Não é necessário gerenciar servidores, patches ou atualizações</li>
+              <li><strong>Desenvolvimento mais rápido</strong>: Foco no código da aplicação, não na infraestrutura</li>
+            </ul>
+            <p>As principais desvantagens incluem latência de "cold starts" (quando uma função é executada pela primeira vez após um período de inatividade), limites de tempo de execução e possíveis custos mais altos para cargas de trabalho contínuas.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-button">
+            Qual provedor de funções serverless escolher?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>A escolha depende de vários fatores:</p>
+            <ul>
+              <li><strong>AWS Lambda</strong>: Oferece a maior variedade de integrações com outros serviços AWS, suporte a mais linguagens de programação e a maior comunidade. Ideal se você já usa outros serviços AWS.</li>
+              <li><strong>Azure Functions</strong>: Excelente integração com serviços Microsoft, suporte a .NET nativo e boa para empresas que já usam o ecossistema Microsoft.</li>
+              <li><strong>Google Cloud Functions</strong>: Boa integração com outros serviços Google, suporte a Node.js, Python e Go, e preços competitivos.</li>
+              <li><strong>Alternativas mais simples</strong>: Netlify Functions, Vercel Serverless Functions e Firebase Functions são ótimas para projetos menores ou para quem está começando.</li>
+            </ul>
+            <p>Considere fatores como custos, linguagens de programação suportadas, limites de execução, integrações com outros serviços e experiência da equipe.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-button">
+            Como garantir a segurança em aplicações serverless?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>A segurança em aplicações serverless requer atenção em várias camadas:</p>
+            <ul>
+              <li><strong>Autenticação e Autorização</strong>: Implemente JWT, OAuth ou chaves de API para controlar o acesso</li>
+              <li><strong>Princípio do privilégio mínimo</strong>: Configure IAM roles com permissões mínimas necessárias</li>
+              <li><strong>Validação de entrada</strong>: Sempre valide e sanitize os dados de entrada para prevenir injeção e XSS</li>
+              <li><strong>Configuração segura</strong>: Evite expor informações sensíveis em variáveis de ambiente ou logs</li>
+              <li><strong>Monitoramento</strong>: Configure logs e alertas para detectar comportamentos suspeitos</li>
+              <li><strong>Dependências</strong>: Mantenha as bibliotecas e dependências atualizadas para evitar vulnerabilidades conhecidas</li>
+            </ul>
+            <p>Além disso, considere usar serviços como AWS WAF, Azure Front Door ou Cloudflare para adicionar uma camada extra de proteção.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-button">
+            Como lidar com o "cold start" em funções serverless?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>O "cold start" ocorre quando uma função é executada pela primeira vez após um período de inatividade, causando um atraso na resposta. Para mitigar este problema:</p>
+            <ul>
+              <li><strong>Provisioned Concurrency</strong>: Mantenha um número mínimo de instâncias "quentes" (AWS Lambda, Azure Functions)</li>
+              <li><strong>Warm-up Functions</strong>: Crie funções que são acionadas periodicamente para manter as instâncias ativas</li>
+              <li><strong>Otimização de código</strong>: Reduza o tamanho do pacote de implantação e minimize as dependências</li>
+              <li><strong>Arquitetura híbrida</strong>: Para funções críticas, considere uma abordagem híbrida com containers ou VMs</li>
+              <li><strong>Cache</strong>: Utilize serviços de cache como Redis ou DynamoDB para reduzir a necessidade de inicializações</li>
+            </ul>
+            <p>Para aplicações que não podem tolerar latência, considere usar serviços como AWS Fargate ou Azure Container Instances, que oferecem inicialização mais rápida.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-button">
+            Como monitorar e depurar funções serverless?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>O monitoramento e depuração de funções serverless requer uma abordagem diferente das aplicações tradicionais:</p>
+            <ul>
+              <li><strong>Logs centralizados</strong>: Utilize CloudWatch Logs, Azure Monitor ou Stackdriver para coletar logs de todas as funções</li>
+              <li><strong>Rastreamento distribuído</strong>: Implemente ferramentas como AWS X-Ray, Azure Application Insights ou OpenTelemetry</li>
+              <li><strong>Métricas de desempenho</strong>: Monitore duração, memória utilizada, erros e throttling</li>
+              <li><strong>Testes locais</strong>: Use ferramentas como Serverless Offline, Azure Functions Core Tools ou Firebase Emulators</li>
+              <li><strong>APM (Application Performance Monitoring)</strong>: Considere serviços como Datadog, New Relic ou Dynatrace</li>
+            </ul>
+            <p>Estabeleça alertas para comportamentos anômalos e configure dashboards para visualizar o desempenho das funções em tempo real.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sugestões de Prompts para IAs -->
+    <section class="project-prompts">
+      <h2>Sugestões de Prompts para IAs</h2>
+      
+      <div class="prompts-container">
+        <div class="prompt-card">
+          <h3>Para Escolha de Tecnologias</h3>
+          <div class="prompt-content">
+            <p>"Estou desenvolvendo um [assistente virtual/sistema de agendamento/dashboard/e-commerce] usando funções serverless. Preciso escolher entre AWS Lambda, Azure Functions e Google Cloud Functions. Considerando que preciso [descreva requisitos específicos], quais seriam as vantagens e desvantagens de cada opção? Quais serviços complementares você recomendaria?"</p>
+          </div>
+        </div>
+        
+        <div class="prompt-card">
+          <h3>Para Implementação de Segurança</h3>
+          <div class="prompt-content">
+            <p>"Estou criando uma API serverless que precisa ser segura. Quais são as melhores práticas de segurança para funções serverless? Preciso de orientações sobre autenticação, autorização, validação de entrada e proteção contra vulnerabilidades comuns. Como posso implementar JWT ou OAuth com [AWS Lambda/Azure Functions/Google Cloud Functions]?"</p>
+          </div>
+        </div>
+        
+        <div class="prompt-card">
+          <h3>Para Orquestração de Funções</h3>
+          <div class="prompt-content">
+            <p>"Preciso orquestrar um fluxo de trabalho complexo usando funções serverless. Como posso implementar um padrão fan-out/fan-in com [AWS Step Functions/Azure Durable Functions/Google Cloud Workflows]? Quais são as melhores práticas para coordenar múltiplas funções e lidar com falhas e retentativas?"</p>
+          </div>
+        </div>
+        
+        <div class="prompt-card">
+          <h3>Para Otimização de Desempenho</h3>
+          <div class="prompt-content">
+            <p>"Estou enfrentando problemas de latência com minhas funções serverless devido a cold starts. Quais estratégias posso implementar para reduzir a latência? Como posso otimizar o tamanho do pacote de implantação e o tempo de inicialização das funções? Quais serviços de cache seriam recomendados para [AWS Lambda/Azure Functions/Google Cloud Functions]?"</p>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -105,10 +661,31 @@
       });
     }
 
+    // Accordion Functionality
+    const initAccordion = () => {
+      const accordionButtons = document.querySelectorAll('.accordion-button');
+      
+      accordionButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const content = button.nextElementSibling;
+          const icon = button.querySelector('.accordion-icon');
+          
+          if (content.style.display === 'block') {
+            content.style.display = 'none';
+            icon.textContent = '+';
+          } else {
+            content.style.display = 'block';
+            icon.textContent = '-';
+          }
+        });
+      });
+    }
+
     // Initialize the page
     document.addEventListener('DOMContentLoaded', () => {
       navSlide();
+      initAccordion();
     });
   </script>
 </body>
-</html>
+</html> 
