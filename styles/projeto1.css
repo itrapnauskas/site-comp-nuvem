@@ -159,6 +159,11 @@ section {
   background-color: #28a745;
 }
 
+.badge-secondary {
+  color: #fff;
+  background-color: #353434;
+}
+
 .badge-info {
   color: #fff;
   background-color: #17a2b8;
