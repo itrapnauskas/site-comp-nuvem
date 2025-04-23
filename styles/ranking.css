@@ -17,12 +17,17 @@
   --table-row-even: #f9f9f9;
   --table-row-hover: #f0f0f0;
   
-  /* Badge colors */
-  --diamond-color: #b9f2ff;
-  --gold-color: #ffd700;
-  --silver-color: #c0c0c0;
-  --bronze-color: #cd7f32;
-  --copper-color: #b87333;
+  /* Badge colors - versão mais suave */
+  --diamond-color: #e6f9ff;
+  --diamond-border: #7fdbff;
+  --gold-color: #fff7e6;
+  --gold-border: #ffd700;
+  --silver-color: #f5f5f5;
+  --silver-border: #c0c0c0;
+  --bronze-color: #fff4eb;
+  --bronze-border: #cd7f32;
+  --copper-color: #fff1e6;
+  --copper-border: #b87333;
 }
 
 * {
@@ -372,6 +377,7 @@ select {
   font-size: 0.9rem;
   white-space: nowrap;
   transition: all 0.2s ease;
+  color: var(--text-color);
 }
 
 .badge:hover {
@@ -381,29 +387,27 @@ select {
 
 .badge.diamond {
   background-color: var(--diamond-color);
-  border-color: #8dd;
+  border-color: var(--diamond-border);
 }
 
 .badge.gold {
   background-color: var(--gold-color);
-  border-color: #fd7;
+  border-color: var(--gold-border);
 }
 
 .badge.silver {
   background-color: var(--silver-color);
-  border-color: #aaa;
+  border-color: var(--silver-border);
 }
 
 .badge.bronze {
   background-color: var(--bronze-color);
-  border-color: #b96;
-  color: white;
+  border-color: var(--bronze-border);
 }
 
 .badge.copper {
   background-color: var(--copper-color);
-  border-color: #a65;
-  color: white;
+  border-color: var(--copper-border);
 }
 
 .badge .badge-icon {
