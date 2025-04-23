@@ -355,50 +355,53 @@
       
       <div class="resources-grid">
         <div class="resource-card">
-          <div class="resource-icon"><i class="fas fa-book"></i></div>
-          <h3>Livros e Artigos</h3>
+          <div class="resource-icon"><i class="fas fa-cloud"></i></div>
+          <h3>AWS Lambda</h3>
           <ul>
-            <li><a href="https://www.oreilly.com/library/view/serverless-architectures-on/9781617293794/" target="_blank">Serverless Architectures on AWS</a></li>
-            <li><a href="https://www.oreilly.com/library/view/azure-functions-in/9781492059376/" target="_blank">Azure Functions in Action</a></li>
-            <li><a href="https://cloud.google.com/functions/docs/concepts/overview" target="_blank">Visão Geral do Google Cloud Functions</a></li>
-            <li><a href="https://docs.aws.amazon.com/lambda/latest/dg/welcome.html" target="_blank">Documentação do AWS Lambda</a></li>
-          </ul>
-        </div>
-        
-        <div class="resource-card">
-          <div class="resource-icon"><i class="fab fa-youtube"></i></div>
-          <h3>Vídeos e Tutoriais</h3>
-          <ul>
-            <li><a href="https://www.youtube.com/watch?v=9IYpGzDJLJI" target="_blank">Introdução ao AWS Lambda</a></li>
-            <li><a href="https://www.youtube.com/watch?v=8j8FXaVcZvY" target="_blank">Azure Functions para Iniciantes</a></li>
-            <li><a href="https://www.youtube.com/watch?v=2sp21ZFrQkE" target="_blank">Google Cloud Functions Tutorial</a></li>
-            <li><a href="https://www.youtube.com/watch?v=71cd5XerKss" target="_blank">Serverless Architecture Explained</a></li>
+            <li><a href="https://docs.aws.amazon.com/pt_br/lambda/latest/dg/getting-started.html" target="_blank">Criar sua primeira função do Lambda</a> - Tutorial oficial da AWS</li>
+            <li><a href="https://www.datacamp.com/pt/tutorial/aws-lambda" target="_blank">Primeiros passos com o AWS Lambda</a> - Guia passo a passo da DataCamp</li>
+            <li><a href="https://www.youtube.com/watch?v=jdJV3kUPILg" target="_blank">O que é AWS Lambda?</a> - Vídeo introdutório no YouTube</li>
           </ul>
         </div>
         
         <div class="resource-card">
           <div class="resource-icon"><i class="fas fa-cloud"></i></div>
-          <h3>Provedores Recomendados</h3>
+          <h3>Azure Functions</h3>
           <ul>
-            <li><a href="https://aws.amazon.com/lambda/" target="_blank">AWS Lambda</a> e <a href="https://aws.amazon.com/api-gateway/" target="_blank">API Gateway</a></li>
-            <li><a href="https://azure.microsoft.com/services/functions/" target="_blank">Azure Functions</a> e <a href="https://azure.microsoft.com/services/api-management/" target="_blank">API Management</a></li>
-            <li><a href="https://cloud.google.com/functions" target="_blank">Google Cloud Functions</a> e <a href="https://cloud.google.com/endpoints" target="_blank">Cloud Endpoints</a></li>
-            <li><a href="https://www.netlify.com/products/functions/" target="_blank">Netlify Functions</a> (alternativa mais simples)</li>
-            <li><a href="https://vercel.com/docs/functions" target="_blank">Vercel Serverless Functions</a> (alternativa mais simples)</li>
+            <li><a href="https://learn.microsoft.com/pt-br/azure/azure-functions/functions-get-started" target="_blank">Introdução ao Azure Functions</a> - Tutorial oficial da Microsoft</li>
+            <li><a href="https://www.youtube.com/watch?v=cOiOebQHJ9A" target="_blank">Introdução ao Azure Functions</a> - Vídeo demonstrativo no YouTube</li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon"><i class="fas fa-cloud"></i></div>
+          <h3>Google Cloud Functions</h3>
+          <ul>
+            <li><a href="https://cloud.google.com/functions/docs/create-deploy-gcloud?hl=pt-br" target="_blank">Criar uma função do Cloud usando a CLI do Google Cloud</a> - Tutorial oficial</li>
+            <li><a href="https://codelabs.developers.google.com/codelabs/local-development-with-cloud-functions?hl=pt-br" target="_blank">Desenvolvimento local com o Cloud Functions para Node.js</a> - Codelab do Google</li>
           </ul>
         </div>
         
         <div class="resource-card">
           <div class="resource-icon"><i class="fas fa-tools"></i></div>
-          <h3>Ferramentas Úteis</h3>
+          <h3>Ferramentas e Frameworks</h3>
           <ul>
-            <li><a href="https://www.serverless.com/" target="_blank">Serverless Framework</a> (para implantação simplificada)</li>
-            <li><a href="https://www.npmjs.com/package/serverless-offline" target="_blank">Serverless Offline</a> (para desenvolvimento local)</li>
-            <li><a href="https://www.postman.com/" target="_blank">Postman</a> (para testar APIs)</li>
-            <li><a href="https://www.terraform.io/" target="_blank">Terraform</a> (para infraestrutura como código)</li>
-            <li><a href="https://www.datadoghq.com/product/serverless-monitoring/" target="_blank">Datadog Serverless Monitoring</a> (para monitoramento)</li>
+            <li><a href="https://www.serverless.com/framework/docs/tutorial" target="_blank">Tutorial: Your First Serverless Framework Project</a> - Serverless Framework</li>
+            <li><a href="https://www.youtube.com/playlist?list=PLWQmZVQayUUIgSmOj3GPH2BJcn0hOzIaP" target="_blank">Curso de Terraform com AWS em Português</a> - Playlist no YouTube</li>
+            <li><a href="https://apidog.com/pt/blog/beginners-postman-tutorial-pt/" target="_blank">Tutorial do Postman: Como Usar o Postman para Iniciantes</a> - Guia em português</li>
+            <li><a href="https://www.datadoghq.com/product/serverless-monitoring/" target="_blank">Datadog Serverless Monitoring</a> - Monitoramento de aplicações serverless</li>
           </ul>
         </div>
+      </div>
+      
+      <div class="resource-tips">
+        <h3>Dicas para o Desenvolvimento do Projeto</h3>
+        <ul>
+          <li><strong>Escolha do Provedor:</strong> Considere as necessidades específicas do seu projeto ao escolher entre AWS Lambda, Azure Functions ou Google Cloud Functions.</li>
+          <li><strong>Segurança:</strong> Implemente autenticação e autorização adequadas em suas APIs, utilizando práticas recomendadas como OAuth ou JWT.</li>
+          <li><strong>Automação e Orquestração:</strong> Utilize ferramentas como Serverless Framework e Terraform para automatizar o provisionamento e a implantação de recursos.</li>
+          <li><strong>Monitoramento:</strong> Implemente soluções de monitoramento como Datadog para acompanhar o desempenho e a saúde de suas funções serverless.</li>
+        </ul>
       </div>
     </section>
 
