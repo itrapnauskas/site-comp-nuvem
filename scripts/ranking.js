@@ -72,7 +72,7 @@ const loadData = () => {
 
   return database.ref('alunos').once('value')
     .then(snapshot => {
-      const alunosDataFromDB = snapshot.val();
+      const alunosDataFromDB = snapshot.val()?.alunos;
       if (!alunosDataFromDB) return showEmptyState();
 
       alunosData = Object.entries(alunosDataFromDB).map(([id, aluno]) => ({
