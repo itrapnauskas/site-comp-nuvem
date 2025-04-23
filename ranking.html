@@ -32,7 +32,7 @@
   <main class="container">
     <section class="ranking-header">
       <h1><i class="fas fa-trophy"></i> Ranking de Alunos</h1>
-      <p class="description">Acompanhe o desempenho dos alunos com base nas insígnias conquistadas e avaliações 360°.</p>
+      <p class="description">Acompanhe o desempenho dos alunos com base nas insígnias conquistadas em cada bloco.</p>
     </section>
 
     <section class="ranking-filter">
@@ -46,7 +46,6 @@
             <option value="Bloco2">Bloco 2 - Armazenamento</option>
             <option value="Bloco3">Bloco 3 - Serverless</option>
             <option value="Bloco4">Bloco 4 - Monitoramento</option>
-            <option value="Bloco5">Bloco 5 - Avaliação Individual</option>
           </select>
         </div>
         
@@ -64,11 +63,6 @@
               <option value="Guardião dos Dados">Guardião dos Dados</option>
               <option value="Administrador de Bancos Cloud">Administrador de Bancos Cloud</option>
               <option value="Integrador de APIs e Dados">Integrador de APIs e Dados</option>
-            </optgroup>
-            <optgroup label="Bloco 3">
-              <option value="Desenvolvedor Serverless">Desenvolvedor Serverless</option>
-              <option value="Protetor de APIs">Protetor de APIs</option>
-              <option value="Automatizador Cloud">Automatizador Cloud</option>
             </optgroup>
           </select>
         </div>
@@ -89,7 +83,6 @@
           <label for="filter-grupo">Grupo:</label>
           <select id="filter-grupo">
             <option value="all">Todos os Grupos</option>
-            <!-- Grupos serão carregados dinamicamente -->
           </select>
         </div>
         
@@ -147,8 +140,8 @@
               <th class="position">#</th>
               <th class="aluno">Aluno</th>
               <th class="grupo">Grupo</th>
-              <th class="score">Score</th>
-              <th class="insignias">Insígnias</th>
+              <th class="score">Escore</th>
+              <th class="insignias">Insígnias por Bloco</th>
             </tr>
           </thead>
           <tbody id="ranking-body">
@@ -191,17 +184,17 @@
       grupo: 'all'
     };
 
-    // Category weights (for score calculation)
+    // Pesos das categorias para cálculo de escore
     const categoryWeights = {
       'Diamante': 1.0,
       'Ouro': 0.8,
       'Prata': 0.65,
       'Bronze': 0.5,
       'Cobre': 0.2,
-      '0%': 0
+      'Sem Insígnia': 0
     };
 
-    // Badge emojis
+    // Emojis das insígnias
     const badgeEmojis = {
       'Explorador da Nuvem': '🌥️',
       'Arquiteto Cloud Iniciante': '🛠️',
@@ -212,22 +205,17 @@
       'Integrador de APIs e Dados': '🔗',
       'Desenvolvedor Serverless': '⚡',
       'Protetor de APIs': '🔐',
-      'Automatizador Cloud': '🤖',
-      'Monitor de Desempenho': '📊',
-      'Escalador de Serviços': '📈',
-      'Otimização e Custos': '💡',
-      'Defensor da Nuvem': '🛡️',
-      'Especialista em Cloud Security': '🔑'
+      'Automatizador Cloud': '🤖'
     };
 
-    // Category emojis
+    // Emojis das categorias
     const categoryEmojis = {
       'Diamante': '💎',
       'Ouro': '🏅',
       'Prata': '🥈',
       'Bronze': '🥉',
       'Cobre': '🟫',
-      '0%': '🚫'
+      'Sem Insígnia': '🚫'
     };
 
     // Mobile Navigation Toggle
@@ -250,16 +238,13 @@
       });
     }
 
-    // Load all data from Firebase
+    // Carregar dados do Firebase
     const loadData = () => {
-      // Show loading indicator
       const rankingLoading = document.getElementById('ranking-loading');
       rankingLoading.style.display = 'block';
       
       try {
-        // Usar um timeout para permitir que a conexão seja estabelecida
         setTimeout(() => {
-          // Get alunos data
           database.ref('alunos').once('value')
             .then(snapshot => {
               const data = snapshot.val();
@@ -269,29 +254,24 @@
                 return;
               }
               
-              // Transform data to array and add id
+              // Transformar dados em array e calcular escore
               alunosData = Object.entries(data).map(([id, aluno]) => ({
                 id,
                 ...aluno,
-                score: calculateScore(aluno) // Calculate score for each student
+                score: calculateScore(aluno)
               }));
               
-              // Get grupos data
               return database.ref('grupos').once('value');
             })
             .then(snapshot => {
               if (snapshot) {
                 gruposData = snapshot.val() || {};
-                
-                // Populate grupos filter
                 populateGruposFilter();
-                
-                // Render general ranking
                 renderGeneralRanking();
               }
             })
             .catch(error => {
-              console.error('Error loading data:', error);
+              console.error('Erro ao carregar dados:', error);
               rankingLoading.innerHTML = `
                 <i class="fas fa-exclamation-circle"></i>
                 <p>Erro ao carregar os dados. Por favor, tente novamente mais tarde.</p>
@@ -300,7 +280,7 @@
             });
         }, 1000);
       } catch (error) {
-        console.error('Error in loadData function:', error);
+        console.error('Erro na função loadData:', error);
         rankingLoading.innerHTML = `
           <i class="fas fa-exclamation-circle"></i>
           <p>Erro ao carregar os dados. Por favor, tente novamente mais tarde.</p>
@@ -309,42 +289,28 @@
       }
     }
 
-    // Calculate student score based on insignias
+    // Calcular escore do aluno baseado nas insígnias
     const calculateScore = (aluno) => {
       if (!aluno.insignias) return 0;
       
       let totalScore = 0;
       let totalWeight = 0;
       
-      // Calculate score for each insignia
+      // Calcular escore para cada bloco
       Object.entries(aluno.insignias).forEach(([bloco, insignias]) => {
         if (typeof insignias === 'object') {
-          // Handle new format (with individual categories per insignia)
           Object.entries(insignias).forEach(([insignia, categoria]) => {
-            // Extract category name from the string (e.g., "💎 Diamante" -> "Diamante")
             const categoriaNome = categoria.split(' ')[1] || categoria;
             const weight = categoryWeights[categoriaNome] || 0;
-            
-            // Get insignia weight from insígnias definition (to be implemented)
-            const insigniaWeight = 1; // Default weight for now
-            
-            totalScore += weight * insigniaWeight;
-            totalWeight += insigniaWeight;
+            totalScore += weight;
+            totalWeight += 1;
           });
-        } else {
-          // Handle old format (single category per block)
-          const categoriaNome = insignias.split(' ')[1] || insignias;
-          const weight = categoryWeights[categoriaNome] || 0;
-          
-          totalScore += weight;
-          totalWeight += 1;
         }
       });
       
-      // If there are no weights, return 0
       if (totalWeight === 0) return 0;
       
-      // Return average score (0-100)
+      // Retornar média do escore (0-100)
       return Math.round((totalScore / totalWeight) * 100);
     }
 
@@ -371,23 +337,17 @@
       });
     }
 
-    // Render the general ranking table
+    // Renderizar ranking geral
     const renderGeneralRanking = () => {
-      // Apply current filters
       const filteredAlunos = filterAlunos(alunosData);
-      
-      // Sort by score (descending)
       filteredAlunos.sort((a, b) => b.score - a.score);
       
-      // Clear previous content
       const rankingBody = document.getElementById('ranking-body');
       rankingBody.innerHTML = '';
       
-      // Hide loading indicator
       const rankingLoading = document.getElementById('ranking-loading');
       rankingLoading.style.display = 'none';
       
-      // If no students match filters, show empty state
       if (filteredAlunos.length === 0) {
         rankingBody.innerHTML = `
           <tr>
@@ -402,82 +362,84 @@
         return;
       }
       
-      // Render each student
       filteredAlunos.forEach((aluno, index) => {
         const row = document.createElement('tr');
         
-        // Position Cell
+        // Célula de posição
         const positionCell = document.createElement('td');
         positionCell.classList.add('position-cell');
         if (index < 3) positionCell.classList.add(`top-position`, `top-${index+1}`);
         positionCell.textContent = index + 1;
         
-        // Aluno Cell
+        // Célula do aluno
         const alunoCell = document.createElement('td');
         alunoCell.textContent = aluno.nome || 'Sem nome';
         
-        // Grupo Cell
+        // Célula do grupo
         const grupoCell = document.createElement('td');
         grupoCell.textContent = aluno.grupo || 'Sem grupo';
         
-        // Score Cell
+        // Célula do escore
         const scoreCell = document.createElement('td');
         scoreCell.classList.add('score-cell');
         scoreCell.textContent = aluno.score;
         
-        // Insignias Cell
+        // Célula das insígnias
         const insigniasCell = document.createElement('td');
         
         if (aluno.insignias) {
-          const badgeList = document.createElement('div');
-          badgeList.classList.add('badge-list');
+          const insigniasContainer = document.createElement('div');
+          insigniasContainer.classList.add('insignias-container');
           
-          // Process all insignias
+          // Processar insígnias por bloco
           Object.entries(aluno.insignias).forEach(([bloco, insignias]) => {
+            const blocoDiv = document.createElement('div');
+            blocoDiv.classList.add('bloco-insignias');
+            
+            const blocoTitle = document.createElement('h3');
+            blocoTitle.textContent = bloco;
+            
+            const badgeList = document.createElement('div');
+            badgeList.classList.add('badge-list');
+            
             if (typeof insignias === 'object') {
-              // New format (individual categories per insignia)
               Object.entries(insignias).forEach(([insignia, categoria]) => {
                 createBadgeElement(badgeList, insignia, categoria);
               });
-            } else {
-              // Old format (single category per block)
-              createBadgeElement(badgeList, bloco, insignias);
             }
+            
+            blocoDiv.appendChild(blocoTitle);
+            blocoDiv.appendChild(badgeList);
+            insigniasContainer.appendChild(blocoDiv);
           });
           
-          insigniasCell.appendChild(badgeList);
+          insigniasCell.appendChild(insigniasContainer);
         } else {
           insigniasCell.textContent = 'Nenhuma insígnia';
         }
         
-        // Append cells to row
         row.appendChild(positionCell);
         row.appendChild(alunoCell);
         row.appendChild(grupoCell);
         row.appendChild(scoreCell);
         row.appendChild(insigniasCell);
         
-        // Append row to table
         rankingBody.appendChild(row);
       });
     }
 
-    // Create badge element for insignias
+    // Criar elemento de insígnia
     const createBadgeElement = (container, insignia, categoria) => {
-      // Extract category name from the string (e.g., "💎 Diamante" -> "Diamante")
       const categoriaParts = categoria.split(' ');
       const categoriaName = categoriaParts.length > 1 ? categoriaParts[1] : categoria;
       const categoriaEmoji = categoriaParts.length > 1 ? categoriaParts[0] : categoryEmojis[categoriaName] || '';
       
-      // Get badge emoji
       const insigniaEmoji = badgeEmojis[insignia] || '';
       
-      // Create badge element
       const badge = document.createElement('div');
       badge.classList.add('badge');
       badge.classList.add(categoriaName.toLowerCase());
       
-      // Add badge content
       badge.innerHTML = `
         <span class="badge-icon">${insigniaEmoji}</span>
         <span class="badge-name">${insignia}</span>
