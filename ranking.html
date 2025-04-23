@@ -140,7 +140,6 @@
               <th class="position">#</th>
               <th class="aluno">Aluno</th>
               <th class="grupo">Grupo</th>
-              <th class="score">Escore</th>
               <th class="insignias">Insígnias por Bloco</th>
             </tr>
           </thead>
@@ -351,7 +350,7 @@
       if (filteredAlunos.length === 0) {
         rankingBody.innerHTML = `
           <tr>
-            <td colspan="5">
+            <td colspan="4">
               <div class="empty-state">
                 <i class="fas fa-search"></i>
                 <p>Nenhum aluno encontrado com os filtros selecionados.</p>
@@ -378,11 +377,6 @@
         // Célula do grupo
         const grupoCell = document.createElement('td');
         grupoCell.textContent = aluno.grupo || 'Sem grupo';
-        
-        // Célula do escore
-        const scoreCell = document.createElement('td');
-        scoreCell.classList.add('score-cell');
-        scoreCell.textContent = aluno.score;
         
         // Célula das insígnias
         const insigniasCell = document.createElement('td');
@@ -421,7 +415,6 @@
         row.appendChild(positionCell);
         row.appendChild(alunoCell);
         row.appendChild(grupoCell);
-        row.appendChild(scoreCell);
         row.appendChild(insigniasCell);
         
         rankingBody.appendChild(row);
@@ -543,7 +536,7 @@
       const rankingBody = document.getElementById('ranking-body');
       rankingBody.innerHTML = `
         <tr>
-          <td colspan="5">
+          <td colspan="4">
             <div class="empty-state">
               <i class="fas fa-database"></i>
               <p>Nenhum dado de aluno disponível no momento.</p>

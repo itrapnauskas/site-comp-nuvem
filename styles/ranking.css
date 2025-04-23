@@ -291,13 +291,6 @@ select {
   min-width: 120px;
 }
 
-.ranking-table .score {
-  width: 80px;
-  text-align: center;
-  font-weight: bold;
-  color: var(--primary-color);
-}
-
 .ranking-table .insignias {
   min-width: 400px;
 }
