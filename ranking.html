@@ -297,9 +297,14 @@
       
       // Calcular escore para cada bloco
       Object.entries(aluno.insignias).forEach(([bloco, insignias]) => {
+        // Pular blocos pendentes
+        if (insignias.pendente) return;
+        
         if (typeof insignias === 'object') {
           Object.entries(insignias).forEach(([insignia, categoria]) => {
-            const categoriaNome = categoria.split(' ')[1] || categoria;
+            // Extrair o nome da categoria do formato "emoji Nome"
+            const categoriaParts = categoria.split(' ');
+            const categoriaNome = categoriaParts.length > 1 ? categoriaParts[1] : categoria;
             const weight = categoryWeights[categoriaNome] || 0;
             totalScore += weight;
             totalWeight += 1;
@@ -393,17 +398,28 @@
             const blocoTitle = document.createElement('h3');
             blocoTitle.textContent = bloco;
             
-            const badgeList = document.createElement('div');
-            badgeList.classList.add('badge-list');
-            
-            if (typeof insignias === 'object') {
+            // Verificar se o bloco está pendente
+            if (insignias.pendente) {
+              const pendenteBadge = document.createElement('div');
+              pendenteBadge.classList.add('badge', 'pendente');
+              pendenteBadge.innerHTML = `
+                <span class="badge-icon">⏳</span>
+                <span class="badge-name">Pendente</span>
+              `;
+              blocoDiv.appendChild(blocoTitle);
+              blocoDiv.appendChild(pendenteBadge);
+            } else if (typeof insignias === 'object') {
+              const badgeList = document.createElement('div');
+              badgeList.classList.add('badge-list');
+              
               Object.entries(insignias).forEach(([insignia, categoria]) => {
                 createBadgeElement(badgeList, insignia, categoria);
               });
+              
+              blocoDiv.appendChild(blocoTitle);
+              blocoDiv.appendChild(badgeList);
             }
             
-            blocoDiv.appendChild(blocoTitle);
-            blocoDiv.appendChild(badgeList);
             insigniasContainer.appendChild(blocoDiv);
           });
           
@@ -423,9 +439,10 @@
 
     // Criar elemento de insígnia
     const createBadgeElement = (container, insignia, categoria) => {
+      // Extrair emoji e nome da categoria
       const categoriaParts = categoria.split(' ');
-      const categoriaName = categoriaParts.length > 1 ? categoriaParts[1] : categoria;
-      const categoriaEmoji = categoriaParts.length > 1 ? categoriaParts[0] : categoryEmojis[categoriaName] || '';
+      const categoriaEmoji = categoriaParts[0];
+      const categoriaName = categoriaParts.slice(1).join(' ');
       
       const insigniaEmoji = badgeEmojis[insignia] || '';
       
@@ -465,7 +482,7 @@
         
         // Filter by bloco
         if (currentFilters.bloco !== 'all') {
-          if (!aluno.insignias || !aluno.insignias[currentFilters.bloco]) {
+          if (!aluno.insignias || !aluno.insignias[currentFilters.bloco] || aluno.insignias[currentFilters.bloco].pendente) {
             return false;
           }
         }
@@ -484,8 +501,10 @@
               return;
             }
             
+            // Skip pendente blocks
+            if (insignias.pendente) return;
+            
             if (typeof insignias === 'object') {
-              // New format (individual categories per insignia)
               Object.entries(insignias).forEach(([insignia, categoria]) => {
                 // Check insignia filter
                 if (currentFilters.insignia !== 'all' && insignia !== currentFilters.insignia) {
@@ -494,7 +513,8 @@
                 
                 // Check categoria filter
                 if (currentFilters.categoria !== 'all') {
-                  const categoriaNome = categoria.split(' ')[1] || categoria;
+                  const categoriaParts = categoria.split(' ');
+                  const categoriaNome = categoriaParts.length > 1 ? categoriaParts[1] : categoria;
                   if (categoriaNome !== currentFilters.categoria) {
                     return;
                   }
@@ -502,20 +522,6 @@
                 
                 matchesInsigniaAndCategoria = true;
               });
-            } else {
-              // Old format (single category per block)
-              // Only aplicable for categoria filter
-              if (currentFilters.categoria !== 'all') {
-                const categoriaNome = insignias.split(' ')[1] || insignias;
-                if (categoriaNome === currentFilters.categoria) {
-                  matchesInsigniaAndCategoria = true;
-                }
-              } else {
-                // If only filtering by insignia, old format can't match specific insignias
-                if (currentFilters.insignia === 'all') {
-                  matchesInsigniaAndCategoria = true;
-                }
-              }
             }
           });
           

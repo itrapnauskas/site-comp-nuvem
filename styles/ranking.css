@@ -653,3 +653,23 @@ footer {
   border: 1px solid var(--border-color) !important;
   box-shadow: none !important;
 }
+
+.badge.pendente {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.badge.pendente .badge-icon {
+  font-size: 1.2em;
+}
+
+.badge.pendente .badge-name {
+  font-weight: 500;
+}
