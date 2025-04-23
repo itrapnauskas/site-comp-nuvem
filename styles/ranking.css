@@ -329,13 +329,11 @@ select {
   border-radius: 8px;
   padding: 1rem;
   background-color: var(--light-color);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
+  margin-bottom: 0.5rem;
 }
 
-.bloco-insignias:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+.bloco-insignias:last-child {
+  margin-bottom: 0;
 }
 
 .bloco-insignias h3 {
@@ -364,7 +362,7 @@ select {
   display: inline-flex;
   align-items: center;
   padding: 0.5rem 0.8rem;
-  border-radius: 50px;
+  border-radius: 4px;
   font-size: 0.9rem;
   white-space: nowrap;
   transition: all 0.3s ease;
@@ -372,6 +370,7 @@ select {
   position: relative;
   overflow: hidden;
   background: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .badge:hover {
@@ -379,29 +378,13 @@ select {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.badge.diamond {
-  background: var(--diamond-bg);
-  border: 1px solid var(--diamond-border);
-}
-
-.badge.gold {
-  background: var(--gold-bg);
-  border: 1px solid var(--gold-border);
-}
-
-.badge.silver {
-  background: var(--silver-bg);
-  border: 1px solid var(--silver-border);
-}
-
-.badge.bronze {
-  background: var(--bronze-bg);
-  border: 1px solid var(--bronze-border);
-}
-
+.badge.diamond,
+.badge.gold,
+.badge.silver,
+.badge.bronze,
 .badge.copper {
-  background: var(--copper-bg);
-  border: 1px solid var(--copper-border);
+  background: white;
+  border: 1px solid var(--border-color);
 }
 
 .badge .badge-icon {
@@ -422,31 +405,6 @@ select {
   font-size: 1.1rem;
   position: relative;
   z-index: 1;
-}
-
-/* Hover effects */
-.badge:hover {
-  transform: translateY(-1px);
-}
-
-.badge.diamond:hover {
-  box-shadow: 0 2px 8px rgba(127, 219, 255, 0.3);
-}
-
-.badge.gold:hover {
-  box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
-}
-
-.badge.silver:hover {
-  box-shadow: 0 2px 8px rgba(192, 192, 192, 0.3);
-}
-
-.badge.bronze:hover {
-  box-shadow: 0 2px 8px rgba(205, 127, 50, 0.3);
-}
-
-.badge.copper:hover {
-  box-shadow: 0 2px 8px rgba(184, 115, 51, 0.3);
 }
 
 /* Tabs para visualização por bloco */
@@ -686,4 +644,12 @@ footer {
     background-size: 100%;
     opacity: 0.8;
   }
+}
+
+/* Remove qualquer estilo específico que possa estar causando o destaque */
+.badge[class*="Seguranca"],
+.badge[class*="seguranca"] {
+  background: white !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: none !important;
 }
