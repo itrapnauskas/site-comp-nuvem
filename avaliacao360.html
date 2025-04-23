@@ -135,139 +135,8 @@
       </div>
     </section>
 
-
-    <!-- Formulário será exibido quando uma avaliação for selecionada -->
-    <section id="evaluation-form-section" class="evaluation-form-section" style="display: none;">
-      <h2>Formulário de Avaliação</h2>
-      <div class="form-container">
-        <form id="evaluation-form">
-          <div class="form-header">
-            <h3 id="form-project-title">Projeto: [Nome do Projeto]</h3>
-            <p id="form-group-name">Grupo: [Nome do Grupo]</p>
-          </div>
-          
-          <div class="form-section">
-            <h4>1. Autoavaliação</h4>
-            <div class="form-group">
-              <label for="self-collaboration">Colaboração:</label>
-              <div class="rating-container">
-                <div class="rating">
-                  <input type="radio" id="self-collaboration-5" name="self-collaboration" value="5">
-                  <label for="self-collaboration-5">5</label>
-                  <input type="radio" id="self-collaboration-4" name="self-collaboration" value="4">
-                  <label for="self-collaboration-4">4</label>
-                  <input type="radio" id="self-collaboration-3" name="self-collaboration" value="3">
-                  <label for="self-collaboration-3">3</label>
-                  <input type="radio" id="self-collaboration-2" name="self-collaboration" value="2">
-                  <label for="self-collaboration-2">2</label>
-                  <input type="radio" id="self-collaboration-1" name="self-collaboration" value="1">
-                  <label for="self-collaboration-1">1</label>
-                </div>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label for="self-engagement">Engajamento:</label>
-              <div class="rating-container">
-                <div class="rating">
-                  <input type="radio" id="self-engagement-5" name="self-engagement" value="5">
-                  <label for="self-engagement-5">5</label>
-                  <input type="radio" id="self-engagement-4" name="self-engagement" value="4">
-                  <label for="self-engagement-4">4</label>
-                  <input type="radio" id="self-engagement-3" name="self-engagement" value="3">
-                  <label for="self-engagement-3">3</label>
-                  <input type="radio" id="self-engagement-2" name="self-engagement" value="2">
-                  <label for="self-engagement-2">2</label>
-                  <input type="radio" id="self-engagement-1" name="self-engagement" value="1">
-                  <label for="self-engagement-1">1</label>
-                </div>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label for="self-responsibility">Responsabilidade:</label>
-              <div class="rating-container">
-                <div class="rating">
-                  <input type="radio" id="self-responsibility-5" name="self-responsibility" value="5">
-                  <label for="self-responsibility-5">5</label>
-                  <input type="radio" id="self-responsibility-4" name="self-responsibility" value="4">
-                  <label for="self-responsibility-4">4</label>
-                  <input type="radio" id="self-responsibility-3" name="self-responsibility" value="3">
-                  <label for="self-responsibility-3">3</label>
-                  <input type="radio" id="self-responsibility-2" name="self-responsibility" value="2">
-                  <label for="self-responsibility-2">2</label>
-                  <input type="radio" id="self-responsibility-1" name="self-responsibility" value="1">
-                  <label for="self-responsibility-1">1</label>
-                </div>
-              </div>
-            </div>
-            
-            <div class="form-group">
-              <label for="self-technical">Qualidade Técnica:</label>
-              <div class="rating-container">
-                <div class="rating">
-                  <input type="radio" id="self-technical-5" name="self-technical" value="5">
-                  <label for="self-technical-5">5</label>
-                  <input type="radio" id="self-technical-4" name="self-technical" value="4">
-                  <label for="self-technical-4">4</label>
-                  <input type="radio" id="self-technical-3" name="self-technical" value="3">
-                  <label for="self-technical-3">3</label>
-                  <input type="radio" id="self-technical-2" name="self-technical" value="2">
-                  <label for="self-technical-2">2</label>
-                  <input type="radio" id="self-technical-1" name="self-technical" value="1">
-                  <label for="self-technical-1">1</label>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="self-comments">Comentários sobre sua própria participação:</label>
-              <textarea id="self-comments" name="self-comments" rows="3" placeholder="Descreva suas principais contribuições e desafios enfrentados..."></textarea>
-            </div>
-          </div>
-          
-          <div class="form-section" id="peer-evaluation-container">
-            <h4>2. Avaliação dos Colegas</h4>
-            <p class="peer-note">As avaliações são anônimas. Avalie cada colega de grupo com honestidade e construtivamente.</p>
-            
-            <!-- Seções de avaliação de colegas serão geradas dinamicamente pelo JavaScript -->
-            <div id="peer-evaluations">
-              <!-- Um exemplo para mostrar a estrutura -->
-              <div class="peer-evaluation" data-peer-id="exemplo">
-                <h5>Colega: Exemplo</h5>
-                
-                <div class="form-group">
-                  <label>Colaboração:</label>
-                  <div class="rating-container">
-                    <div class="rating">
-                      <input type="radio" id="peer-exemplo-collaboration-5" name="peer-exemplo-collaboration" value="5">
-                      <label for="peer-exemplo-collaboration-5">5</label>
-                      <input type="radio" id="peer-exemplo-collaboration-4" name="peer-exemplo-collaboration" value="4">
-                      <label for="peer-exemplo-collaboration-4">4</label>
-                      <input type="radio" id="peer-exemplo-collaboration-3" name="peer-exemplo-collaboration" value="3">
-                      <label for="peer-exemplo-collaboration-3">3</label>
-                      <input type="radio" id="peer-exemplo-collaboration-2" name="peer-exemplo-collaboration" value="2">
-                      <label for="peer-exemplo-collaboration-2">2</label>
-                      <input type="radio" id="peer-exemplo-collaboration-1" name="peer-exemplo-collaboration" value="1">
-                      <label for="peer-exemplo-collaboration-1">1</label>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="form-group">
-                  <label>Comentários sobre este colega:</label>
-                  <textarea name="peer-exemplo-comments" rows="2" placeholder="Descreva os pontos fortes e áreas de melhoria..."></textarea>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="form-actions">
-            <button type="submit" class="btn-submit">Enviar Avaliação</button>
-            <button type="button" class="btn-cancel">Cancelar</button>
-          </div>
-        </form>
-      </div>
+    <section id="avaliacao-container" class="evaluation-form-section" style="display: none;">
+      <!-- Conteúdo carregado dinamicamente pelo JavaScript -->
     </section>
 
     <section class="evaluation-faq">
@@ -323,6 +192,34 @@
   </footer>
 
   <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+
+    if (!token) {
+      document.getElementById('avaliacao-container').innerHTML = '<p>Token inválido.</p>';
+    } else {
+      // Chamar a função verify-evaluation-token para verificar o token
+      fetch('/.netlify/functions/verify-evaluation-token?token=' + token)
+        .then(response => response.json())
+        .then(data => {
+          if (data.email) {
+            // Renderizar o formulário de avaliação com os colegas do grupo
+            renderizarFormularioAvaliacao(data.email);
+          } else {
+            document.getElementById('avaliacao-container').innerHTML = '<p>Token inválido ou expirado.</p>';
+          }
+        })
+        .catch(error => {
+          console.error('Erro ao verificar token:', error);
+          document.getElementById('avaliacao-container').innerHTML = '<p>Erro ao verificar token.</p>';
+        });
+    }
+
+    async function renderizarFormularioAvaliacao(email) {
+      // Implementar a lógica para buscar os colegas do grupo e renderizar o formulário de avaliação
+      // ...
+    }
+
     // Firebase Configuration
     const firebaseConfig = {
       apiKey: "AIzaSyDH9hUEuMlsbPyq5rO5zldBnNQOX26bbG4",
