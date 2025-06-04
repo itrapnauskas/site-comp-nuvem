@@ -4,6 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projeto 4: Monitoramento e Otimização - Computação em Nuvem</title>
+  <style>
+    /* Estilos específicos para tabela de insígnias */
+    .project-badges table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+    }
+    
+    .project-badges th, .project-badges td {
+      padding: 0.8rem;
+      border: 1px solid var(--border-color);
+      vertical-align: top;
+    }
+    
+    .project-badges th {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: left;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .project-badges {
+        overflow-x: auto;
+      }
+      
+      .project-badges table {
+        font-size: 0.8rem;
+      }
+      
+      .project-badges th, .project-badges td {
+        padding: 0.6rem;
+      }
+    }
+  </style>
   <link rel="stylesheet" href="styles/projeto1.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -48,31 +83,474 @@
 
     <section class="project-overview">
       <h2>Visão Geral</h2>
-      <p>Este projeto ainda não está disponível. Detalhes completos serão publicados em breve.</p>
+      <p>
+        Neste projeto, você mergulhará no universo do <strong>monitoramento, da distribuição de tráfego e das boas práticas</strong> em computação em nuvem. O foco será em configurar sistemas robustos de monitoramento e logging para identificar falhas, otimizar a performance, configurar escalabilidade automática, implementar balanceamento de carga e aplicar estratégias eficazes para a otimização de custos e segurança. Esta página é o seu ponto de partida para explorar, experimentar e dominar a arte de manter aplicações na nuvem eficientes, resilientes e econômicas.
+      </p>
       
       <div class="objectives">
-        <h3>Objetivos Previstos</h3>
+        <h3>Objetivos</h3>
         <ul>
-          <li>Implementar ferramentas de observabilidade (logs, métricas e traces)</li>
-          <li>Configurar dashboards e alertas para monitoramento de aplicações</li>
-          <li>Utilizar técnicas de auto-scaling e balanceamento de carga</li>
-          <li>Otimizar custos em ambientes de nuvem</li>
-          <li>Aplicar boas práticas de DevOps na infraestrutura como código</li>
+          <li>Configurar <strong>monitoramento e logging</strong> para identificar falhas e otimizar performance (ex.: AWS CloudWatch, Azure Monitor, Grafana, Prometheus).</li>
+          <li>Criar <strong>alertas</strong> para monitorar o uso de recursos e comportamento anômalo.</li>
+          <li>Configurar <strong>escalabilidade automática</strong> para serviços na nuvem (Auto Scaling, Kubernetes, AWS Fargate, Azure Scale Sets).</li>
+          <li>Implementar <strong>balanceamento de carga</strong> para distribuir tráfego entre múltiplas instâncias.</li>
+          <li>Aplicar <strong>boas práticas de otimização de custos, segurança e governança</strong> em ambientes cloud.</li>
         </ul>
       </div>
     </section>
 
-    <section class="project-coming-soon">
-      <h2>Projeto em Desenvolvimento</h2>
-      <p>Este projeto será disponibilizado em breve. Continue acompanhando as atualizações do curso para saber mais.</p>
-      <p>Para se preparar para este projeto, você pode estudar conceitos de:</p>
-      <ul>
-        <li>Ferramentas de monitoramento (CloudWatch, Azure Monitor, Stackdriver)</li>
-        <li>Auto-scaling e grupos de disponibilidade</li>
-        <li>Balanceamento de carga e distribuição de tráfego</li>
-        <li>Gestão e otimização de custos na nuvem</li>
-        <li>Infraestrutura como código e DevOps</li>
-      </ul>
+    <!-- Tabela de Insígnias -->
+    <section class="project-badges">
+      <h2>Insígnias do Projeto</h2>
+      <p>As insígnias abaixo podem ser conquistadas neste projeto, com base nos critérios de avaliação específicos:</p>
+      
+      <table class="evaluation-table">
+        <thead>
+          <tr>
+            <th>Insígnia</th>
+            <th>Nome da Insígnia</th>
+            <th>Área de Conhecimento</th>
+            <th>Descrição</th>
+            <th>Competência Avaliada</th>
+            <th>Critério de Conquista</th>
+            <th>Peso (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align: center;">📊</td>
+            <td><strong>Monitor de Desempenho</strong></td>
+            <td>Observabilidade e Monitoramento</td>
+            <td>Configurar logs e métricas de performance para uma aplicação na nuvem.</td>
+            <td>Uso de ferramentas de monitoramento (ex.: CloudWatch, Grafana, Prometheus).</td>
+            <td>Criar um painel de métricas e configurar alertas de desempenho.</td>
+            <td>10%</td>
+          </tr>
+          <tr>
+            <td style="text-align: center;">📈</td>
+            <td><strong>Escalador de Serviços</strong></td>
+            <td>Auto Scaling e Otimização</td>
+            <td>Implementar estratégias de escalabilidade para aumentar a eficiência.</td>
+            <td>Uso de balanceadores de carga e escalabilidade automática.</td>
+            <td>Demonstrar uma aplicação escalável configurada corretamente.</td>
+            <td>15%</td>
+          </tr>
+          <tr>
+            <td style="text-align: center;">💡</td>
+            <td><strong>Otimização e Custos</strong></td>
+            <td>Governança e Performance</td>
+            <td>Aplicar boas práticas para reduzir custos e melhorar eficiência na nuvem.</td>
+            <td>Aplicação de técnicas de redução de custos sem perder qualidade de serviço.</td>
+            <td>Criar um relatório de otimização baseado em logs de uso real.</td>
+            <td>10%</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Opções de Projeto -->
+    <section class="project-options">
+      <h2>Opções de Projeto</h2>
+      
+      <div class="option-card">
+        <div class="option-header">
+          <h3><i class="fas fa-video"></i> Opção 1 - Dashboard de Monitoramento para Streamers e Criadores de Conteúdo</h3>
+        </div>
+        <div class="option-content">
+          <p><strong>Descrição:</strong> Criar um sistema de monitoramento em tempo real para analisar a estabilidade de transmissão de streamers (YouTube, Twitch), identificando queda de FPS, uso de CPU/RAM e outros indicadores de performance.</p>
+          <p><strong>Conceitos trabalhados:</strong> Monitoramento de métricas (Grafana, Prometheus, CloudWatch), alertas de desempenho, logs de erros, visualização de dados.</p>
+          <p><strong>Diferencial:</strong> Criar um bot que envia alertas via Telegram ou Discord quando há instabilidade detectada.</p>
+          <p><strong>Sugestões:</strong> Utilize Grafana para dashboards customizáveis, Prometheus para coleta de métricas ou serviços nativos da nuvem como AWS CloudWatch ou Azure Monitor. Considere agentes de monitoramento instalados na máquina do streamer ou APIs dos serviços de streaming.</p>
+        </div>
+      </div>
+      
+      <div class="option-card">
+        <div class="option-header">
+          <h3><i class="fas fa-newspaper"></i> Opção 2 - Balanceamento de Carga para um Site de Notícias em Tempo Real</h3>
+        </div>
+        <div class="option-content">
+          <p><strong>Descrição:</strong> Criar uma infraestrutura escalável para um site que recebe picos de tráfego (ex.: notícias virais, eventos esportivos), garantindo alta disponibilidade e performance.</p>
+          <p><strong>Conceitos trabalhados:</strong> Load Balancer (AWS ALB, Azure Load Balancer, Nginx, HAProxy), Auto Scaling, análise de logs para otimizar recursos, testes de carga.</p>
+          <p><strong>Diferencial:</strong> Testar o impacto do Auto Scaling gerando tráfego artificial com ferramentas como K6, Apache JMeter ou Artillery, e documentar a resposta do sistema.</p>
+          <p><strong>Sugestões:</strong> Configure um grupo de autoescalonamento com instâncias de servidores web (ex: Nginx, Apache) e um balanceador de carga para distribuir as requisições. Utilize ferramentas de teste de carga para simular acessos e validar a eficácia da escalabilidade.</p>
+        </div>
+      </div>
+      
+      <div class="option-card">
+        <div class="option-header">
+          <h3><i class="fas fa-chart-line"></i> Opção 3 - Monitoramento e Otimização de Custos para uma Startup Fictícia</h3>
+        </div>
+        <div class="option-content">
+          <p><strong>Descrição:</strong> Criar um painel de análise de custos na nuvem, identificando onde os recursos estão sendo mal utilizados, sugerindo otimizações e projetando economias.</p>
+          <p><strong>Conceitos trabalhados:</strong> Ferramentas de monitoramento de custos (AWS Cost Explorer, Azure Cost Management, GCP Billing), análise de logs de utilização, otimização de instâncias (right-sizing, instâncias reservadas/spot), governança de custos.</p>
+          <p><strong>Diferencial:</strong> Gerar um relatório comparando diferentes opções de otimização (ex.: troca de instâncias EC2 por Fargate, uso de instâncias spot, otimização de armazenamento S3) e o impacto financeiro de cada uma.</p>
+          <p><strong>Sugestões:</strong> Explore as ferramentas de gestão de custos do seu provedor de nuvem. Crie orçamentos, alertas de custo e analise relatórios de utilização para identificar oportunidades de economia. Considere o uso de tags para rastrear custos por projeto ou departamento.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roteiro de Atividades -->
+    <section class="project-roadmap">
+      <h2>Roteiro de Atividades</h2>
+      
+      <div class="roadmap-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Pesquisa e Planejamento Inicial</h3>
+          <div class="tasks">
+            <h4>Estudo dos conceitos básicos:</h4>
+            <ul>
+              <li>Introdução ao monitoramento (métricas, logs, traces) e logging na nuvem.</li>
+              <li>Ferramentas de monitoramento e visualização de métricas (AWS CloudWatch, Azure Monitor, Grafana, Prometheus, Kibana).</li>
+              <li>Fundamentos de escalabilidade (vertical vs. horizontal, Auto Scaling, Kubernetes) e Balanceamento de Carga.</li>
+              <li>Otimização de custos (right-sizing, instâncias spot/reservadas, serverless) e boas práticas de governança na nuvem.</li>
+            </ul>
+            
+            <h4>Escolha do provedor e ferramentas:</h4>
+            <ul>
+              <li>Utilizar contas gratuitas (AWS Free Tier, GCP Free Tier, Azure Sandbox) ou ambientes OpenStack.</li>
+              <li>Comparar as funcionalidades de ferramentas como CloudWatch, Grafana, Prometheus, ELK Stack.</li>
+            </ul>
+            
+            <h4>Definir o projeto:</h4>
+            <ul>
+              <li>Escolher uma das opções de projeto ou definir uma própria alinhada aos objetivos.</li>
+              <li>Criar um planejamento do sistema de monitoramento, métricas chave a serem coletadas, tipos de alertas necessários e estratégias de otimização a serem exploradas.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="roadmap-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Implementação do Monitoramento, Balanceamento e Otimização</h3>
+          <div class="tasks">
+            <h4>Configuração do Monitoramento e Logging:</h4>
+            <ul>
+              <li>Criar dashboards em Grafana, AWS CloudWatch, Azure Monitor ou Prometheus para visualizar métricas essenciais (CPU, RAM, tráfego de rede, latência, erros).</li>
+              <li>Implementar logs estruturados na aplicação e configurar ferramentas para coletar, agregar e analisar erros e falhas (ex: CloudWatch Logs, Azure Log Analytics, ELK Stack).</li>
+              <li>Criar alertas automáticos para notificar sobre anomalias no desempenho, erros críticos ou limites de recursos atingidos.</li>
+            </ul>
+            
+            <h4>Configuração de Balanceamento de Carga e Auto Scaling:</h4>
+            <ul>
+              <li>Configurar um Load Balancer (ex: AWS Application Load Balancer, Azure Load Balancer, Nginx, HAProxy, Cloudflare Load Balancing).</li>
+              <li>Implementar grupos de Auto Scaling para aumentar ou diminuir o número de instâncias automaticamente conforme a demanda (carga de CPU, número de requisições).</li>
+              <li>Testar a resiliência e a capacidade de resposta da aplicação sob picos de tráfego simulados com ferramentas como K6, Apache JMeter ou Artillery.</li>
+            </ul>
+            
+            <h4>Otimização de Custos e Segurança:</h4>
+            <ul>
+              <li>Analisar os custos de execução da aplicação e identificar oportunidades de otimização (ex: migração para instâncias menores ou mais eficientes, uso de instâncias spot, otimização de queries em bancos de dados, políticas de ciclo de vida para armazenamento).</li>
+              <li>Implementar medidas de segurança relevantes para a infraestrutura monitorada, como configuração de WAF (Web Application Firewall) junto ao balanceador de carga, grupos de segurança/NSGs restritivos e auditoria de logs de acesso.</li>
+              <li><strong>Desafio extra:</strong> Criar uma automação (ex: script Lambda, Azure Function) para desligar/redimensionar serviços não utilizados fora do horário de pico para economizar custos.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="roadmap-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Testes e Validação</h3>
+          <div class="tasks">
+            <h4>Testes de monitoramento e log:</h4>
+            <ul>
+              <li>Gerar carga na aplicação e observar os dashboards de monitoramento para verificar se as métricas são coletadas e exibidas corretamente.</li>
+              <li>Simular falhas na aplicação (ex: introduzir erros no código, parar um serviço) e verificar se os logs capturam os detalhes e se os alertas são disparados.</li>
+            </ul>
+            
+            <h4>Testes de escalabilidade e balanceamento:</h4>
+            <ul>
+              <li>Verificar se o balanceador de carga distribui o tráfego corretamente entre as instâncias.</li>
+              <li>Aumentar a carga gradualmente e observar se o Auto Scaling adiciona novas instâncias conforme configurado e as remove quando a carga diminui.</li>
+              <li>Analisar os dados gerados pelos testes de carga e propor melhorias para a performance e a otimização de custos da aplicação.</li>
+            </ul>
+            
+            <h4>Desafio Extra:</h4>
+            <ul>
+              <li>Criar um simulador de falhas (Chaos Engineering light) para testar como o sistema responde a eventos inesperados (ex: queda de uma instância, latência elevada em um serviço dependente) e verificar se os mecanismos de monitoramento e recuperação funcionam.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <div class="roadmap-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Apresentação e Documentação</h3>
+          <div class="tasks">
+            <h4>Relatório Técnico:</h4>
+            <ul>
+              <li>Explicar a arquitetura implementada, as ferramentas de monitoramento e otimização utilizadas, e justificar as escolhas.</li>
+              <li>Demonstrar os gráficos de monitoramento, exemplos de logs relevantes, configuração dos alertas e os resultados dos testes de carga.</li>
+              <li>Apresentar uma análise de custos (antes e depois das otimizações, se aplicável) e as sugestões de otimização implementadas ou propostas.</li>
+            </ul>
+            
+            <h4>Apresentação Final:</h4>
+            <ul>
+              <li>Apresentar os insights gerados pelo sistema de monitoramento e os ajustes feitos para melhorar a performance, a resiliência e reduzir custos.</li>
+              <li>Explicar como a escalabilidade e o balanceamento de carga foram implementados e qual foi o impacto observado nos testes.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recursos Recomendados -->
+    <section class="project-resources">
+      <h2>Recursos Recomendados</h2>
+      
+      <div class="resources-grid">
+        <div class="resource-card">
+          <div class="resource-icon"><i class="fas fa-book"></i></div>
+          <h3>Livros e Artigos</h3>
+          <ul>
+            <li><a href="https://www.amazon.com/Site-Reliability-Engineering-Production-Systems/dp/149192912X" target="_blank">Site Reliability Engineering: How Google Runs Production Systems</a></li>
+            <li><a href="https://www.amazon.com/Phoenix-Project-DevOps-Helping-Business/dp/0988262592" target="_blank">The Phoenix Project: A Novel About IT, DevOps, and Helping Your Business Win</a></li>
+            <li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html" target="_blank">Documentação oficial de AWS CloudWatch</a></li>
+            <li><a href="https://docs.microsoft.com/en-us/azure/azure-monitor/overview" target="_blank">Documentação oficial de Azure Monitor</a></li>
+            <li><a href="https://cloud.google.com/monitoring" target="_blank">Documentação oficial de Google Cloud Monitoring</a></li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon"><i class="fab fa-youtube"></i></div>
+          <h3>Vídeos e Tutoriais</h3>
+          <ul>
+            <li><a href="https://www.youtube.com/watch?v=jdJV3kUPILg" target="_blank">Grafana Loki Prometheus Monitoring</a></li>
+            <li><a href="https://www.youtube.com/watch?v=HUawjtY-jzs" target="_blank">AWS CloudWatch Tutorial</a></li>
+            <li><a href="https://www.youtube.com/watch?v=wiMiJ0Ig8gA" target="_blank">Azure Monitor Tutorial</a></li>
+            <li><a href="https://www.youtube.com/watch?v=QAbqJzd0PEE" target="_blank">Load Balancers e Auto Scaling Groups</a></li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon"><i class="fas fa-cloud"></i></div>
+          <h3>Provedores Recomendados</h3>
+          <ul>
+            <li><strong>Monitoramento:</strong> AWS CloudWatch, Azure Monitor, Google Cloud's Operations Suite, Prometheus, Grafana, Datadog, New Relic.</li>
+            <li><strong>Logging:</strong> AWS CloudWatch Logs, Azure Log Analytics, Elasticsearch (ELK Stack), Splunk, Grafana Loki.</li>
+            <li><strong>Balanceamento de Carga:</strong> AWS (ALB, NLB, GLB), Azure Load Balancer, Google Cloud Load Balancing, Nginx, HAProxy, Cloudflare.</li>
+            <li><strong>Gestão de Custos:</strong> AWS Cost Explorer, Azure Cost Management and Billing, Google Cloud Billing.</li>
+          </ul>
+        </div>
+        
+        <div class="resource-card">
+          <div class="resource-icon"><i class="fas fa-tools"></i></div>
+          <h3>Ferramentas Úteis</h3>
+          <ul>
+            <li><strong>Monitoramento e Visualização:</strong> Grafana, Prometheus, Kibana.</li>
+            <li><strong>Teste de Carga:</strong> K6, Apache JMeter, Artillery, Locust.</li>
+            <li><strong>Infraestrutura como Código (IaC):</strong> Terraform, AWS CloudFormation, Azure Resource Manager (ARM) templates.</li>
+            <li><strong>Linha de Comando:</strong> AWS CLI, Azure CLI, gcloud CLI.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Critérios de Avaliação -->
+    <section class="project-evaluation">
+      <h2>Critérios de Avaliação</h2>
+      
+      <table class="evaluation-table">
+        <thead>
+          <tr>
+            <th>Critério</th>
+            <th>Descrição</th>
+            <th>Peso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Configuração do Monitoramento</td>
+            <td>Os dashboards foram criados corretamente e monitoram as métricas necessárias? Os alertas são funcionais?</td>
+            <td>25%</td>
+          </tr>
+          <tr>
+            <td>Implementação do Balanceamento e Auto Scaling</td>
+            <td>O Load Balancer foi configurado corretamente? O Auto Scaling responde à demanda dinamicamente?</td>
+            <td>25%</td>
+          </tr>
+          <tr>
+            <td>Otimização de Custos e Boas Práticas</td>
+            <td>Estratégias para redução de custos e/ou melhoria de segurança/governança foram aplicadas e justificadas?</td>
+            <td>20%</td>
+          </tr>
+          <tr>
+            <td>Apresentação e Justificativa</td>
+            <td>A equipe conseguiu explicar e demonstrar a solução de forma clara e embasada?</td>
+            <td>15%</td>
+          </tr>
+          <tr>
+            <td>Documentação</td>
+            <td>O relatório técnico está bem estruturado, com prints, logs, análises e diagramas?</td>
+            <td>15%</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Entregáveis -->
+    <section class="project-deliverables">
+      <h2>Entregáveis</h2>
+      
+      <div class="deliverables-list">
+        <div class="deliverable-item">
+          <span class="checkmark">✓</span>
+          <p>Scripts e arquivos de configuração utilizados para o monitoramento, balanceamento, auto scaling e otimizações.</p>
+        </div>
+        <div class="deliverable-item">
+          <span class="checkmark">✓</span>
+          <p>Relatório técnico detalhado com printscreens dos dashboards, logs, configuração dos alertas, arquitetura da solução, análise de performance e custos.</p>
+        </div>
+        <div class="deliverable-item">
+          <span class="checkmark">✓</span>
+          <p>Vídeo ou apresentação ao vivo demonstrando o funcionamento do sistema de monitoramento, a resposta do auto scaling e do balanceador de carga sob simulação de tráfego, e as otimizações realizadas.</p>
+        </div>
+        <div class="deliverable-item">
+          <span class="checkmark">✓</span>
+          <p>Justificativa técnica das escolhas de ferramentas, métricas monitoradas, configurações de alertas e estratégias de otimização.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Desafios Extras para Insígnia Diamante -->
+    <section class="project-extra">
+      <h2>Desafios Extras (Para Insígnia Diamante)</h2>
+      
+      <div class="extra-challenges">
+        <div class="challenge-item">
+          <span class="challenge-icon">🔥</span>
+          <p>Criar um sistema de <strong>automação que reduz custos</strong> desligando ou redimensionando recursos dinamicamente fora do horário de pico, baseado em métricas de utilização (ex: usando Lambda/Functions).</p>
+        </div>
+        <div class="challenge-item">
+          <span class="challenge-icon">🔥</span>
+          <p><strong>Testar cenários de falhas complexos</strong> (ex.: simular a queda de uma zona de disponibilidade, um ataque DDoS de pequena escala) e documentar como o sistema de monitoramento ajuda na identificação e como a arquitetura resiliente (com load balancing e auto scaling) responde.</p>
+        </div>
+        <div class="challenge-item">
+          <span class="challenge-icon">🔥</span>
+          <p>Criar um <strong>relatório preditivo simples</strong> usando dados históricos de monitoramento para prever consumo futuro de recursos ou picos de demanda (pode ser uma análise estatística ou um modelo básico de machine learning).</p>
+        </div>
+        <div class="challenge-item">
+          <span class="challenge-icon">🔥</span>
+          <p>Implementar <strong>monitoramento de segurança</strong> (ex: usando AWS GuardDuty, Azure Security Center ou ferramentas SIEM open-source) e configurar alertas para atividades suspeitas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Perguntas Frequentes -->
+    <section class="project-faq">
+      <h2>Perguntas Frequentes</h2>
+      
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-button">
+            O que é monitoramento de aplicações e por que é crucial na nuvem?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>O monitoramento de aplicações envolve a coleta e análise de dados sobre a performance, disponibilidade e saúde de suas aplicações e da infraestrutura subjacente. Na nuvem, é crucial para garantir que seus serviços estejam funcionando corretamente, identificar gargalos de desempenho, detectar erros rapidamente, otimizar o uso de recursos (e consequentemente os custos) e garantir uma boa experiência para o usuário. Ele fornece a visibilidade necessária para operar sistemas distribuídos de forma eficaz.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-button">
+            Como o Balanceamento de Carga e o Auto Scaling trabalham juntos?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>O Balanceamento de Carga distribui o tráfego de entrada entre múltiplas instâncias de sua aplicação, evitando que uma única instância fique sobrecarregada e melhorando a disponibilidade e a performance. O Auto Scaling ajusta automaticamente o número de instâncias de sua aplicação com base na demanda atual (ex: uso de CPU, número de requisições). Eles trabalham juntos da seguinte forma: o Auto Scaling adiciona ou remove instâncias conforme a necessidade, e o Balanceador de Carga automaticamente inclui essas novas instâncias no pool de distribuição de tráfego ou remove as instâncias terminadas.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-button">
+            Quais são as estratégias comuns para otimização de custos na nuvem?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>Algumas estratégias comuns incluem:</p>
+            <ul>
+              <li><strong>Right-sizing:</strong> Escolher o tamanho e tipo correto de instância/serviço para sua carga de trabalho.</li>
+              <li><strong>Instâncias Reservadas/Savings Plans:</strong> Comprometer-se com o uso por 1 ou 3 anos para obter descontos significativos.</li>
+              <li><strong>Instâncias Spot:</strong> Utilizar capacidade computacional ociosa com grandes descontos para cargas de trabalho tolerantes a falhas.</li>
+              <li><strong>Desligar recursos ociosos:</strong> Automatizar o desligamento de ambientes de desenvolvimento/teste fora do horário comercial.</li>
+              <li><strong>Otimizar armazenamento:</strong> Usar classes de armazenamento mais baratas para dados acessados com menos frequência (ex: S3 Glacier, Azure Archive Storage) e deletar snapshots antigos.</li>
+              <li><strong>Serverless e Contêineres:</strong> Adotar arquiteturas que permitem pagar apenas pelo tempo de execução real.</li>
+              <li><strong>Monitoramento de custos:</strong> Utilizar ferramentas como AWS Cost Explorer ou Azure Cost Management para identificar gastos inesperados e oportunidades de economia.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-button">
+            Quais ferramentas são melhores para monitoramento: serviços nativos da nuvem (CloudWatch, Azure Monitor) ou soluções como Prometheus + Grafana?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>A escolha depende dos requisitos, da complexidade e do ecossistema.</p>
+            <ul>
+              <li><strong>Serviços Nativos (CloudWatch, Azure Monitor):</strong> São profundamente integrados com outros serviços do provedor, fáceis de configurar para métricas padrão, e geralmente oferecem uma boa experiência inicial. Ideais para quem busca simplicidade e forte integração com o ecossistema do provedor.</li>
+              <li><strong>Prometheus + Grafana:</strong> São soluções open-source poderosas e altamente customizáveis. Prometheus é excelente para coleta de métricas baseada em pull e possui uma linguagem de query flexível (PromQL). Grafana é uma ferramenta de visualização robusta que pode se conectar a diversas fontes de dados (incluindo Prometheus e serviços nativos da nuvem). São ideais para quem precisa de dashboards complexos, controle granular sobre a coleta de métricas, e prefere soluções agnósticas de provedor ou tem ambientes multi-cloud/híbridos.</li>
+            </ul>
+            <p>Muitas vezes, uma combinação pode ser usada, com Grafana visualizando dados tanto do Prometheus quanto dos serviços nativos.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <button class="accordion-button">
+            Como posso simular tráfego para testar minha configuração de Balanceamento de Carga e Auto Scaling?
+            <span class="accordion-icon">+</span>
+          </button>
+          <div class="accordion-content">
+            <p>Existem diversas ferramentas para teste de carga e stress:</p>
+            <ul>
+              <li><strong>Apache JMeter:</strong> Ferramenta open-source baseada em Java, muito popular e com uma vasta gama de funcionalidades para testar performance em diferentes protocolos.</li>
+              <li><strong>K6:</strong> Ferramenta moderna de teste de carga, open-source, focada em desenvolvedores, com scripts em JavaScript. É conhecida pela facilidade de uso e boa performance.</li>
+              <li><strong>Artillery:</strong> Outra ferramenta moderna, baseada em Node.js, que permite definir cenários de teste complexos em YAML ou JavaScript.</li>
+              <li><strong>Locust:</strong> Ferramenta de teste de carga open-source escrita em Python, que permite definir o comportamento do usuário em código Python.</li>
+            </ul>
+            <p>É importante configurar seus testes para simular padrões de tráfego realistas, aumentando gradualmente a carga para observar como o sistema responde e quando o Auto Scaling é acionado. Lembre-se de realizar esses testes em ambientes de não produção ou durante janelas de baixa utilização, e esteja ciente dos custos que a geração de tráfego pode acarretar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sugestões de Prompts para IAs -->
+    <section class="project-prompts">
+      <h2>Sugestões de Prompts para IAs</h2>
+      
+      <div class="prompts-container">
+        <div class="prompt-card">
+          <h3>Para Pesquisa Inicial</h3>
+          <div class="prompt-content">
+            <p>"Explique os conceitos de monitoramento de aplicações, logging centralizado, auto scaling e balanceamento de carga na nuvem. Quais são os principais benefícios e desafios de cada um para um [tipo de aplicação, ex: site de e-commerce com picos de tráfego]?"</p>
+          </div>
+        </div>
+        
+        <div class="prompt-card">
+          <h3>Para Escolha de Ferramentas</h3>
+          <div class="prompt-content">
+            <p>"Quais são as métricas chave que devo monitorar para uma aplicação web [descrever a aplicação, ex: construída em Node.js com banco de dados PostgreSQL] para garantir alta disponibilidade e performance? Sugira ferramentas para coletar e visualizar essas métricas."</p>
+          </div>
+        </div>
+        
+        <div class="prompt-card">
+          <h3>Para Configuração e Implementação</h3>
+          <div class="prompt-content">
+            <p>"Crie um guia passo a passo para configurar um Application Load Balancer na AWS para distribuir tráfego entre um Auto Scaling Group de instâncias EC2 rodando um servidor web Nginx."</p>
+          </div>
+        </div>
+        
+        <div class="prompt-card">
+          <h3>Para Otimização e Boas Práticas</h3>
+          <div class="prompt-content">
+            <p>"Quais são as melhores práticas para configurar logs estruturados em uma aplicação [Python/Java/Node.js] para facilitar a análise e depuração em um sistema de logging centralizado como o ELK Stack ou CloudWatch Logs?"</p>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -105,4 +583,31 @@
       });
     }
 
+    // Accordion Functionality
+    const initAccordion = () => {
+      const accordionButtons = document.querySelectorAll('.accordion-button');
+      
+      accordionButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const content = button.nextElementSibling;
+          const icon = button.querySelector('.accordion-icon');
+          
+          if (content.style.display === 'block') {
+            content.style.display = 'none';
+            icon.textContent = '+';
+          } else {
+            content.style.display = 'block';
+            icon.textContent = '-';
+          }
+        });
+      });
+    }
+
     // Initialize the page
+    document.addEventListener('DOMContentLoaded', () => {
+      navSlide();
+      initAccordion();
+    });
+  </script>
+</body>
+</html>
