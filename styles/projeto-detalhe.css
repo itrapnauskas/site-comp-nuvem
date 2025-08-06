@@ -132,7 +132,14 @@
   .back-link a:hover {
     color: var(--primary-color);
   }
-  
+
+  .btn-primary.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
   /* Projeto Header */
   .projeto-header {
     padding: 2rem;
@@ -142,6 +149,7 @@
     margin-bottom: 2rem;
   }
   
+
   .projeto-header-content {
     display: flex;
     justify-content: space-between;
