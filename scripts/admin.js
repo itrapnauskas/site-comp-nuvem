@@ -90,8 +90,10 @@ const firebaseConfig = {
     loadingStudentsDiv.style.display = 'block';
     studentsListDiv.innerHTML = '';
   
-    database.ref('alunos/alunos').on('value', (snapshot) => {
-      studentsData = snapshot.val() || {};
+    database.ref('alunos').on('value', (snapshot) => {
+      const data = snapshot.val() || {};
+      // Normaliza caso os dados estejam em '/alunos/alunos'
+      studentsData = data.alunos || data;
       renderStudents();
       loadingStudentsDiv.style.display = 'none';
     }, (error) => {
@@ -164,7 +166,7 @@ const firebaseConfig = {
   
   const updateInsignia = (studentId, bloco, insigniaName, newCategory) => {
     requireAuthorized();
-    const dbRef = database.ref(`alunos/alunos/${studentId}/insignias/${bloco}/${insigniaName}`);
+    const dbRef = database.ref(`alunos/${studentId}/insignias/${bloco}/${insigniaName}`);
     dbRef.set(newCategory)
       .then(() => console.log(`Insignia ${insigniaName} para ${studentId} atualizada para ${newCategory}`))
       .catch(error => console.error("Erro ao atualizar insignia:", error));
@@ -188,7 +190,7 @@ const firebaseConfig = {
           throw new Error(`Aluno no índice ${index} não tem nome, email ou grupo.`);
         }
         const newId = `aluno${Date.now()}${index}`; // Simple unique ID
-        updates[`/alunos/alunos/${newId}`] = {
+        updates[`/alunos/${newId}`] = {
           nome: student.nome,
           email: student.email,
           grupo: student.grupo,
@@ -221,7 +223,7 @@ const firebaseConfig = {
     requireAuthorized();
     const confirmation = prompt("Esta ação é irreversível e irá apagar TODOS os alunos. Para confirmar, digite 'EXCLUIR TUDO' em maiúsculas.");
     if (confirmation === 'EXCLUIR TUDO') {
-      database.ref('alunos/alunos').remove()
+      database.ref('alunos').remove()
         .then(() => {
           alert('Todos os alunos foram excluídos com sucesso.');
         })
