@@ -32,6 +32,7 @@ const firebaseConfig = {
   const btnAddBulkNames = document.getElementById('btn-add-bulk-names');
   const newGroupNameInput = document.getElementById('new-group-name');
   const btnAddGroup = document.getElementById('btn-add-group');
+  const groupsListDiv = document.getElementById('groups-list');
   
   // App State
   let studentsData = {};
@@ -114,6 +115,7 @@ const firebaseConfig = {
     database.ref('grupos').on('value', (snapshot) => {
       groupsData = snapshot.val() || {};
       refreshGroupSelect();
+      renderGroupsList();
       renderStudents();
     }, (error) => {
       console.error('Erro ao carregar grupos:', error);
@@ -246,7 +248,8 @@ const firebaseConfig = {
   };
 
   const cssSafe = (str) => String(str).replace(/[^a-zA-Z0-9_-]+/g, '-');
-  const escapeHtml = (s) => (s || '').replace(/[&<>"]+/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const escapeHtml = (s) => (s || '').replace(/[&<>\"]+/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]));
+  const sanitizeFirebaseKey = (name) => String(name).replace(/[.#$\[\]\/]/g, '-');
   const getStudentsForGroup = (groupName) => {
     const set = new Set(groupsData?.[groupName]?.alunos || []);
     Object.entries(studentsData || {}).forEach(([id, s]) => {
@@ -262,6 +265,26 @@ const firebaseConfig = {
     bulkGroupSelect.innerHTML = '<option value="">Sem Grupo</option>' +
       names.sort((a,b)=>a.localeCompare(b)).map(g => `<option value="${g}">${g}</option>`).join('');
     if (current && names.includes(current)) bulkGroupSelect.value = current;
+  };
+
+  const renderGroupsList = () => {
+    if (!groupsListDiv) return;
+    const names = Object.keys(groupsData || {}).sort((a,b)=>a.localeCompare(b));
+    if (names.length === 0) {
+      groupsListDiv.innerHTML = '<p>Nenhum grupo cadastrado.</p>';
+      return;
+    }
+    groupsListDiv.innerHTML = names.map(name => {
+      const count = Array.isArray(groupsData?.[name]?.alunos) ? groupsData[name].alunos.length : getStudentsForGroup(name).length;
+      return `
+        <div class="group-row" data-group="${name}" style="display:flex; align-items:center; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+          <div>
+            <strong>${name}</strong>
+            <span style="color:#666; margin-left: .5rem;">${count} aluno(s)</span>
+          </div>
+          <button class="btn btn-danger btn-sm" data-action="delete-group" data-group="${name}"><i class="fas fa-trash"></i> Excluir</button>
+        </div>`;
+    }).join('');
   };
 
   const addInlineEditListeners = () => {
@@ -421,17 +444,39 @@ const firebaseConfig = {
   const addGroup = () => {
     try {
       requireAuthorized();
-      const name = (newGroupNameInput?.value || '').trim();
-      if (!name) { alert('Informe um nome de grupo.'); return; }
+      const raw = (newGroupNameInput?.value || '').trim();
+      const name = sanitizeFirebaseKey(raw);
+      if (!name) { alert('Informe um nome de grupo válido.'); return; }
       if (groupsData && groupsData[name]) { alert('Grupo já existe.'); return; }
-      const updates = {};
-      updates[`/grupos/${name}`] = { alunos: [] };
-      database.ref().update(updates).then(() => {
+      database.ref(`grupos/${name}`).set({ alunos: [] }).then(() => {
         alert('Grupo adicionado.');
         if (newGroupNameInput) newGroupNameInput.value = '';
       }).catch(err => {
         console.error('Erro ao adicionar grupo:', err);
         alert('Erro ao adicionar grupo.');
+      });
+    } catch (e) {
+      alert(`Erro: ${e.message}`);
+    }
+  };
+
+  const deleteGroup = (groupName) => {
+    try {
+      requireAuthorized();
+      if (!groupName) return;
+      const ok = confirm(`Excluir grupo "${groupName}"? Alunos ficarão sem grupo.`);
+      if (!ok) return;
+      const updates = {};
+      updates[`/grupos/${groupName}`] = null;
+      // Limpa o campo grupo dos alunos pertencentes a este grupo
+      const affected = new Set([...(groupsData?.[groupName]?.alunos || [])]);
+      Object.entries(studentsData || {}).forEach(([sid, s]) => { if ((s.grupo||'') === groupName) affected.add(sid); });
+      affected.forEach(sid => { updates[`/alunos/${sid}/grupo`] = ''; });
+      database.ref().update(updates).then(() => {
+        alert('Grupo excluído.');
+      }).catch(err => {
+        console.error('Erro ao excluir grupo:', err);
+        alert('Erro ao excluir grupo.');
       });
     } catch (e) {
       alert(`Erro: ${e.message}`);
@@ -536,6 +581,14 @@ const firebaseConfig = {
       if (btnSaveChanges) btnSaveChanges.addEventListener('click', applyPendingEdits);
       if (btnAddBulkNames) btnAddBulkNames.addEventListener('click', addBulkStudents);
       if (btnAddGroup) btnAddGroup.addEventListener('click', addGroup);
+      if (groupsListDiv) {
+        groupsListDiv.addEventListener('click', (e) => {
+          const btn = e.target.closest && e.target.closest('[data-action="delete-group"][data-group]');
+          if (!btn) return;
+          const groupName = btn.getAttribute('data-group');
+          deleteGroup(groupName);
+        });
+      }
     } else if (user && !isAuthorized(user)) {
       showLogin('Conta não autorizada.');
       auth.signOut();
