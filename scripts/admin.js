@@ -450,16 +450,10 @@ const firebaseConfig = {
       if (groupsData && groupsData[name]) { alert('Grupo já existe.'); return; }
       const path = `grupos/${name}`;
       console.log('Criando grupo em:', path);
-      database.ref().update({ [path]: { alunos: [] } })
-        .then(() => database.ref(path).once('value'))
-        .then((snap) => {
-          if (snap.exists()) {
-            alert('Grupo adicionado.');
-            if (newGroupNameInput) newGroupNameInput.value = '';
-          } else {
-            console.warn('Grupo não encontrado após criação. Verifique regras do RTDB.');
-            alert('Falha ao criar grupo (regras do banco podem estar bloqueando).');
-          }
+      database.ref(path).set({ alunos: [] })
+        .then(() => {
+          alert('Grupo adicionado.');
+          if (newGroupNameInput) newGroupNameInput.value = '';
         })
         .catch(err => {
           console.error('Erro ao adicionar grupo:', err);
