@@ -70,9 +70,9 @@ const loadData = () => {
   rankingLoading.style.display = 'block';
   rankingLoading.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Carregando dados...`;
 
-  return database.ref('alunos').once('value')
+  return database.ref('alunos/alunos').once('value')
     .then(snapshot => {
-      const alunosDataFromDB = snapshot.val()?.alunos;
+      const alunosDataFromDB = snapshot.val();
       if (!alunosDataFromDB) return showEmptyState();
 
       alunosData = Object.entries(alunosDataFromDB).map(([id, aluno]) => ({

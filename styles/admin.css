@@ -25,13 +25,16 @@
   
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    margin: 0;
     line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--light-color);
   }
   
-  /* Login Page */
-  .login-container {
+  .container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
