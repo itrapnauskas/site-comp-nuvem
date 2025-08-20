@@ -70,10 +70,11 @@ const loadData = () => {
   rankingLoading.style.display = 'block';
   rankingLoading.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Carregando dados...`;
 
-  return database.ref('alunos/alunos').once('value')
+  return database.ref('alunos').once('value')
     .then(snapshot => {
-      const alunosDataFromDB = snapshot.val();
-      if (!alunosDataFromDB) return showEmptyState();
+      const raw = snapshot.val() || {};
+      const alunosDataFromDB = raw.alunos || raw; // normaliza 'alunos/alunos'
+      if (!alunosDataFromDB || Object.keys(alunosDataFromDB).length === 0) return showEmptyState();
 
       alunosData = Object.entries(alunosDataFromDB).map(([id, aluno]) => ({
         id,

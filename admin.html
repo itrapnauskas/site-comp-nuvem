@@ -37,6 +37,10 @@
     <main class="admin-content">
       <section id="student-management">
         <h2><i class="fas fa-users"></i> Gestão de Alunos</h2>
+        <div class="tab-header">
+          <div></div>
+          <button id="btn-save-changes" class="btn-save"><i class="fas fa-save"></i> Salvar Alterações</button>
+        </div>
         <div id="loading-students" class="loading">
           <i class="fas fa-spinner fa-spin"></i> Carregando alunos...
         </div>
@@ -46,6 +50,27 @@
       <section id="data-import-export">
         <h2><i class="fas fa-database"></i> Gerenciamento de Dados</h2>
         <div class="data-actions">
+          <div class="simple-add-section">
+            <h3>Adicionar Alunos (um por linha)</h3>
+            <textarea id="bulk-names-input" rows="8" placeholder="Nome do aluno 1
+Nome do aluno 2"></textarea>
+            <div class="form-group">
+              <label for="bulk-group-select">Atribuir ao grupo (opcional)</label>
+              <select id="bulk-group-select">
+                <option value="">Sem Grupo</option>
+              </select>
+            </div>
+            <button id="btn-add-bulk-names" class="btn btn-primary"><i class="fas fa-user-plus"></i> Adicionar Alunos</button>
+          </div>
+
+          <div class="groups-section">
+            <h3>Cadastrar Grupos</h3>
+            <div class="form-group">
+              <input type="text" id="new-group-name" placeholder="Nome do grupo (ex.: Azul)" />
+            </div>
+            <button id="btn-add-group" class="btn btn-secondary"><i class="fas fa-layer-group"></i> Adicionar Grupo</button>
+          </div>
+
           <div class="import-section">
             <h3>Importar Novos Alunos</h3>
             <p>Cole o JSON dos novos alunos abaixo. O formato deve incluir nome, email e grupo.</p>
