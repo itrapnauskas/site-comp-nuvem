@@ -3,14 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Computação em Nuvem - Início</title>
+  <title>Computação em Nuvem 2026/01 - Início</title>
   <link rel="stylesheet" href="styles/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Firebase App (SDK principal) -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-  <!-- Firebase Database -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
-  <script type="module" src="config/database.js"></script>
 </head>
 <body>
   <header>
@@ -20,9 +15,8 @@
       </div>
       <ul class="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="ranking.html">Ranking</a></li>
+        <li><a href="plano-ensino.html">Plano de Ensino</a></li>
         <li><a href="projetos.html">Projetos</a></li>
-        <li><a href="avaliacao360.html">Avaliação 360</a></li>
       </ul>
       <div class="burger">
         <div class="line1"></div>
@@ -32,133 +26,81 @@
     </nav>
   </header>
 
-
-
-  
   <main class="container">
     <section class="welcome-section">
       <div class="hero-content">
-        <h1><i class="fas fa-cloud"></i> COMPUTAÇÃO EM NUVEM<i class="fas fa-cloud"></i></h1>
-        <p class="subtitle" id="curso-descricao">Estude, Pratique e Aplique os conceitos fundamentais da computação em nuvem</p>
+        <p class="tagline">SENAI Blumenau • 2026/01</p>
+        <h1><i class="fas fa-cloud"></i> COMPUTAÇÃO EM NUVEM</h1>
+        <p class="subtitle">Disciplina prática para planejar, implementar e validar soluções em nuvem com foco em infraestrutura, segurança, custos e trabalho em equipe.</p>
+        <div class="cta-buttons">
+          <a class="btn btn-primary" href="plano-ensino.html">Ver plano de ensino</a>
+          <a class="btn btn-secondary" href="projetos.html">Acompanhar projetos</a>
+        </div>
       </div>
     </section>
 
-    <section id="plano-ensino" class="plano-ensino-section">
-      <h2>Plano de Ensino</h2>
-      <div id="plano-ensino-content" class="content-area">
-        <p><strong>Unidade:</strong> Computação em Nuvem</p>
-        <p><strong>Turma:</strong> GR SADS 2023/2 N1</p>
-        <p><strong>Docente:</strong> Igor T.</p>
-        <p><strong>Carga Horária:</strong> 72 horas</p>
-        <p><strong>Ano/Semestre:</strong> 2025/02</p>
-    <br><br>
-        <h3>Objetivo Geral</h3>
-        <p>Formar profissionais capacitados para planejar, analisar, utilizar e avaliar tecnologias de computação em nuvem aplicadas em organizações públicas e privadas, com foco na gestão de sistemas computacionais e adaptação às inovações tecnológicas.</p>
-        <br>
-        <h3>Objetivos Específicos</h3>
-        <ul>
-          <li>Atuar eficazmente na área de suporte e desenvolvimento de sistemas de informação.</li>
-          <li>Oferecer suporte na instalação e configuração de plataformas de hardware e software.</li>
-          <li>Utilizar metodologias de computação para produzir sistemas de qualidade.</li>
-          <li>Adaptar-se ao trabalho em equipes multidisciplinares.</li>
-          <li>Reciclar-se constantemente e atuar com competência em diferentes organizações.</li>
-        </ul>
-        <br>
-        <h3>Conteúdos de Conhecimento</h3>
-        <ul>
-          <li>Vantagens da computação em nuvem</li>
-          <li>Modelos de implantação em nuvem</li>
-          <li>Serviços de computação sem servidor</li>
-          <li>Firewalls e mecanismos de segurança</li>
-          <li>Serviços de banco de dados e armazenamento na nuvem</li>
-          <li>Redes virtuais e melhores práticas na nuvem</li>
-        </ul>
-        <br>
-        <h3>Estratégia de Aprendizagem</h3>
-        <p>O curso adota o modelo de <strong>Projeto</strong> com base em situações-problema, promovendo a aplicação dos conhecimentos adquiridos em cenários reais.</p>
-        <br>
-        <h3>Resultados Esperados</h3>
-        <ul>
-          <li>Domínio dos conceitos de computação em nuvem e suas aplicações práticas.</li>
-          <li>Capacidade de tomar decisões técnicas com base em segurança, desempenho e custos.</li>
-          <li>Habilidade para configurar, testar e otimizar aplicações na nuvem.</li>
-          <li>Desenvolvimento de soft skills, como trabalho em equipe e comunicação técnica.</li>
-        </ul>
-        <br>
-        <h3>Avaliação</h3>
-        <ul>
-          <li>Avaliação contínua por meio de feedbacks e participação nas atividades.</li>
-          <li>Provas e avaliações dos projetos realizados, com foco em soluções funcionais na nuvem.</li>
-          <li>Avaliação 360, considerando o desempenho técnico e colaborativo dos alunos.</li>
-        </ul>
-        <br>
+    <section>
+      <h2>Sobre a disciplina</h2>
+      <p>
+        Nesta UC, os estudantes desenvolvem soluções reais na nuvem ao longo do semestre, passando por fundamentos,
+        banco de dados, serverless, monitoramento, escalabilidade e otimização. O formato prioriza projeto aplicado,
+        documentação técnica e apresentação dos resultados.
+      </p>
+      <div class="highlight-grid">
+        <article class="highlight-card">
+          <h3><i class="fas fa-screwdriver-wrench"></i> Abordagem prática</h3>
+          <p>Aulas hands-on com foco em execução técnica e resolução de problemas do mundo real.</p>
+        </article>
+        <article class="highlight-card">
+          <h3><i class="fas fa-users"></i> Trabalho em equipe</h3>
+          <p>Organização de papéis, colaboração e comunicação técnica durante todo o ciclo dos projetos.</p>
+        </article>
+        <article class="highlight-card">
+          <h3><i class="fas fa-chart-line"></i> Evolução contínua</h3>
+          <p>Entrega incremental de projetos e feedback contínuo para melhoria técnica e socioemocional.</p>
+        </article>
       </div>
-    </section>    
+    </section>
+
+    <section>
+      <h2>Turma e informações rápidas</h2>
+      <ul>
+        <li><strong>Turma:</strong> GR SADS 2024/2 N1</li>
+        <li><strong>Carga horária:</strong> 72 horas</li>
+        <li><strong>Turno:</strong> Noite</li>
+        <li><strong>Docente:</strong> Igor Trapnauskas</li>
+        <li><strong>Endereço da turma:</strong> <a href="https://cloud-2026.netlify.app/" target="_blank" rel="noopener noreferrer">https://cloud-2026.netlify.app/</a></li>
+      </ul>
+    </section>
   </main>
 
   <footer>
     <div class="footer-content">
       <div class="footer-info">
         <h3>Computação em Nuvem</h3>
-        <p>2025 - Todos os direitos reservados</p>
+        <p>2026 - Todos os direitos reservados</p>
       </div>
       <div class="footer-links">
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="ranking.html">Ranking</a></li>
+          <li><a href="plano-ensino.html">Plano de Ensino</a></li>
           <li><a href="projetos.html">Projetos</a></li>
-          <li><a href="avaliacao360.html">Avaliação 360</a></li>
         </ul>
       </div>
     </div>
   </footer>
 
-  <script type="module">
-    import { firebaseConfig } from './config/database.js';
-    
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    const database = firebase.database();
+  <script>
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
 
-    // Mobile Navigation Toggle
-    const navSlide = () => {
-      const burger = document.querySelector('.burger');
-      const nav = document.querySelector('.nav-links');
-      const navLinks = document.querySelectorAll('.nav-links li');
-
-      burger.addEventListener('click', () => {
-        nav.classList.toggle('nav-active');
-        burger.classList.toggle('toggle');
-        
-        navLinks.forEach((link, index) => {
-          if (link.style.animation) {
-            link.style.animation = '';
-          } else {
-            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-          }
-        });
+    burger.addEventListener('click', () => {
+      nav.classList.toggle('nav-active');
+      burger.classList.toggle('toggle');
+      navLinks.forEach((link, index) => {
+        link.style.animation = link.style.animation ? '' : `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
       });
-    }
-
-    // Carregar descrição do curso do Firebase
-    const loadCursoDescricao = () => {
-      database.ref('conteudo/descricao').once('value')
-        .then(snapshot => {
-          const data = snapshot.val();
-          
-          if (data && data.texto) {
-            document.getElementById('curso-descricao').textContent = data.texto;
-          }
-        })
-        .catch(error => {
-          console.error('Erro ao carregar descrição do curso:', error);
-        });
-    };
-
-    // Load data when DOM is ready
-    document.addEventListener('DOMContentLoaded', () => {
-      navSlide();
-      loadCursoDescricao();
     });
   </script>
 </body>
