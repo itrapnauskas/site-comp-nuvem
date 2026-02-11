@@ -2,161 +2,19 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=index.html">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ranking - Computação em Nuvem</title>
-  <link rel="stylesheet" href="styles/ranking.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <meta name="robots" content="noindex,nofollow">
+  <title>Ranking descontinuado</title>
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo">
-        <a href="index.html">Computação em Nuvem</a>
-      </div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="ranking.html" class="active">Ranking</a></li>
-        <li><a href="projetos.html">Projetos</a></li>
-        <li><a href="avaliacao360.html">Avaliação 360</a></li>
-      </ul>
-      <div class="burger">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-      </div>
-    </nav>
-  </header>
-
   <main class="container">
-    <section class="ranking-header">
-      <h1><i class="fas fa-trophy"></i> Ranking de Alunos</h1>
-      <p class="description">Acompanhe o desempenho dos alunos com base nas insígnias conquistadas em cada bloco.</p>
-    </section>
-
-    <section class="ranking-filter">
-      <h2>Filtros</h2>
-      <div class="filter-container">
-        <div class="filter-group">
-          <label for="filter-bloco">Bloco:</label>
-          <select id="filter-bloco">
-            <option value="all">Todos os Blocos</option>
-            <option value="Bloco1">Bloco 1 - Fundamentos</option>
-            <option value="Bloco2">Bloco 2 - Armazenamento</option>
-            <option value="Bloco3">Bloco 3 - Serverless</option>
-            <option value="Bloco4">Bloco 4 - Monitoramento</option>
-          </select>
-        </div>
-        
-        <div class="filter-group">
-          <label for="filter-insignia">Insígnia:</label>
-          <select id="filter-insignia">
-            <option value="all">Todas as Insígnias</option>
-            <optgroup label="Bloco 1">
-              <option value="Explorador da Nuvem">Explorador da Nuvem</option>
-              <option value="Arquiteto Cloud Iniciante">Arquiteto Cloud Iniciante</option>
-              <option value="Gestor de Custos Cloud">Gestor de Custos Cloud</option>
-              <option value="Segurança Inicial em Cloud">Segurança Inicial em Cloud</option>
-            </optgroup>
-            <optgroup label="Bloco 2">
-              <option value="Guardião dos Dados">Guardião dos Dados</option>
-              <option value="Administrador de Bancos Cloud">Administrador de Bancos Cloud</option>
-              <option value="Integrador de APIs e Dados">Integrador de APIs e Dados</option>
-            </optgroup>
-          </select>
-        </div>
-        
-        <div class="filter-group">
-          <label for="filter-categoria">Categoria:</label>
-          <select id="filter-categoria">
-            <option value="all">Todas as Categorias</option>
-            <option value="Diamante">Diamante</option>
-            <option value="Ouro">Ouro</option>
-            <option value="Prata">Prata</option>
-            <option value="Bronze">Bronze</option>
-            <option value="Cobre">Cobre</option>
-          </select>
-        </div>
-        
-        <div class="filter-group">
-          <label for="filter-grupo">Grupo:</label>
-          <select id="filter-grupo">
-            <option value="all">Todos os Grupos</option>
-          </select>
-        </div>
-        
-        <button id="btn-aplicar-filtros" class="btn-filter">Aplicar Filtros</button>
-        <button id="btn-limpar-filtros" class="btn-filter clear">Limpar Filtros</button>
-      </div>
-    </section>
-
-    <section class="ranking-legend">
-      <h2>Legenda das Categorias</h2>
-      <div class="legend-container">
-        <div class="legend-item">
-          <span class="category-badge diamond">💎</span>
-          <span class="category-name">Diamante</span>
-          <span class="category-value">100%</span>
-        </div>
-        <div class="legend-item">
-          <span class="category-badge gold">🥇</span>
-          <span class="category-name">Ouro</span>
-          <span class="category-value">80%</span>
-        </div>
-        <div class="legend-item">
-          <span class="category-badge silver">🥈</span>
-          <span class="category-name">Prata</span>
-          <span class="category-value">65%</span>
-        </div>
-        <div class="legend-item">
-          <span class="category-badge bronze">🥉</span>
-          <span class="category-name">Bronze</span>
-          <span class="category-value">50%</span>
-        </div>
-        <div class="legend-item">
-          <span class="category-badge copper">🟫</span>
-          <span class="category-name">Cobre</span>
-          <span class="category-value">20%</span>
-        </div>
-        <div class="legend-item">
-          <span class="category-badge none">🚫</span>
-          <span class="category-name">Sem Insígnia</span>
-          <span class="category-value">0%</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="ranking-table-container">
-      <h2>Ranking Geral</h2>
-      <div id="ranking-loading" class="loading">
-        <i class="fas fa-spinner fa-spin"></i>
-        <p>Carregando ranking...</p>
-      </div>
-      <div id="ranking-table-wrapper">
-        <table id="ranking-table" class="ranking-table">
-          <thead>
-            <tr>
-              <th class="position">#</th>
-              <th class="aluno">Aluno</th>
-              <th class="grupo">Grupo</th>
-              <th class="insignias">Insígnias por Bloco</th>
-            </tr>
-          </thead>
-          <tbody id="ranking-body">
-            <!-- Ranking será carregado dinamicamente -->
-          </tbody>
-        </table>
-      </div>
+    <section>
+      <h1>Ranking descontinuado</h1>
+      <p>O ranking não será utilizado nesta edição da disciplina.</p>
+      <p><a href="index.html">Ir para a página inicial</a></p>
     </section>
   </main>
-
-  <footer>
-    <div class="footer-content">
-      <p>&copy; 2025 Computação em Nuvem. Todos os direitos reservados.</p>
-    </div>
-  </footer>
-
-  <script src="scripts/ranking.js"></script>
 </body>
 </html>

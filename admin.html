@@ -2,95 +2,19 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=index.html">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow">
-  <title>Admin - Gestão de Alunos</title>
-  <link rel="stylesheet" href="styles/admin.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <title>Painel indisponível</title>
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-  <div id="login-container" class="container">
-    <div class="login-card">
-      <div class="login-header">
-        <h1><i class="fas fa-user-shield"></i> Painel Administrativo</h1>
-        <h2>Acesso restrito</h2>
-      </div>
-      <div class="login-form">
-        <div id="login-error" class="error-message" style="display:none"></div>
-        <button id="btn-google" class="btn-login"><i class="fab fa-google"></i> Entrar com Google</button>
-      </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="app" class="admin-container" style="display:none">
-    <header class="admin-header">
-      <div class="logo"><h1>Admin</h1></div>
-      <div class="admin-info">
-        <span class="admin-name" id="admin-user-email"></span>
-        <button id="btn-logout" class="btn-logout"><i class="fas fa-sign-out-alt"></i> Sair</button>
-      </div>
-    </header>
-    <main class="admin-content">
-      <section id="student-management">
-        <h2><i class="fas fa-users"></i> Gestão de Alunos</h2>
-        <div class="tab-header">
-          <div></div>
-          <button id="btn-save-changes" class="btn-save"><i class="fas fa-save"></i> Salvar Alterações</button>
-        </div>
-        <div id="loading-students" class="loading">
-          <i class="fas fa-spinner fa-spin"></i> Carregando alunos...
-        </div>
-        <div id="students-list"></div>
-      </section>
-
-      <section id="data-import-export">
-        <h2><i class="fas fa-database"></i> Gerenciamento de Dados</h2>
-        <div class="data-actions">
-          <div class="simple-add-section">
-            <h3>Adicionar Alunos (um por linha)</h3>
-            <textarea id="bulk-names-input" rows="8" placeholder="Nome do aluno 1
-Nome do aluno 2"></textarea>
-            <div class="form-group">
-              <label for="bulk-group-select">Atribuir ao grupo (opcional)</label>
-              <select id="bulk-group-select">
-                <option value="">Sem Grupo</option>
-              </select>
-            </div>
-            <button id="btn-add-bulk-names" class="btn btn-primary"><i class="fas fa-user-plus"></i> Adicionar Alunos</button>
-          </div>
-
-          <div class="groups-section">
-            <h3>Cadastrar Grupos</h3>
-            <div class="form-group">
-              <input type="text" id="new-group-name" placeholder="Nome do grupo (ex.: Azul)" />
-            </div>
-            <button id="btn-add-group" class="btn btn-secondary"><i class="fas fa-layer-group"></i> Adicionar Grupo</button>
-            <h3 style="margin-top:1rem;">Grupos Cadastrados</h3>
-            <div id="groups-list" class="groups-list"></div>
-          </div>
-
-          <div class="import-section">
-            <h3>Importar Novos Alunos</h3>
-            <p>Cole o JSON dos novos alunos abaixo. O formato deve incluir nome, email e grupo.</p>
-            <textarea id="json-import-data" rows="10" placeholder='[
-  { "nome": "Novo Aluno 1", "email": "aluno1@example.com", "grupo": "Azul" }
-]'></textarea>
-            <button id="btn-import-students" class="btn btn-primary"><i class="fas fa-upload"></i> Importar Alunos</button>
-          </div>
-          <div class="danger-zone">
-            <h3>Zona de Perigo</h3>
-            <p>Esta ação é irreversível. Todos os dados dos alunos atuais serão removidos.</p>
-            <button id="btn-clear-students" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Excluir Todos os Alunos</button>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <script src="scripts/admin.js"></script>
+  <main class="container">
+    <section>
+      <h1>Painel indisponível</h1>
+      <p>O fluxo com login/admin não será utilizado nesta versão do site.</p>
+      <p><a href="index.html">Ir para a página inicial</a></p>
+    </section>
+  </main>
 </body>
 </html>
